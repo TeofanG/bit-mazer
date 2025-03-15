@@ -1,0 +1,209 @@
+﻿@page "/encryption"
+@inject IJSRuntime js
+
+<PageTitle>Encryption</PageTitle>
+<h2>Encrypt</h2>
+<div class="container my-4">
+    <div class="card p-4">
+        <!--Upload file button-->
+        <div class="mb-3">
+            <label class="form-label">Select file to encrypt:</label>
+            <div class="input-group">
+                <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+
+                <label for="enc-file-upload" class="load-btn">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
+
+                @if (selectedFile == null) {
+                    <span class="nofilemsg">No file selected.</span>
+                }
+            </div>
+        </div>
+
+        <!--Uploaded file information-->
+        @if (selectedFile != null)
+        {
+            <div class="alert alert-info">
+                <p><strong>Name:</strong> @selectedFile?.Name</p>
+                <p><strong>Size:</strong> @selectedFile?.Size MB</p>
+                <p><strong>Type:</strong> @selectedFile?.Type</p>
+            </div>
+        }
+
+        <!--Select algorithm dropdown-->
+        <div class="mb-3">
+            <label class="form-label">Choose algorithm:</label>
+            <InputSelect class="form-select" @bind-Value="selectedAlg">
+                @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+                {
+                    <option value="@alg">@alg</option>
+                }
+            </InputSelect>
+        </div>
+
+        <!--Upload key button-->
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="key" @bind="@isCustomPassEnabled" />
+                <label class="form-check-label" for="key">Choose your own key</label>
+                <span  class="ms-2" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                title="Upload a binary file containing a RSA public key in pkcs8 format.">
+                    <i class="fas fa-info-circle text-primary"></i>
+                </span>
+            </div>
+
+            @if (isCustomPassEnabled)
+            {
+                <div class="input-group mt-2">
+                    <InputFile id="key-file-upload" class="hidden-file-input" OnChange="LoadKey" />
+
+                    <label for="key-file-upload" class="load-btn">
+                        <i class="fa-solid fa-upload"></i> Choose a File
+                    </label>
+
+                    @if (selectedKey == null)
+                    {
+                        <span class="nofilemsg">No file selected.</span>
+                    } else {
+                        <span class="nofilemsg">@selectedKey.Name</span>
+                    }
+                </div>
+            }
+        </div>
+
+        <!--Start encrypt button-->
+        <div class="mb-3">
+            <button id="encrypt-btn" 
+            class="btn btn-primary" 
+            @onclick="InitEncryption"
+            >Encrypt</button>
+        </div>
+
+        <!--Loader animation-->
+        @if (IsEncrypting == true)
+        {
+            <div class="loader"></div>
+        }
+
+        <!--Download/Error section-->
+        @if(error==null) 
+        {
+            <div id="download-container" style="display: @(IsEncrypting ? "none" : "block")">
+            </div>
+        } else {
+            <div id="error-container">
+                <p style="color: red;">@error</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+
+    private async Task InitEncryption()
+    {
+        error = null;
+        if (selectedFile == null)
+        {
+            error = "No file selected for encryption.";
+        }
+        else if (isCustomPassEnabled == true && selectedKey == null)
+        {
+            error = "No key chosen for encryption.";
+        }
+        else
+        {
+            IsEncrypting = true; // Show loader
+            StateHasChanged();
+
+            int minDuration = 2000; // Minimum loader animation time
+            DateTime startTime = DateTime.Now;
+
+            try
+            {
+                string result = await js.InvokeAsync<string>("startEncryption", selectedAlg.ToString(), isCustomPassEnabled);
+
+                // Ensure minimum loader duration
+                int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
+                if (elapsedTime < minDuration)
+                {
+                    await Task.Delay(minDuration - elapsedTime);
+                }
+
+                if (result.StartsWith("Error:"))
+                {
+                    Console.WriteLine($"Encryption failed: {result}");
+                    error = "Error during encryption. Check the input file and key.";
+                }
+                else
+                {
+                    Console.WriteLine("✅ Encryption successful.");
+                    error = null;
+                }
+            }
+            catch (JSException jsEx)
+            {
+                // 🔥 Handle JavaScript errors thrown from JS function
+                Console.WriteLine(jsEx.Message);
+                error = "Error during encryption. Check the input file and key.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Encryption failed: {ex.Message}");
+                error = "Error during encryption. Check the input file and key.";
+            }
+            finally
+            {
+                IsEncrypting = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private void LoadFile(InputFileChangeEventArgs e)
+    {
+        if (e == null) throw new ArgumentNullException(nameof(e));
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {   
+            if (file.Size > 256 * 1024 * 1024)
+            {
+                Console.WriteLine("File too large. Max allowed size is 256.");
+                error = "File too large. Max allowed size is 256.";
+            }
+            selectedFile = new FileModel(file);
+        }
+    }
+
+    private void LoadKey(InputFileChangeEventArgs e)
+    {
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if(file.Size != 294) {
+                Console.WriteLine("Invalid RSA key file size.");
+                error = "Invalid key file size";
+            } else {
+                error = null;
+            }
+            selectedKey = new FileModel(file);
+        }
+    }
+
+
+    private EncryptionAlgorithm selectedAlg = EncryptionAlgorithm.AES_GCM;
+
+    private FileModel? selectedFile = null;
+
+    private FileModel? selectedKey = null;
+
+    private bool isCustomPassEnabled = false;
+
+    private bool IsEncrypting;
+
+    private string? error = null;
+}

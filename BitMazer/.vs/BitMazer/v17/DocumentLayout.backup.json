@@ -1,0 +1,343 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\pages\\encryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:pages\\encryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\encryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\encryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\aes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\aes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\decryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\decryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\chacha.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\chacha.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\metadata.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\metadata.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\js\\rsa.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\rsa.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\pages\\decryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:pages\\decryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\models\\encryptionalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:models\\encryptionalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\models\\filemetadatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:models\\filemetadatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\services\\decryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:services\\decryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\models\\filemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:models\\filemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\wwwroot\\css\\loading-animation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\css\\loading-animation.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|c:\\users\\teofa\\desktop\\bitmazer\\bitmazer\\algorithms\\aesencryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:algorithms\\aesencryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "chacha.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\chacha.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\chacha.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\chacha.js",
+              "RelativeToolTip": "wwwroot\\js\\chacha.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-05T17:03:57.662Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-02-20T18:39:45.201Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "wwwroot\\css\\app.css",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAAALYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-15T09:25:39.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T09:21:42.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T09:21:41.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "aes.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\aes.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\aes.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\aes.js",
+              "RelativeToolTip": "wwwroot\\js\\aes.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-02-20T17:07:15.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "encryption-service.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\encryption-service.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\encryption-service.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\encryption-service.js",
+              "RelativeToolTip": "wwwroot\\js\\encryption-service.js",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwBgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-02-17T17:14:33.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "metadata.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\metadata.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\metadata.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\metadata.js",
+              "RelativeToolTip": "wwwroot\\js\\metadata.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-02-20T17:10:43.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "decryption-service.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\decryption-service.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\decryption-service.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\decryption-service.js",
+              "RelativeToolTip": "wwwroot\\js\\decryption-service.js",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAE0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-05T09:14:25.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\_Imports.razor",
+              "RelativeDocumentMoniker": "_Imports.razor",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\_Imports.razor",
+              "RelativeToolTip": "_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T13:13:10.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "rsa.js",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\rsa.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\rsa.js",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\rsa.js",
+              "RelativeToolTip": "wwwroot\\js\\rsa.js",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAACEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-02-20T17:14:26.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FileMetadataModel.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\FileMetadataModel.cs",
+              "RelativeDocumentMoniker": "Models\\FileMetadataModel.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\FileMetadataModel.cs",
+              "RelativeToolTip": "Models\\FileMetadataModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T09:26:32.594Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Encryption.razor",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Pages\\Encryption.razor",
+              "RelativeDocumentMoniker": "Pages\\Encryption.razor",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Pages\\Encryption.razor",
+              "RelativeToolTip": "Pages\\Encryption.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-05T12:18:07.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Decryption.razor",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Pages\\Decryption.razor",
+              "RelativeDocumentMoniker": "Pages\\Decryption.razor",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Pages\\Decryption.razor",
+              "RelativeToolTip": "Pages\\Decryption.razor",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAmwKQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-04T19:01:32.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DecryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Services\\DecryptionService.cs",
+              "RelativeDocumentMoniker": "Services\\DecryptionService.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Services\\DecryptionService.cs",
+              "RelativeToolTip": "Services\\DecryptionService.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAswIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T15:44:20.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FileModel.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\FileModel.cs",
+              "RelativeDocumentMoniker": "Models\\FileModel.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\FileModel.cs",
+              "RelativeToolTip": "Models\\FileModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T00:03:12.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "loading-animation.css",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\loading-animation.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\loading-animation.css",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\loading-animation.css",
+              "RelativeToolTip": "wwwroot\\css\\loading-animation.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-21T23:26:30.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EncryptionAlgorithm.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\EncryptionAlgorithm.cs",
+              "RelativeDocumentMoniker": "Models\\EncryptionAlgorithm.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Models\\EncryptionAlgorithm.cs",
+              "RelativeToolTip": "Models\\EncryptionAlgorithm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T18:55:06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EncryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Services\\EncryptionService.cs",
+              "RelativeDocumentMoniker": "Services\\EncryptionService.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Services\\EncryptionService.cs",
+              "RelativeToolTip": "Services\\EncryptionService.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAEwHQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T18:41:59.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AESencryption.cs",
+              "DocumentMoniker": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Algorithms\\AESencryption.cs",
+              "RelativeDocumentMoniker": "Algorithms\\AESencryption.cs",
+              "ToolTip": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\Algorithms\\AESencryption.cs",
+              "RelativeToolTip": "Algorithms\\AESencryption.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAswEIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T16:43:19.884Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BitMazer</title>
+    <base href="/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/loading-animation.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="BitMazer.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl@latest/nacl.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@latest/nacl-util.min.js"></script>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/aes.js"></script>
+    <script src="js/chacha.js"></script>
+    <script src="js/rsa.js"></script>
+    <script src="js/metadata.js"></script>
+    <script src="js/encryption-service.js"></script>
+    <script src="js/decryption-service.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+wwwroot\css\app.css
+wwwroot\css\bootstrap\bootstrap.min.css
+wwwroot\css\bootstrap\bootstrap.min.css.map
+wwwroot\css\loading-animation.css
+wwwroot\favicon.png
+wwwroot\icon-192.png
+wwwroot\index.html
+wwwroot\js\aes.js
+wwwroot\js\chacha.js
+wwwroot\js\decryption-service.js
+wwwroot\js\encryption-service.js
+wwwroot\js\metadata.js
+wwwroot\js\rsa.js
+wwwroot\logo.png

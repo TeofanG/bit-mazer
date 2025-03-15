@@ -1,0 +1,213 @@
+﻿@page "/decryption"
+@using BitMazer.Models
+@using System.Text.Json
+@using Microsoft.AspNetCore.Components.Forms
+@inject IJSRuntime js
+
+
+<div class="container my-4">
+    <div class="card p-4">
+        <!--Upload file button-->
+        <div class="mb-3">
+            <label class="form-label">Select file to decrypt:</label>
+            <div class="input-group">
+                <InputFile id="dec-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+
+                <label for="dec-file-upload" class="load-btn">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
+
+                @if (selectedFile == null)
+                {
+                    <span class="nofilemsg">No file selected.</span>
+                } else {
+                    <span class="nofilemsg">@selectedFile.Name</span>
+                }
+            </div>
+        </div>
+
+        <!--Uploaded file metadata-->
+        @if (selectedFile != null && metadata != null)
+        {
+            <div class="alert alert-info">
+                <p><strong>Name:</strong> @metadata.fileName</p>
+                <p><strong>Type:</strong> @metadata.fileType</p>
+                <p><strong>Size:</strong> @metadata.fileSize MB</p>
+                <p><strong>Encryption algorithm:</strong> @metadata.encAlg</p>
+            </div>
+        }
+
+        <!--Upload key button-->
+        <div class="mb-3">
+            <label class="form-label">Select key:</label>
+            <div class="input-group">
+                <InputFile id="dec-key-upload" class="hidden-file-input" OnChange="LoadKey" />
+
+                <label for="dec-key-upload" class="load-btn">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
+
+                @if (selectedKey == null)
+                {
+                    <span class="nofilemsg">No file selected.</span>
+                } else {
+                    <span class="nofilemsg">@selectedKey.Name</span>
+                }
+            </div>
+        </div>
+
+        <!--Start decrypt button-->
+        <div class="mb-3">
+            <button @onclick="InitDecryption" 
+            class="btn btn-primary" 
+            disabled="@(selectedFile == null && selectedKey==null && error != null)">Decrypt</button>
+        </div>
+
+        <!--Loader animation-->
+        @if (false == true)
+        {
+            <div class="loader"></div>
+        }
+
+        <!--Download/Error section-->
+        @if (error == null)
+        {
+            <div id="download-container">
+            </div>
+        } else {
+            <div id="error-container">
+                <p style="color: red;">@error</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+
+    public async Task InitDecryption()
+    {
+        error = null;
+        if (selectedFile == null)
+        {
+            error = "No file selected for decryption.";
+        }
+        else if (selectedKey == null)
+        {
+            error = "No key chosen for decryption.";
+        }
+        else
+        {
+            IsDecrypting = true; // Show loader
+            StateHasChanged();
+
+            int minDuration = 2000; // Minimum loader animation time
+            DateTime startTime = DateTime.Now;
+
+            try
+            {
+                string result = await js.InvokeAsync<string>("startDecryption", metadata?.encAlg, metadata.fileName);
+
+                // Ensure minimum loader duration
+                int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
+                if (elapsedTime < minDuration)
+                {
+                    await Task.Delay(minDuration - elapsedTime);
+                }
+
+                if (result.StartsWith("Error:"))
+                {
+                    Console.WriteLine($"Decryption failed: {result}");
+                    error = "Error during decryption. Check the input file and key.";
+                }
+                else
+                {
+                    Console.WriteLine("✅ Decryption successful.");
+                    error = null;
+                }
+            }
+            catch (JSException jsEx)
+            {
+                // 🔥 Handle JavaScript errors thrown from JS function
+                Console.WriteLine(jsEx.Message);
+                error = "Error during decryption. Check the input file and key.";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Decryption failed: {ex.Message}");
+                error = "Error during decryption. Check the input file and key.";
+            }
+            finally
+            {
+                IsDecrypting = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        if (e == null) throw new ArgumentNullException(nameof(e));
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > 256 * 1024 * 1024)
+            {
+                Console.WriteLine("File too large. Max allowed size is 256MB.");
+                error = "File too large. Max allowed size is 256MB.";
+                return;
+            }
+
+            selectedFile = new FileModel(file);
+            metadata = null;
+            try
+            {
+                string metadataJson = await js.InvokeAsync<string>("extractMetadataFromFile");
+                metadata = JsonSerializer.Deserialize<FileMetadataModel>(metadataJson);
+                Console.WriteLine("✅ Metadata extracted successfully.");
+                if (error !=null && error.Equals("Corrupt file or with invalid encryption format")) {
+                    error = null;
+                }
+            }
+            catch (JSException jsEx)
+            {
+                Console.WriteLine(jsEx.Message);
+                error = "Corrupt file or with invalid encryption format.";
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine(ex.Message);
+                error = "Corrupt file or with invalid encryption format.";
+            }
+        }
+    }
+
+    private void LoadKey(InputFileChangeEventArgs e)
+    {
+        if (e == null) throw new ArgumentNullException(nameof(e));
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > 1300)
+            {
+                Console.WriteLine("Invalid RSA key file size.");
+                error = "Invalid key file size";
+            }
+            else
+            {
+                error = null;
+            }
+            selectedKey = new FileModel(file);
+        }
+    }
+
+    private FileModel? selectedFile { get; set; }
+
+    private FileModel? selectedKey { get; set; }
+
+    private FileMetadataModel? metadata = null;
+
+    private string? error = null;
+
+    private bool IsDecrypting;
+}

@@ -1,0 +1,172 @@
+﻿@* @page "/analysis"
+
+@using BitMazer.Models
+@using System.Text
+@inject NavigationManager Navigation
+@using Microsoft.AspNetCore.Components.Forms
+
+<h3>File Histogram Comparison</h3>
+
+<div class="upload-section">
+    <div class="field">
+        <label class="label">Upload Original File:</label>
+        <div class="file has-name">
+            <label class="file-label">
+                <InputFile OnChange="LoadOriginalFile" class="file-input" id="original-file-upload" />
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                        Choose a file…
+                    </span>
+                </span>
+            </label>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <label class="label">Upload Encrypted File:</label>
+        <div class="file has-name">
+            <label class="file-label">
+                <InputFile OnChange="LoadEncryptedFile" class="file-input" id="encrypted-file-upload" />
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                        Choose a file…
+                    </span>
+                </span>
+            </label>
+        </div>
+    </div>
+</div>
+
+@if (originalHistogram != null && encryptedHistogram != null)
+{
+    <h4>Original File Histogram</h4>
+    <img src="@originalHistogram" alt="Original Histogram" width="500" height="300" />
+
+    <h4>Encrypted File Histogram</h4>
+    <img src="@encryptedHistogram" alt="Encrypted Histogram" width="500" height="300" />
+
+    <h4>Encryption Quality Score</h4>
+    <p><strong>Randomness Score:</strong> @encryptionScore% (Higher is better)</p>
+}
+
+@code {
+    private byte[]? originalFileData;
+    private byte[]? encryptedFileData;
+    private string? originalHistogram;
+    private string? encryptedHistogram;
+    private double encryptionScore = 0;
+
+    private async Task LoadOriginalFile(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        using var memoryStream = new MemoryStream();
+        await file.OpenReadStream().CopyToAsync(memoryStream);
+        originalFileData = memoryStream.ToArray();
+        originalHistogram = GenerateHistogram(originalFileData, "royalblue");
+    }
+
+    private async Task LoadEncryptedFile(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        using var memoryStream = new MemoryStream();
+        await file.OpenReadStream().CopyToAsync(memoryStream);
+        encryptedFileData = memoryStream.ToArray();
+        encryptedHistogram = GenerateHistogram(encryptedFileData, "darkorange");
+
+        // Compute encryption score
+        if (originalFileData != null && encryptedFileData != null)
+        {
+            encryptionScore = ComputeEncryptionQuality(originalFileData, encryptedFileData);
+        }
+    }
+
+    private string GenerateHistogram(byte[] fileData, string color)
+    {
+        if (fileData == null) return "";
+
+        var histogramData = new int[256];
+        foreach (var b in fileData)
+        {
+            histogramData[b]++;
+        }
+
+        // Smooth using moving average
+        int windowSize = 5;
+        int[] smoothedData = new int[256];
+        for (int i = 0; i < 256; i++)
+        {
+            int sum = 0, count = 0;
+            for (int j = i - windowSize; j <= i + windowSize; j++)
+            {
+                if (j >= 0 && j < 256)
+                {
+                    sum += histogramData[j];
+                    count++;
+                }
+            }
+            smoothedData[i] = sum / count;
+        }
+
+        using var bitmap = new SkiaSharp.SKBitmap(256, 100);
+        using var canvas = new SkiaSharp.SKCanvas(bitmap);
+        canvas.Clear(SkiaSharp.SKColors.White);
+
+        var maxCount = smoothedData.Max();
+        for (int i = 0; i < 256; i++)
+        {
+            var height = (int)(100 * (smoothedData[i] / (float)maxCount));
+            canvas.DrawLine(i, 100, i, 100 - height, new SkiaSharp.SKPaint
+                {
+                    Color = color == "royalblue" ? SkiaSharp.SKColors.RoyalBlue : SkiaSharp.SKColors.DarkOrange,
+                    StrokeWidth = 1
+                });
+        }
+
+        using var image = SkiaSharp.SKImage.FromBitmap(bitmap);
+        using var data = image.Encode(SkiaSharp.SKEncodedImageFormat.Png, 100);
+        return $"data:image/png;base64,{Convert.ToBase64String(data.ToArray())}";
+    }
+
+    private double ComputeEncryptionQuality(byte[] original, byte[] encrypted)
+    {
+        double originalEntropy = CalculateEntropy(original);
+        double encryptedEntropy = CalculateEntropy(encrypted);
+
+        // Normalize the score to percentage
+        double maxEntropy = 8.0; // Maximum possible entropy for a byte (log2(256))
+        double score = (encryptedEntropy / maxEntropy) * 100;
+
+        return Math.Round(score, 2);
+    }
+
+    private double CalculateEntropy(byte[] data)
+    {
+        int[] frequency = new int[256];
+        foreach (var b in data)
+        {
+            frequency[b]++;
+        }
+
+        double entropy = 0;
+        int length = data.Length;
+        foreach (var count in frequency)
+        {
+            if (count > 0)
+            {
+                double probability = (double)count / length;
+                entropy -= probability * Math.Log2(probability);
+            }
+        }
+
+        return entropy;
+    }
+}
+
+ *@
