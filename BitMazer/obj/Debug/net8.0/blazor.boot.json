@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BitMazer",
   "resources": {
-    "hash": "sha256-gYvo8IuI400NpJvBEYoI+pN1AmYPTmjJ3+/LnDiWY6A=",
+    "hash": "sha256-mS3UYW9rreN//VLSDV9cBqvi7TFixniveCRD5jeXuSY=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
     },
@@ -210,10 +210,10 @@
       "mscorlib.wasm": "sha256-RAf5jgXLg+06C4tJ3CabxAZaVjCN2/+E6fxRjRN8yHk=",
       "netstandard.wasm": "sha256-KCAE8RQwTurP5pGnGF819qf9sK++2O0rXzt6tOjlfi8=",
       "System.Private.CoreLib.wasm": "sha256-LQqLbHgeEX4HONx7GwIxGgmzIXP6n2OPxqnq+/4Tyqk=",
-      "BitMazer.wasm": "sha256-KTfw1RD9KY/6RAK5W8PpEv8auc74rR4g1kSWT4NE6qg="
+      "BitMazer.wasm": "sha256-tn/+J6FFO8CsTvS7GRKTiEPF7L3glLa+TX0VRZxOMXs="
     },
     "pdb": {
-      "BitMazer.pdb": "sha256-8s6B7hs3kGnS22q35JTDwzWk4yteeYamDAOkmMdskZo="
+      "BitMazer.pdb": "sha256-ahANLJ2KVj2lI6CWQG6HshuJR82fwxfMCJcQTsbaanE="
     }
   },
   "cacheBootResources": true,

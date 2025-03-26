@@ -13,45 +13,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = BitMazer
 build_property.RootNamespace = BitMazer
-build_property.ProjectDir = E:\Licenta\BitMazer\BitMazer\
+build_property.ProjectDir = E:\Licenta\BitMazer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\Licenta\BitMazer\BitMazer
+build_property.MSBuildProjectDirectory = E:\Licenta\BitMazer
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[E:/Licenta/BitMazer/BitMazer/App.razor]
+[E:/Licenta/BitMazer/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Licenta/BitMazer/BitMazer/Pages/Analysis.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5hbHlzaXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Licenta/BitMazer/BitMazer/Pages/Decryption.razor]
+[E:/Licenta/BitMazer/Pages/Decryption.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVjcnlwdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Licenta/BitMazer/BitMazer/Pages/Encryption.razor]
+[E:/Licenta/BitMazer/Pages/Encryption.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW5jcnlwdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Licenta/BitMazer/BitMazer/Pages/Home.razor]
+[E:/Licenta/BitMazer/Pages/Histogram.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9ncmFtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Licenta/BitMazer/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Licenta/BitMazer/BitMazer/_Imports.razor]
+[E:/Licenta/BitMazer/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Licenta/BitMazer/BitMazer/Layout/MainLayout.razor]
+[E:/Licenta/BitMazer/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-no8wy2trx2
 
-[E:/Licenta/BitMazer/BitMazer/Layout/NavMenu.razor]
+[E:/Licenta/BitMazer/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-z8gsgim6nx

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BitMazer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4164526c05698411da7ad015e71f9a0ae9882b4e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BitMazer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BitMazer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

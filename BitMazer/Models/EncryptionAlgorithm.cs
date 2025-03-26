@@ -4,8 +4,6 @@
     {
         AES_GCM,
         ChaCha20,
-        Blowfish,
         Twofish,
-        TripleDES
     }
 }

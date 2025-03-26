@@ -1,81 +1,82 @@
-﻿const ivLengthAES = 16;
+﻿import { CryptoConstants } from './constants/crypto-constants.js';
+import { BlobConstants } from './constants/blob-types.js';
+import { DwnldFilesNamesConstants } from './constants/download-files-names.js';
 
-window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled) {
+window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isKeyReusingEnabled) {
     try {
-        // Step 1: Get file and convert it to ArrayBuffer
+        // get uploaded file and convert it to ArrayBuffer
         const file = document.getElementById("enc-file-upload").files[0];
         const fileBuffer = await file.arrayBuffer();
+        //const originalLength = fileBuffer.byteLength;
 
-        // Step 2: Create metadata
-        const metadataBytes = createMetadata(file, selectedEncAlg);
-        const metadataSize = metadataBytes.length; 
-        const metadataSizeArray = new Uint32Array([metadataSize]); // Convert metadata size to Uint32Array
-        const metadataSizeInBytes = new Uint8Array(metadataSizeArray.buffer); // Extract buffer as Uint8Array
-
-
-        // Step 3: Encrypt the file data according to the selected algorithm 
-        let encryptedData;
-        let ivLength;
+        //obtain the iv, key and encrypted data depending on encryption algorithm
         let iv;
         let encKey;
+        let ciphertext;
 
         switch (selectedEncAlg) {
             case "AES_GCM":
-                let aesKeyLength = 256;
-                encKey = await aes.getKey("AES-GCM", aesKeyLength);
+                encKey = await aes.getKey("AES-GCM", CryptoConstants.AES_KEY_SIZE);
                 if (!encKey) throw new Error("Failed to generate AES key.");
 
-                ivLength = ivLengthAES;
-                iv = window.crypto.getRandomValues(new Uint8Array(ivLength));
-                encryptedData = await aes.encrypt(fileBuffer, iv, encKey);
+                iv = window.crypto.getRandomValues(new Uint8Array(CryptoConstants.AES_IV_SIZE));
+                ciphertext = await aes.encrypt(fileBuffer, iv, encKey);
                 encKey = await crypto.subtle.exportKey("raw", encKey);
                 break;
             case "ChaCha20":
-                ivLength = CHACHA_IV_SIZE;
-                iv = nacl.randomBytes(CHACHA_IV_SIZE);
+                iv = nacl.randomBytes(CryptoConstants.CHACHA_IV_SIZE);
                 encKey = chacha.generateKey();
+                ciphertext = chacha.encrypt(new Uint8Array(fileBuffer), iv, encKey);
+                break;
+            case "Twofish":
+                iv = twofish.generateIV(CryptoConstants.TWOFISH_IV_SIZE);
+                encKey = twofish.generateKey(CryptoConstants.TWOFISH_KEY_SIZE);
 
-                encryptedData = chacha.encryptFile(new Uint8Array(fileBuffer), iv, encKey);
+                ciphertext = twofish.encrypt(new Uint8Array(fileBuffer), iv, encKey);
                 break;
             default:
                 console.error("Unknown algorithm provided for encryption (" + selectedEncAlg + ").");
                 break;
         }  
-        //????????????????????????????????????????????????????????????????
-        // Step 4: Encrypt the encryption key with RSA
-        const rsaKey = await getRSAkey(isCustomKeyEnabled);
+
+        // encrypt the encryption key using RSA
+        const rsaKey = await rsa.getKey(isCustomKeyEnabled);
 
         if (!rsaKey) {
             console.error("Error in obtaining the RSA key.");
         }
 
-        //if a key pair is provided by the user use it, else generate another one
+        //if a key pair is provided by the user use it, else generate another one?????
         let publicRSAKey = isCustomKeyEnabled ? rsaKey : rsaKey.publicKey;
 
-        let encryptedKey = await encryptRSA(publicRSAKey, encKey); 
+        let encryptedKey = await rsa.encrypt(publicRSAKey, encKey); 
         if (!encryptedKey)
             console.error("RSA encryption of the encryption key failed. Make sure that you provided a valid public RSA key.");
 
-        // Step 5: Combine all data to the final file (metadata length, metadata, IV, encrypted key, and encrypted data)
-        const combinedBuffer = new Uint8Array(
-            metadataSizeInBytes.length + metadataBytes.byteLength + ivLength + encryptedKey.byteLength + encryptedData.byteLength
-        );
-        combinedBuffer.set(metadataSizeInBytes, 0);
-        combinedBuffer.set(metadataBytes, metadataSizeInBytes.length);
-        combinedBuffer.set(iv, metadataSizeInBytes.length + metadataBytes.length);
-        combinedBuffer.set(new Uint8Array(encryptedKey), metadataSizeInBytes.length + metadataBytes.length + ivLength);
-        combinedBuffer.set(new Uint8Array(encryptedData), metadataSizeInBytes.length + metadataBytes.length + ivLength + encryptedKey.byteLength);
+        // create the JSON model for the output file
+        const encryptedJSON = {
+            metadata: {
+                fileName: file.name,
+                fileType: file.type,
+                fileSize: file.size,
+                encryptionAlgorithm: selectedEncAlg,
+            },
+            iv: arrayBufferToBase64(iv),
+            key: arrayBufferToBase64(encryptedKey),
+            ciphertext: arrayBufferToBase64(ciphertext)
+        };
 
-        // Step 6: Create button for the encrypted file download
-        createDownloadButton(combinedBuffer, file.name.split('.').slice(0, -1).join('.') + ".enc");
+        // create button for encrypted file and key/s download
+        createDownloadButton(JSON.stringify(encryptedJSON, null, 2), BlobConstants.APP_JSON, file.name + DwnldFilesNamesConstants.ENCRYPTED_FILE);
 
-        // Step 6: Create button for the RSA keys download, if the case
+        const exportedKeys = await rsa.exportKeysToFiles(rsaKey);;
         if (isCustomKeyEnabled == false) {
-            const exportedKeys = await exportRSAkeysToFiles(rsaKey);;
-            const exportedRSApublickey = exportedKeys.publicKeyUint8Array;
             const exportedRSAprivatekey = exportedKeys.privateKeyUint8Array;
-            createDownloadButton(exportedRSApublickey, "RSApublic.key");
-            createDownloadButton(exportedRSAprivatekey, "RSAprivate.key");
+            createDownloadButton(exportedRSAprivatekey, BlobConstants.APP_OCTET, DwnldFilesNamesConstants.DEC_KEY_FILE);
+        }
+        if (isKeyReusingEnabled == true) {
+            const exportedRSApublickey = exportedKeys.publicKeyUint8Array;
+            createDownloadButton(exportedRSApublickey, BlobConstants.APP_OCTET, DwnldFilesNamesConstants.ENC_KEY_FILE);
         }
         return "Success"; 
     } catch (err) {
@@ -83,29 +84,18 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled) {
     }
 }
 
-window.createDownloadButton = async function (fileData, fileName) {
-    if (!(fileData instanceof Uint8Array)) {
-        fileData = new Uint8Array(fileData);
-    }
-
+window.createDownloadButton = async function (fileData, blobType, fileName) {
     let buttonId;
-    if (fileName == "RSApublic.key") {
-        buttonId = "download-btn-public-key";
-    } else if (fileName == "RSAprivate.key") {
-        buttonId = "download-btn-private-key";
+    if (fileName.includes(DwnldFilesNamesConstants.ENC_KEY_FILE)) {
+        buttonId = "download-btn-enc-key";
+    } else if (fileName.includes(DwnldFilesNamesConstants.DEC_KEY_FILE)) {
+        buttonId = "download-btn-dec-key";
     }
     else {
         buttonId = "download-btn-file";
     }
-    const blob = new Blob([fileData], { type: "application/octet-stream" });
+    const blob = new Blob([fileData], { type: blobType });
     const url = URL.createObjectURL(blob);
-
-    // Check if a button already exists to avoid duplicates
-    let existingButton = document.getElementById(buttonId);
-    if (existingButton) {
-        console.warn(`Button for ${fileName} already exists.`);
-        return;
-    }
 
     // Create a Bootstrap-styled button
     const downloadContainer = document.getElementById("download-container");
@@ -117,7 +107,7 @@ window.createDownloadButton = async function (fileData, fileName) {
     buttonLink.className = "btn btn-primary w-auto";
     buttonLink.innerHTML = `<i class="bi bi-download"></i> Download ${fileName}`;
     buttonLink.href = url;
-    buttonLink.download = fileName; // This ensures the user downloads the file only when they click
+    buttonLink.download = fileName;
 
     // Append the button to a Bootstrap container (if available)
     let container = document.querySelector(".card");

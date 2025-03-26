@@ -1,27 +1,37 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
-h1:focus {
-    outline: none;
+button {
+    all: unset;
 }
 
-a, .btn-link {
-    color: #0071c1;
+.btn-dark {
+    background-color: #0A192F;
 }
-
-a:focus{
-    outline: none;
-}
-
-.btn-primary {
-    color: #fff;
-    border-color: #1861ac;
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus, 
+.btn:active:focus, 
+.btn-link.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
   box-shadow: none;
 }
+
+.load-btn {
+    background-color: #f9f9f9;
+    border-radius: 12px !important;
+    border: 1px solid #dcdcdc;
+    color: #0A192F;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 15px;
+}
+
+.load-btn:hover {
+    background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background-color: #e9e9e9;
+}
+
+
 
 .content {
     padding-top: 1.1rem;
@@ -33,10 +43,6 @@ a:focus{
 
 .invalid {
     outline: 1px solid red;
-}
-
-.validation-message {
-    color: red;
 }
 
 #blazor-error-ui {
@@ -51,7 +57,7 @@ a:focus{
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
+#blazor-error-ui .dismiss {
         cursor: pointer;
         position: absolute;
         right: 0.75rem;
@@ -64,50 +70,9 @@ a:focus{
     color: white;
 }
 
-    .blazor-error-boundary::after {
+.blazor-error-boundary::after {
         content: "An error has occurred."
     }
-
-.loading-progress {
-    display: block;
-    width: 8rem;
-    height: 8rem;
-    margin: 20vh auto 1rem auto;
-}
-
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
-    }
-
-        .loading-progress circle:last-child {
-            stroke: #1b6ec2;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
-        }
-
-.loading-progress-text {
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
-}
-
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Encrypting");
-    }
-
-code {
-    color: #c02d76;
-}
-
-button {
-    all: unset;
-    margin-right: 10px;
-    color: #0A192F !important;
-}
 
 .hidden-file-input {
     opacity: 0;
@@ -125,26 +90,7 @@ label {
     user-select: none;
 }
 
-.load-btn {
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
-    background-color: #f9f9f9;
-    border-radius: 12px !important;
-    border: 1px solid #dcdcdc;
-    display: inline-block;
-    cursor: pointer;
-    color: #454245;
-    font-family: Arial;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 15px;
-    text-decoration: none;
-    text-shadow: 0px 0px 0px #ffffff;
-}
 
-.load-btn:hover {
-    background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
-    background-color: #e9e9e9;
-}
 
 #logo {
     width: 160px;
@@ -173,12 +119,18 @@ label {
     background-color: #0A192F;
 }
 
-.btn {
-    background-color: white;
-    color: #0A192F;
+.card {
+    border-radius: 1rem;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background: white;
+    font-size: 1.1rem;
+}
+
+.form-label {
     font-weight: bold;
 }
 
-    .btn:hover {
-        background-color: #0A192F;
-    }
+.bi {
+    font-size: 20px;
+}

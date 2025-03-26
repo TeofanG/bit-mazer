@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s2jQ7MOq8oY=",
+  "dgSpecHash": "VRJR1o+8X4Q=",
   "success": true,
-  "projectFilePath": "E:\\Licenta\\BitMazer\\BitMazer\\BitMazer.csproj",
+  "projectFilePath": "E:\\Licenta\\BitMazer\\BitMazer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\teofa\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\teofa\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.13\\microsoft.aspnetcore.authorization.8.0.13.nupkg.sha512",

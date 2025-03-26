@@ -1,67 +1,91 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "E:\\Licenta\\BitMazer\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BitMazer.styles.css",
+      "Id": "E:\\Licenta\\BitMazer\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BitMazer.styles.css",
       "PackagePath": "staticwebassets\\BitMazer.styles.css"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\app.css",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\css\\loading-animation.css",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\css\\loading-animation.css",
       "PackagePath": "staticwebassets\\css\\loading-animation.css"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\favicon.png",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\icon-192.png",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\index.html",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\aes.js",
-      "PackagePath": "staticwebassets\\js\\aes.js"
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\aes.js",
+      "PackagePath": "staticwebassets\\js\\algorithms\\aes.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\chacha.js",
-      "PackagePath": "staticwebassets\\js\\chacha.js"
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\chacha.js",
+      "PackagePath": "staticwebassets\\js\\algorithms\\chacha.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\decryption-service.js",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\rsa.js",
+      "PackagePath": "staticwebassets\\js\\algorithms\\rsa.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\twofish-lib.js",
+      "PackagePath": "staticwebassets\\js\\algorithms\\twofish-lib.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\twofish.js",
+      "PackagePath": "staticwebassets\\js\\algorithms\\twofish.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\common.js",
+      "PackagePath": "staticwebassets\\js\\common.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\constants\\blob-types.js",
+      "PackagePath": "staticwebassets\\js\\constants\\blob-types.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\constants\\crypto-constants.js",
+      "PackagePath": "staticwebassets\\js\\constants\\crypto-constants.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\constants\\download-files-names.js",
+      "PackagePath": "staticwebassets\\js\\constants\\download-files-names.js"
+    },
+    {
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\decryption-service.js",
       "PackagePath": "staticwebassets\\js\\decryption-service.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\encryption-service.js",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\encryption-service.js",
       "PackagePath": "staticwebassets\\js\\encryption-service.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\metadata.js",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\js\\metadata.js",
       "PackagePath": "staticwebassets\\js\\metadata.js"
     },
     {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\js\\rsa.js",
-      "PackagePath": "staticwebassets\\js\\rsa.js"
-    },
-    {
-      "Id": "C:\\Users\\teofa\\Desktop\\BitMazer\\BitMazer\\wwwroot\\logo.png",
+      "Id": "E:\\Licenta\\BitMazer\\wwwroot\\logo.png",
       "PackagePath": "staticwebassets\\logo.png"
     },
     {

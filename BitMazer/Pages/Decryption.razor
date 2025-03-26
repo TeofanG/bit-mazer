@@ -9,7 +9,7 @@
     <div class="card p-4">
         <!--Upload file button-->
         <div class="mb-3">
-            <label class="form-label">Select file to decrypt:</label>
+            <label class="form-label">📄 Select file to decrypt:</label>
             <div class="input-group">
                 <InputFile id="dec-file-upload" class="hidden-file-input" OnChange="LoadFile" />
 
@@ -39,7 +39,7 @@
 
         <!--Upload key button-->
         <div class="mb-3">
-            <label class="form-label">Select key:</label>
+            <label class="form-label">🔑 Select key:</label>
             <div class="input-group">
                 <InputFile id="dec-key-upload" class="hidden-file-input" OnChange="LoadKey" />
 
@@ -59,8 +59,11 @@
         <!--Start decrypt button-->
         <div class="mb-3">
             <button @onclick="InitDecryption" 
-            class="btn btn-primary" 
-            disabled="@(selectedFile == null && selectedKey==null && error != null)">Decrypt</button>
+                class="btn btn-primary" 
+                disabled="@(selectedFile == null && selectedKey==null && error != null)">
+                <i class="bi bi-unlock"></i>
+                Decrypt
+            </button>
         </div>
 
         <!--Loader animation-->
@@ -106,7 +109,7 @@
 
             try
             {
-                string result = await js.InvokeAsync<string>("startDecryption", metadata?.encAlg, metadata.fileName);
+                string result = await js.InvokeAsync<string>("startDecryption");
 
                 // Ensure minimum loader duration
                 int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;

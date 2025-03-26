@@ -7,10 +7,11 @@
     <title>BitMazer</title>
     <base href="/" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/loading-animation.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="logo.png" />
     <link href="BitMazer.styles.css" rel="stylesheet" />
 </head>
 
@@ -26,14 +27,24 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/tweetnacl@latest/nacl.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@latest/nacl-util.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twofish@1.0.1/src/twofish.min.js"></script>
 
     <script src="_framework/blazor.webassembly.js"></script>
-    <script src="js/aes.js"></script>
-    <script src="js/chacha.js"></script>
-    <script src="js/rsa.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/algorithms/rsa.js"></script>
+    <script src="js/algorithms/aes.js"></script>
+    <script type="module" src="js/algorithms/twofish.js"></script>
+    <script type="module" src="js/algorithms/chacha.js"></script>
+    <script type="module" src="js/algorithms/twofish-lib.js"></script>
     <script src="js/metadata.js"></script>
-    <script src="js/encryption-service.js"></script>
-    <script src="js/decryption-service.js"></script>
+
+    <!--constants-->
+    <script type="module" src="js/constants/blob-types.js"></script>
+    <script type="module" src="js/constants/crypto-constants.js"></script>
+    <script type="module" src="js/constants/download-files-names.js"></script>
+
+    <script type="module" src="js/encryption-service.js"></script>
+    <script type="module" src="js/decryption-service.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,140 @@
+﻿@page "/histogram"
+@page "/analysis"
+@using System.Text.Json
+
+<h3 class="mb-4">Ciphertext Analysis</h3>
+
+<div class="card p-4 shadow rounded">
+    <div class="mb-3">
+        <label class="form-label">Select Plaintext File:</label>
+        <InputFile OnChange="LoadPlaintext" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Select Ciphertext File:</label>
+        <InputFile OnChange="LoadCiphertext" />
+    </div>
+
+    <button class="btn btn-primary" @onclick="RunAnalysis" disabled="@(Plaintext == null || Ciphertext == null)">Run Analysis</button>
+
+    @if (AnalysisRan)
+    {
+        <div class="mt-4">
+            <h5>Results:</h5>
+            <p><strong>Hamming Distance:</strong> @HammingPercentage%</p>
+            <p><strong>Entropy (Plaintext):</strong> @PlainEntropy bits/byte</p>
+            <p><strong>Entropy (Ciphertext):</strong> @CipherEntropy bits/byte</p>
+        </div>
+    }
+</div>
+
+@code {
+    private byte[]? Plaintext;
+    private byte[]? Ciphertext;
+    private bool AnalysisRan = false;
+    private double HammingPercentage = 0;
+    private double PlainEntropy = 0;
+    private double CipherEntropy = 0;
+
+    private async Task LoadPlaintext(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        using var stream = file.OpenReadStream();
+        using var ms = new MemoryStream();
+        await stream.CopyToAsync(ms);
+        Plaintext = ms.ToArray();
+    }
+
+    private async Task LoadCiphertext(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        using var stream = file.OpenReadStream();
+        using var reader = new StreamReader(stream);
+        var json = await reader.ReadToEndAsync();
+
+        using var doc = JsonDocument.Parse(json);
+        if (doc.RootElement.TryGetProperty("ciphertext", out var ciphertextElement))
+        {
+            var base64 = ciphertextElement.GetString();
+            if (!string.IsNullOrWhiteSpace(base64))
+            {
+                Ciphertext = Convert.FromBase64String(base64);
+            }
+            else
+            {
+                // Handle empty ciphertext
+                Ciphertext = null;
+                Console.WriteLine("Ciphertext is empty.");
+            }
+        }
+        else
+        {
+            // Handle missing ciphertext property
+            Ciphertext = null;
+            Console.WriteLine("Ciphertext not found in JSON.");
+        }
+    }
+
+
+    private void RunAnalysis()
+    {
+        if (Plaintext == null || Ciphertext == null)
+            return;
+
+        AnalysisRan = true;
+
+        // Ensure equal length for fair comparison
+        int length = Math.Min(Plaintext.Length, Ciphertext.Length);
+
+        HammingPercentage = CalculateHammingDistance(Plaintext, Ciphertext, length);
+        PlainEntropy = CalculateEntropy(Plaintext);
+        CipherEntropy = CalculateEntropy(Ciphertext);
+    }
+
+    private double CalculateHammingDistance(byte[] a, byte[] b, int length)
+    {
+        int diffBits = 0;
+
+        for (int i = 0; i < length; i++)
+        {
+            byte xor = (byte)(a[i] ^ b[i]);
+            diffBits += CountBits(xor);
+        }
+
+        return Math.Round(100.0 * diffBits / (length * 8), 2); // percentage
+    }
+
+    private int CountBits(byte b)
+    {
+        int count = 0;
+        while (b != 0)
+        {
+            count += b & 1;
+            b >>= 1;
+        }
+        return count;
+    }
+
+    private double CalculateEntropy(byte[] data)
+    {
+        int[] freq = new int[256];
+        foreach (var b in data)
+        {
+            freq[b]++;
+        }
+
+        double entropy = 0.0;
+        int len = data.Length;
+
+        foreach (var f in freq)
+        {
+            if (f > 0)
+            {
+                double p = (double)f / len;
+                entropy -= p * Math.Log2(p);
+            }
+        }
+
+        return Math.Round(entropy, 4);
+    }
+}

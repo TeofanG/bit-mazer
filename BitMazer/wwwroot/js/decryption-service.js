@@ -1,119 +1,60 @@
-﻿const keyLengthAES = 256;
-const keyLengthChaCha = 256;
+﻿import { BlobConstants } from './constants/blob-types.js';
 
-window.calcMetadataEnd = function (fileBuf) {
-    //Extract the first 4 bytes, which store metadata length
-    const metadataSizeBytes = new Uint8Array(fileBuf.slice(0, 4));
-    const metadataSize = new DataView(metadataSizeBytes.buffer).getUint32(0, true);
-
-    //Define metadata start and end positions
-    const metadataStartOffset = 4;
-    const metadataEndOffSet = metadataStartOffset + metadataSize;
-
-    return metadataEndOffSet;
-}
-
-window.startDecryption = async function (encAlg, fileOriginalName) {
+window.startDecryption = async function () {
     try {
+        // convert the uploaded file to json object and extract fields
         const file = document.getElementById("dec-file-upload").files[0];
+        const fileText = await file.text();
+        const fileJson = JSON.parse(fileText);
+        const { metadata, iv, key, ciphertext } = fileJson;
 
-        // Step 1: Get the file and read it as an ArrayBuffer
-        const fileBuf = await file.arrayBuffer();
+        const encryptionAlg = metadata.encryptionAlgorithm;
+        const decIV = Uint8Array.from(atob(iv), c => c.charCodeAt(0));
+        const encryptedKey = Uint8Array.from(atob(key), c => c.charCodeAt(0));
+        const encryptedData = Uint8Array.from(atob(ciphertext), c => c.charCodeAt(0));
 
+        // get the uploaded key and import it
+        const rsaPrivateKeyFile = document.getElementById("dec-key-upload").files[0];
+        const rsaPrivateKey = await rsa.importPrivateKey(rsaPrivateKeyFile);
 
-        let ivLength;
-        let keyLength;
-
-        switch (encAlg) {
-            case "AES_GCM":
-                ivLength = ivLengthAES;
-                keyLength = keyLengthAES;
-                break;
-            case "ChaCha20":
-                ivLength = ivLengthChaCha;
-                keyLength = keyLengthChaCha;
-                break;
-            default:
-                throw new Error("Unknown algorithm, couldn't set iv and key lengths. (" + encAlg + ").");
-                break;
-        }  
-
-
-        const metadataEnd = calcMetadataEnd(fileBuf);
-
-        // Step 4: Extract IV
-        const ivStart = metadataEnd;
-        const ivEnd = ivStart + ivLength;
-        const iv = fileBuf.slice(ivStart, ivEnd);
-
-        // Step 5: Extract the encrypted key
-        const encryptedKeyStartOffset = ivEnd;
-        const encryptedKeyEndOffset = encryptedKeyStartOffset + keyLength;
-        const encryptedKey = fileBuf.slice(encryptedKeyStartOffset, encryptedKeyEndOffset);
-
-        // Step 6: Extract the encrypted Data (Remaining bytes)
-        const encryptedDataStartOffset = encryptedKeyEndOffset;
-        const encryptedData = fileBuf.slice(encryptedDataStartOffset);
-
-        // Step 7: Decrypt key with the user-provided private RSA Key
-        const rsaPrivateKeyRaw = document.getElementById("dec-key-upload").files[0];
-
-        const rsaPrivateKey = await importRSAprivateKey(rsaPrivateKeyRaw);
-        const decryptedKeyRaw = await decryptRSA(rsaPrivateKey, encryptedKey);
+        //decrypt the encryption key of the file with the previous obtained rsa key
+        const decryptedKeyRaw = await rsa.decrypt(rsaPrivateKey, encryptedKey);
         if (!decryptedKeyRaw) {
-            console.error("Failed to decrypt AES key.");
+            console.error("Failed to decrypt AES/ChaCha key.");
             return;
         }
 
+        //decrypt file's data depending on the algorithm
         let decryptedData;
-        let decryptionKey;
-        switch (encAlg) {
+        switch (encryptionAlg) {
             case "AES_GCM":
-                decryptionKey = await aes.importKey(decryptedKeyRaw);
-                decryptedData = await aes.decrypt(decryptionKey, iv, encryptedData);
+                const aesKey = await aes.importKey(decryptedKeyRaw);
+                decryptedData = await aes.decrypt(aesKey, decIV, encryptedData.buffer);
                 break;
             case "ChaCha20":
-                decryptionKey = new Uint8Array(decryptedKeyRaw);
-                encryptedData = new Uint8Array(encryptedData);
-                iv = new Uint8Array(iv);
+                decryptedData = chacha.decrypt(
+                    encryptedData,
+                    decIV,
+                    new Uint8Array(decryptedKeyRaw)
+                );
+                break;
+            case "Twofish":
+                decryptedData = twofish.decrypt(
+                    new Uint8Array(encryptedData), decIV, new Uint8Array(decryptedKeyRaw)
 
-                decryptedData = chacha.decryptFile(encryptedData, iv, decryptionKey);
+                );
                 break;
             default:
-                throw new Error("Unknown algorithm provided for decryption (" + encAlg + ").");
+                throw new Error("Unknown algorithm provided for decryption (" + encryptionAlg + ").");
                 break;
         }  
 
-        // Step 10: Download the decrypted file
-        createDownloadButton(decryptedData, fileOriginalName);
+        //add UI button for user-downloading
+        createDownloadButton(decryptedData, BlobConstants.APP_OCTET, metadata.fileName);
 
         return "Success"; 
     } catch (err) {
         return `Error: ${err.message}`;
 
     }
-}
-
-window.initDecryption = function () {
-    try {
-        const encFile = document.getElementById("dec-file-upload").files[0];
-        const encFileBuf = encFile.arrayBuffer();
-        const metadata = extractMetadata(encFileBuf);
-        const metadataJSON = JSON.parse(metadata);
-
-        //displayMetaInfo(metadata);
-
-        if (!meta)
-            switch (metadataJSON.encAlg) {
-                case "AES-256":
-                    decryptAES(encFileBuf);
-                    break;
-                default:
-                    console.log("Unknown algorithm used.");
-                    break;
-            }
-    } catch (err) {
-        console.error("Metadata extraction failed:", err);
-    }
-
 }

@@ -2,20 +2,29 @@
 @inject IJSRuntime js
 
 <PageTitle>Encryption</PageTitle>
-<h2>Encrypt</h2>
+<h1>Encrypt a file</h1>
 <div class="container my-4">
     <div class="card p-4">
         <!--Upload file button-->
         <div class="mb-3">
-            <label class="form-label">Select file to encrypt:</label>
+            <label class="form-label">📄 Select file to encrypt:</label>
             <div class="input-group">
-                <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+                <InputFile  id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
 
-                <label for="enc-file-upload" class="load-btn">
+                <label for="enc-file-upload" class="btn load-btn">
                     <i class="fa-solid fa-upload"></i> Choose a File
                 </label>
 
-                @if (selectedFile == null) {
+                @if (selectedFile != null)
+                {
+                    <div class="nofilemsg">
+                        <span >@selectedFile.Name</span>
+                        <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("file"))" title="Remove file">
+                            <i class="fa-solid fa-xmark small-icon"></i>
+                        </button>
+                    </div>
+
+                } else {
                     <span class="nofilemsg">No file selected.</span>
                 }
             </div>
@@ -33,7 +42,10 @@
 
         <!--Select algorithm dropdown-->
         <div class="mb-3">
-            <label class="form-label">Choose algorithm:</label>
+            <label class="form-label">
+                <i class="fas fa-shield-alt" style="color:#0d6efd"></i>
+                Choose algorithm:
+            </label>
             <InputSelect class="form-select" @bind-Value="selectedAlg">
                 @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
                 {
@@ -45,15 +57,26 @@
         <!--Upload key button-->
         <div class="mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="key" @bind="@isCustomPassEnabled" />
-                <label class="form-check-label" for="key">Choose your own key</label>
-                <span  class="ms-2" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="right"
-                title="Upload a binary file containing a RSA public key in pkcs8 format.">
+                <input class="form-check-input" type="checkbox" id="key-reusing" @bind="@isKeyReusingEnabled" />
+                <label class="form-check-label" for="key-reusing">Reuse the encryption key</label>
+                <span class="ms-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="right"
+                      title="The auto generated encryption key will be available for downloading.">
                     <i class="fas fa-info-circle text-primary"></i>
                 </span>
             </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="key-selecting" @bind="@isCustomPassEnabled" />
+                <label class="form-check-label" for="key-selecting">Choose your own key</label>
+                <span  class="ms-2" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="right"
+                      title="Reuse a previously generated key">
+                    <i class="fas fa-info-circle text-primary"></i>
+                </span>
+            </div> 
 
             @if (isCustomPassEnabled)
             {
@@ -68,7 +91,12 @@
                     {
                         <span class="nofilemsg">No file selected.</span>
                     } else {
-                        <span class="nofilemsg">@selectedKey.Name</span>
+                        <div class="nofilemsg">
+                            <span>@selectedKey?.Name</span>
+                            <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("key"))" title="Remove file">
+                                <i class="fa-solid fa-xmark small-icon"></i>
+                            </button>
+                        </div>
                     }
                 </div>
             }
@@ -78,8 +106,10 @@
         <div class="mb-3">
             <button id="encrypt-btn" 
             class="btn btn-primary" 
-            @onclick="InitEncryption"
-            >Encrypt</button>
+            @onclick="InitEncryption">
+                <i class="bi bi-lock"></i>
+                Encrypt
+            </button>
         </div>
 
         <!--Loader animation-->
@@ -103,7 +133,14 @@
 
 
 @code {
-
+    private void ClearUploadFileField(string field)
+    {
+        if(field.Equals("file")) {
+            selectedFile = null;
+        } else {
+            selectedKey = null;
+        }
+    }
     private async Task InitEncryption()
     {
         error = null;
@@ -125,7 +162,7 @@
 
             try
             {
-                string result = await js.InvokeAsync<string>("startEncryption", selectedAlg.ToString(), isCustomPassEnabled);
+                string result = await js.InvokeAsync<string>("startEncryption", selectedAlg.ToString(), isCustomPassEnabled, isKeyReusingEnabled);
 
                 // Ensure minimum loader duration
                 int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
@@ -202,6 +239,8 @@
     private FileModel? selectedKey = null;
 
     private bool isCustomPassEnabled = false;
+
+    private bool isKeyReusingEnabled = false;
 
     private bool IsEncrypting;
 
