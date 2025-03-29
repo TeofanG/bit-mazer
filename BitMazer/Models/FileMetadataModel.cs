@@ -4,23 +4,14 @@ using System.Text.Json;
 
 namespace BitMazer.Models
 {
-    public class FileMetadataModel
+    public class FileMetadataModel(string fileName, string fileType, float fileSize, string encAlg)
     {
+        public string FileName { get; set; } = fileName;
 
-        public FileMetadataModel(string fileName, string fileType, float fileSize, string encAlg)
-        {
-            this.fileName = fileName;
-            this.fileType = fileType;
-            this.fileSize = (float)Math.Round((fileSize / 1024.0 / 1024.0), 2);
-            this.encAlg = encAlg;
-        }
+        public string FileType { get; set; } = fileType;
 
-        public string fileName { get; set; }
+        public float FileSize { get; set; } = (float)Math.Round((fileSize / 1024.0 / 1024.0), 2);
 
-        public string fileType { get; set; }
-
-        public float fileSize { get; set; }
-
-        public string encAlg { get; set; }
+        public string EncAlg { get; set; } = encAlg;
     }
 }

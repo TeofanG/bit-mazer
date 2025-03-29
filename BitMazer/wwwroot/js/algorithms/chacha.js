@@ -66,6 +66,6 @@ window.chacha = {
         const iv = nacl.randomBytes(CHACHA_IV_SIZE);
         const encryptedData = this.encrypt(byteArray, iv, key);
 
-        return arrayBufferToBase64(encryptedData);
+        return utility.arrayBufferToBase64(encryptedData);
     }
 };

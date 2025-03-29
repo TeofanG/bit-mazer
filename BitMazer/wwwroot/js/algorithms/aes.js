@@ -89,6 +89,6 @@ window.aes = {
         const iv = window.crypto.getRandomValues(new Uint8Array(AES_IV_SIZE));
         const encryptedData = await this.encrypt(byteArray, iv, key);
 
-        return arrayBufferToBase64(encryptedData);
+        return utility.arrayBufferToBase64(encryptedData);
     }
 }

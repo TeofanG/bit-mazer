@@ -1,0 +1,245 @@
+﻿@page "/analysis"
+@using ApexCharts
+@using System.Text.Json
+@inject IJSRuntime JS
+@using BitMazer.Services
+@using BitMazer.Models
+
+<h3 class="mb-4">Compare algorithms</h3>
+
+<div class="container card my-4">
+    <div class="mb-3">
+        <label class="form-label">📄 Select file:</label>
+        <div class="input-group">
+            <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+
+            <label for="enc-file-upload" class="btn load-btn">
+                <i class="fa-solid fa-upload"></i> Choose a File
+            </label>
+
+            @if (selectedFile != null)
+            {
+                <div class="nofilemsg">
+                    <span>@selectedFile.Name</span>
+                    <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("file"))" title="Remove file">
+                        <i class="fa-solid fa-xmark small-icon"></i>
+                    </button>
+                </div>
+
+            }
+            else
+            {
+                <span class="nofilemsg">No file selected.</span>
+            }
+        </div>
+    </div>
+    <div class="mb-3">     
+        @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                value="@alg"
+                @onchange="(e => ToggleAlgorithmSelection(alg, (bool?)((ChangeEventArgs)e).Value))" />
+                <label class="form-check-label">@alg</label>
+            </div>
+        }
+    </div>
+    <div class="mb-3">
+        <button id="encrypt-btn"
+        class="btn btn-primary"
+        @onclick="GenerateCharts">
+            Generate Histograms
+        </button>
+    </div>
+
+    @if (IsLoading == true)
+    {
+        <div class="loader"></div>
+    }
+
+
+    @if (!IsLoading && selectedFile != null && originalChartData != null)
+    {
+        <div class="row">
+            <div class="col-6">
+                <ApexChart TItem="HistogramDataModel"
+                Title="Original File - Byte Frequencies"
+                Options="originalChartOptions"
+                Height="400"
+                Width="550"
+                @ref="originalFileChart">
+                    <ApexPointSeries TItem="HistogramDataModel"
+                    Items="originalChartData"
+                    Name="Original"
+                    SeriesType="SeriesType.Bar"
+                    XValue="e => e.Byte"
+                    YValue="e => e.Occurences" />
+                </ApexChart>
+            </div>
+
+            @foreach (var chart in encryptedCharts)
+            {
+                <div class="col-6">
+                    <ApexChart TItem="HistogramDataModel"
+                    Title="@($"{chart.Algorithm} - Encrypted (Entropy: {chart.Entropy:F2}) (StdDev: {chart.StdDev:F2})")"
+                    Options="chart.ChartOptions"
+                    Height="400"
+                    Width="550">
+                        <ApexPointSeries TItem="HistogramDataModel"
+                        Items="chart.ChartData"
+                        Name="@chart.Algorithm.ToString()"
+                        SeriesType="SeriesType.Bar"
+                        XValue="e => e.Byte"
+                        YValue="e => e.Occurences" />
+                    </ApexChart>
+                </div>
+            }
+        </div>
+    }
+
+
+    @if (error != null)
+    {
+        <div id="error-container">
+            <p style="color: red;">@error</p>
+        </div>
+    }
+</div>
+
+@code {
+    private async Task GenerateCharts(){
+        error = null;
+        if (selectedFile == null)
+        {
+            error = "No file selected for analysis.";
+            return;
+        }
+        if (!selectedAlgorithms.Any())
+        {
+            error = "Select at least one algorithm.";
+            return;
+        }
+        IsLoading = true;
+        StateHasChanged();
+
+        int minDuration = 2000; // Minimum loading animation time
+        DateTime startTime = DateTime.Now;
+
+        originalChartData = HistogramService.GetChartData(selectedFile.ByteArrayFile);
+        originalChartOptions = HistogramService.GetChartOptions();
+
+        encryptedCharts.Clear();
+
+        foreach (var alg in selectedAlgorithms)
+        {
+            byte[]? encryptedBytes = await EncryptFile(selectedFile.Base64File, alg);
+            if (encryptedBytes == null)
+            {
+                error = $"Error failed for {alg}.";
+                continue;
+            }
+            int[] freq = new int[256];
+            foreach (byte b in encryptedBytes)
+                freq[b]++;
+            encryptedCharts.Add(new HistogramModel
+                {
+                    Algorithm = alg,
+                    ChartData = HistogramService.GetChartData(encryptedBytes),
+                    ChartOptions = HistogramService.GetChartOptions(),
+                    Entropy = CalculateShannonEntropy(encryptedBytes),
+                    StdDev = CalculateStandardDeviation(freq)
+                });
+        }
+
+        // Ensure minimum loader duration
+        int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
+        if (elapsedTime < minDuration)
+        {
+            await Task.Delay(minDuration - elapsedTime);
+        }
+        IsLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task<byte[]?> EncryptFile(string base64, EncryptionAlgorithm alg)
+    {
+        return alg switch
+        {
+            EncryptionAlgorithm.AES_GCM => await JS.InvokeAsync<byte[]>("aes.encryptBase64", base64),
+            EncryptionAlgorithm.ChaCha20 => await JS.InvokeAsync<byte[]>("chacha.encryptBase64", base64),
+            EncryptionAlgorithm.Twofish => await JS.InvokeAsync<byte[]>("twofish.encryptBase64", base64),
+            _ => null
+        };
+    }  
+
+
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        if (e == null) throw new ArgumentNullException(nameof(e));
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > 256 * 1024 * 1024)
+            {
+                error = "File too large. Max allowed size is 256.";
+            }
+            selectedFile = new FileModel(file);
+            await selectedFile.LoadAsync();
+        }
+    }
+
+    private void ClearUploadFileField(string field)
+    {
+        selectedFile = null;
+    }
+
+    private void ToggleAlgorithmSelection(EncryptionAlgorithm alg, bool? isChecked)
+    {
+        if (isChecked==true)
+        {
+            if (!selectedAlgorithms.Contains(alg))
+                selectedAlgorithms.Add(alg);
+        }
+        else
+        {
+            selectedAlgorithms.Remove(alg);
+        }
+    }
+
+    private double CalculateShannonEntropy(byte[] data)
+    {
+        if (data == null || data.Length == 0) return 0.0;
+
+        int[] freq = new int[256];
+        foreach (byte b in data)
+            freq[b]++;
+
+        double entropy = 0.0;
+        int len = data.Length;
+
+        foreach (int count in freq)
+        {
+            if (count == 0) continue;
+            double p = (double)count / len;
+            entropy -= p * Math.Log2(p);
+        }
+
+        return entropy;
+    }
+    private double CalculateStandardDeviation(int[] frequencies)
+    {
+        double mean = frequencies.Average();
+        double sumSquares = frequencies.Select(f => Math.Pow(f - mean, 2)).Sum();
+        return Math.Sqrt(sumSquares / frequencies.Length);
+    }
+
+    private List<HistogramModel> encryptedCharts = new();
+    private ApexChart<HistogramDataModel>? originalFileChart;
+    private List<HistogramDataModel>? originalChartData;
+    private ApexChartOptions<HistogramDataModel>? originalChartOptions;
+    private FileModel? selectedFile = null;
+    private List<EncryptionAlgorithm> selectedAlgorithms = new();
+    private bool IsLoading;
+    private string? error = null;
+
+}

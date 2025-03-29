@@ -30,10 +30,10 @@
         @if (selectedFile != null && metadata != null)
         {
             <div class="alert alert-info">
-                <p><strong>Name:</strong> @metadata.fileName</p>
-                <p><strong>Type:</strong> @metadata.fileType</p>
-                <p><strong>Size:</strong> @metadata.fileSize MB</p>
-                <p><strong>Encryption algorithm:</strong> @metadata.encAlg</p>
+                <p><strong>Name:</strong> @metadata.FileName</p>
+                <p><strong>Type:</strong> @metadata.FileType</p>
+                <p><strong>Size:</strong> @metadata.FileSize MB</p>
+                <p><strong>Encryption algorithm:</strong> @metadata.EncAlg</p>
             </div>
         }
 
@@ -67,7 +67,7 @@
         </div>
 
         <!--Loader animation-->
-        @if (false == true)
+        @if (IsDecrypting == true)
         {
             <div class="loader"></div>
         }
@@ -165,7 +165,7 @@
             metadata = null;
             try
             {
-                string metadataJson = await js.InvokeAsync<string>("extractMetadataFromFile");
+                string metadataJson = await js.InvokeAsync<string>("utility.extractMetadataFromFile");
                 metadata = JsonSerializer.Deserialize<FileMetadataModel>(metadataJson);
                 Console.WriteLine("✅ Metadata extracted successfully.");
                 if (error !=null && error.Equals("Corrupt file or with invalid encryption format")) {

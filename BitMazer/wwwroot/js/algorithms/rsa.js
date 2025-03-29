@@ -1,4 +1,10 @@
-﻿window.rsa = {
+﻿import { DomElements } from '../constants/domElements.js';
+
+const {
+    ENC_KEY_INPUT_FIELD
+} = DomElements;
+
+window.rsa = {
     generateKey: async function (mode, modulusLength, hashType) {
         try {
             const keyPair = await window.crypto.subtle.generateKey(
@@ -85,7 +91,7 @@
 
     importPublicKey: async function () {
         try {
-            const fileInput = document.getElementById("key-file-upload");
+            const fileInput = document.getElementById(ENC_KEY_INPUT_FIELD);
             if (!fileInput || fileInput.files.length === 0) {
                 throw new Error("No RSA public key file selected.");
             }

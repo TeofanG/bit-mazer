@@ -1,6 +1,12 @@
 ﻿import { CryptoConstants } from './constants/crypto-constants.js';
+import { DomElements } from './constants/domElements.js';
 import { BlobConstants } from './constants/blob-types.js';
 import { DwnldFilesNamesConstants } from './constants/download-files-names.js';
+
+const {
+    ENC_INPUT_FIELD,
+    DOWNLOAD_CONTAINER
+} = DomElements;
 
 const {
     AES_NAME,
@@ -16,7 +22,7 @@ const {
 window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isKeyReusingEnabled) {
     try {
         // get uploaded file and convert it to ArrayBuffer
-        const file = document.getElementById("enc-file-upload").files[0];
+        const file = document.getElementById(ENC_INPUT_FIELD).files[0];
         const fileBuffer = await file.arrayBuffer();
         //const originalLength = fileBuffer.byteLength;
 
@@ -48,7 +54,7 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isK
             default:
                 console.error("Unknown algorithm provided for encryption (" + selectedEncAlg + ").");
                 break;
-        }  
+        }
 
         // encrypt the encryption key using RSA
         const rsaKey = await rsa.getKey(isCustomKeyEnabled);
@@ -60,7 +66,7 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isK
         //if a key pair is provided by the user use it, else generate another one?????
         let publicRSAKey = isCustomKeyEnabled ? rsaKey : rsaKey.publicKey;
 
-        let encryptedKey = await rsa.encrypt(publicRSAKey, encKey); 
+        let encryptedKey = await rsa.encrypt(publicRSAKey, encKey);
         if (!encryptedKey)
             console.error("RSA encryption of the encryption key failed. Make sure that you provided a valid public RSA key.");
 
@@ -72,9 +78,9 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isK
                 fileSize: file.size,
                 encryptionAlgorithm: selectedEncAlg,
             },
-            iv: arrayBufferToBase64(iv),
-            key: arrayBufferToBase64(encryptedKey),
-            ciphertext: arrayBufferToBase64(ciphertext)
+            iv: utility.arrayBufferToBase64(iv),
+            key: utility.arrayBufferToBase64(encryptedKey),
+            ciphertext: utility.arrayBufferToBase64(ciphertext)
         };
 
         // create button for encrypted file and key/s download
@@ -89,7 +95,7 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isK
             const exportedRSApublickey = exportedKeys.publicKeyUint8Array;
             createDownloadButton(exportedRSApublickey, BlobConstants.APP_OCTET, DwnldFilesNamesConstants.ENC_KEY_FILE);
         }
-        return "Success"; 
+        return "Success";
     } catch (err) {
         return `Error: ${err}`;
     }
@@ -109,7 +115,7 @@ window.createDownloadButton = async function (fileData, blobType, fileName) {
     const url = URL.createObjectURL(blob);
 
     // Create a Bootstrap-styled button
-    const downloadContainer = document.getElementById("download-container");
+    const downloadContainer = document.getElementById(DOWNLOAD_CONTAINER);
 
     const button = document.createElement("button");
     button.id = buttonId;

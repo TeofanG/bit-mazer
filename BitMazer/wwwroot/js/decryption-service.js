@@ -1,9 +1,15 @@
 ﻿import { BlobConstants } from './constants/blob-types.js';
+import { DomElements } from './constants/domElements.js';
+
+const {
+    DEC_INPUT_FIELD,
+    DEC_KEY_INPUT_FIELD
+} = DomElements;
 
 window.startDecryption = async function () {
     try {
         // convert the uploaded file to json object and extract fields
-        const file = document.getElementById("dec-file-upload").files[0];
+        const file = document.getElementById(DEC_INPUT_FIELD).files[0];
         const fileText = await file.text();
         const fileJson = JSON.parse(fileText);
         const { metadata, iv, key, ciphertext } = fileJson;
@@ -14,7 +20,7 @@ window.startDecryption = async function () {
         const encryptedData = Uint8Array.from(atob(ciphertext), c => c.charCodeAt(0));
 
         // get the uploaded key and import it
-        const rsaPrivateKeyFile = document.getElementById("dec-key-upload").files[0];
+        const rsaPrivateKeyFile = document.getElementById(DEC_KEY_INPUT_FIELD).files[0];
         const rsaPrivateKey = await rsa.importPrivateKey(rsaPrivateKeyFile);
 
         //decrypt the encryption key of the file with the previous obtained rsa key
@@ -47,12 +53,12 @@ window.startDecryption = async function () {
             default:
                 throw new Error("Unknown algorithm provided for decryption (" + encryptionAlg + ").");
                 break;
-        }  
+        }
 
         //add UI button for user-downloading
         createDownloadButton(decryptedData, BlobConstants.APP_OCTET, metadata.fileName);
 
-        return "Success"; 
+        return "Success";
     } catch (err) {
         return `Error: ${err.message}`;
 
