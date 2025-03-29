@@ -1,140 +1,306 @@
 ﻿@page "/histogram"
-@page "/analysis"
+@using ApexCharts
 @using System.Text.Json
+@inject IJSRuntime JS
+@using BitMazer.Services
+@using BitMazer.Models
 
-<h3 class="mb-4">Ciphertext Analysis</h3>
+<h3 class="mb-4">Compare algorithms histograms</h3>
 
-<div class="card p-4 shadow rounded">
+<div class="container card my-4">
     <div class="mb-3">
-        <label class="form-label">Select Plaintext File:</label>
-        <InputFile OnChange="LoadPlaintext" />
+        <label class="form-label">📄 Select file:</label>
+        <div class="input-group">
+            <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+
+            <label for="enc-file-upload" class="btn load-btn">
+                <i class="fa-solid fa-upload"></i> Choose a File
+            </label>
+
+            @if (selectedFile != null)
+            {
+                <div class="nofilemsg">
+                    <span>@selectedFile.Name</span>
+                    <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("file"))" title="Remove file">
+                        <i class="fa-solid fa-xmark small-icon"></i>
+                    </button>
+                </div>
+
+            }
+            else
+            {
+                <span class="nofilemsg">No file selected.</span>
+            }
+        </div>
+    </div>
+    <div class="mb-3">     
+        @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                value="@alg"
+                @onchange="(e => ToggleAlgorithmSelection(alg, (bool?)((ChangeEventArgs)e).Value))" />
+                <label class="form-check-label">@alg</label>
+            </div>
+        }
+    </div>
+    <div class="mb-3">
+        <button id="encrypt-btn"
+        class="btn btn-primary"
+        @onclick="GenerateCharts">
+            Generate Histograms
+        </button>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Select Ciphertext File:</label>
-        <InputFile OnChange="LoadCiphertext" />
-    </div>
-
-    <button class="btn btn-primary" @onclick="RunAnalysis" disabled="@(Plaintext == null || Ciphertext == null)">Run Analysis</button>
-
-    @if (AnalysisRan)
+    @if (IsLoading == true)
     {
-        <div class="mt-4">
-            <h5>Results:</h5>
-            <p><strong>Hamming Distance:</strong> @HammingPercentage%</p>
-            <p><strong>Entropy (Plaintext):</strong> @PlainEntropy bits/byte</p>
-            <p><strong>Entropy (Ciphertext):</strong> @CipherEntropy bits/byte</p>
+        <div class="loader"></div>
+    }
+
+
+    @if (!IsLoading && selectedFile != null && originalChartData != null)
+    {
+        <div class="row">
+            <div class="col-6">
+                <ApexChart TItem="ByteFrequency"
+                Title="Original File - Byte Frequencies"
+                Options="originalChartOptions"
+                Height="400"
+                Width="550"
+                @ref="originalFileChart">
+                    <ApexPointSeries TItem="ByteFrequency"
+                    Items="originalChartData"
+                    Name="Original"
+                    SeriesType="SeriesType.Bar"
+                    XValue="e => e.Byte"
+                    YValue="e => e.Occurences" />
+                </ApexChart>
+            </div>
+
+            @foreach (var chart in encryptedCharts)
+            {
+                <div class="col-6">
+                    <ApexChart TItem="ByteFrequency"
+                    Title="@($"{chart.Algorithm} - Encrypted (Entropy: {chart.Entropy:F2}) (StdDev: {chart.StdDev:F2})")"
+                    Options="chart.ChartOptions"
+                    Height="400"
+                    Width="550">
+                        <ApexPointSeries TItem="ByteFrequency"
+                        Items="chart.ChartData"
+                        Name="@chart.Algorithm.ToString()"
+                        SeriesType="SeriesType.Bar"
+                        XValue="e => e.Byte"
+                        YValue="e => e.Occurences" />
+                    </ApexChart>
+                </div>
+            }
+        </div>
+    }
+
+
+    @if (error != null)
+    {
+        <div id="error-container">
+            <p style="color: red;">@error</p>
         </div>
     }
 </div>
 
 @code {
-    private byte[]? Plaintext;
-    private byte[]? Ciphertext;
-    private bool AnalysisRan = false;
-    private double HammingPercentage = 0;
-    private double PlainEntropy = 0;
-    private double CipherEntropy = 0;
+    private async Task GenerateCharts(){
+        error = null;
+        if (selectedFile == null)
+        {
+            error = "No file selected for analysis.";
+            return;
+        }
+        if (!selectedAlgorithms.Any())
+        {
+            error = "Select at least one algorithm.";
+            return;
+        }
+        IsLoading = true;
+        StateHasChanged();
 
-    private async Task LoadPlaintext(InputFileChangeEventArgs e)
-    {
-        var file = e.File;
-        using var stream = file.OpenReadStream();
-        using var ms = new MemoryStream();
-        await stream.CopyToAsync(ms);
-        Plaintext = ms.ToArray();
+        int minDuration = 2000; // Minimum loading animation time
+        DateTime startTime = DateTime.Now;
+
+        originalChartData = SetChartData(selectedFile.ByteArrayFile);
+        originalChartOptions = GetChartOptions();
+
+        encryptedCharts.Clear();
+
+        foreach (var alg in selectedAlgorithms)
+        {
+            byte[]? encryptedBytes = await EncryptFile(selectedFile.Base64File, alg);
+            if (encryptedBytes == null)
+            {
+                error = $"Error failed for {alg}.";
+                continue;
+            }
+            int[] freq = new int[256];
+            foreach (byte b in encryptedBytes)
+                freq[b]++;
+            encryptedCharts.Add(new EncryptedChart
+                {
+                    Algorithm = alg,
+                    ChartData = SetChartData(encryptedBytes),
+                    ChartOptions = GetChartOptions(),
+                    Entropy = CalculateShannonEntropy(encryptedBytes),
+                    StdDev = CalculateStandardDeviation(freq)
+                });
+        }
+
+        // Ensure minimum loader duration
+        int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
+        if (elapsedTime < minDuration)
+        {
+            await Task.Delay(minDuration - elapsedTime);
+        }
+        IsLoading = false;
+        StateHasChanged();
     }
 
-    private async Task LoadCiphertext(InputFileChangeEventArgs e)
+    private async Task<byte[]?> EncryptFile(string base64, EncryptionAlgorithm alg)
     {
-        var file = e.File;
-        using var stream = file.OpenReadStream();
-        using var reader = new StreamReader(stream);
-        var json = await reader.ReadToEndAsync();
-
-        using var doc = JsonDocument.Parse(json);
-        if (doc.RootElement.TryGetProperty("ciphertext", out var ciphertextElement))
+        return alg switch
         {
-            var base64 = ciphertextElement.GetString();
-            if (!string.IsNullOrWhiteSpace(base64))
-            {
-                Ciphertext = Convert.FromBase64String(base64);
+            EncryptionAlgorithm.AES_GCM => await JS.InvokeAsync<byte[]>("aes.encryptBase64", base64),
+            EncryptionAlgorithm.ChaCha20 => await JS.InvokeAsync<byte[]>("chacha.encryptBase64", base64),
+            EncryptionAlgorithm.Twofish => await JS.InvokeAsync<byte[]>("twofish.encryptBase64", base64),
+            _ => null
+        };
+    }
+
+    private ApexChartOptions<ByteFrequency> GetChartOptions()
+    {
+        return new ApexChartOptions<ByteFrequency>()
+        {
+            Chart = new Chart
+                {
+                    Type = ChartType.Bar,
+                    Toolbar = new Toolbar { Show = true },
+                    Zoom = new Zoom { Enabled = true }
+                },
+            Xaxis = new XAxis
+                {
+                    TickAmount = 32,
+                    Title = new AxisTitle
+                    {
+                        Text = "Byte",
+                        OffsetY = -30,
+                        Style = new AxisTitleStyle { FontSize = "14px" }
+                    },
+                    Labels = new XAxisLabels
+                    {
+                        Rotate = -90,
+                        Show = true,
+                        Style = new AxisLabelStyle { FontSize = "12px" }
+                    }
+                },
+            Yaxis = new List<YAxis>
+        {
+            new YAxis
+            {   
+                Title = new AxisTitle
+                {
+                    Text = "Occurences",
+                    Style = new AxisTitleStyle { FontSize = "14px" }
+                }
             }
-            else
+        },
+        };
+    }
+
+    private double CalculateStandardDeviation(int[] frequencies)
+    {
+        double mean = frequencies.Average();
+        double sumSquares = frequencies.Select(f => Math.Pow(f - mean, 2)).Sum();
+        return Math.Sqrt(sumSquares / frequencies.Length);
+    }
+
+
+    private List<ByteFrequency> SetChartData(byte[] bytes)
+    {
+        List<ByteFrequency> data = new();
+        int[] frequencies = new int[256];
+        foreach (byte b in bytes)
+            frequencies[b]++;
+
+        data = Enumerable.Range(0, 256)
+            .Select(i => new ByteFrequency
+                {
+                    Byte = $"{i}",
+                    Occurences = frequencies[i],
+                }).ToList();
+        return data;
+    }
+
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        if (e == null) throw new ArgumentNullException(nameof(e));
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > 256 * 1024 * 1024)
             {
-                // Handle empty ciphertext
-                Ciphertext = null;
-                Console.WriteLine("Ciphertext is empty.");
+                error = "File too large. Max allowed size is 256.";
             }
+            selectedFile = new FileModel(file);
+            await selectedFile.LoadAsync();
+        }
+    }
+
+    private void ClearUploadFileField(string field)
+    {
+        selectedFile = null;
+    }
+
+    private void ToggleAlgorithmSelection(EncryptionAlgorithm alg, bool? isChecked)
+    {
+        if (isChecked==true)
+        {
+            if (!selectedAlgorithms.Contains(alg))
+                selectedAlgorithms.Add(alg);
         }
         else
         {
-            // Handle missing ciphertext property
-            Ciphertext = null;
-            Console.WriteLine("Ciphertext not found in JSON.");
+            selectedAlgorithms.Remove(alg);
         }
     }
 
-
-    private void RunAnalysis()
+    private double CalculateShannonEntropy(byte[] data)
     {
-        if (Plaintext == null || Ciphertext == null)
-            return;
+        if (data == null || data.Length == 0) return 0.0;
 
-        AnalysisRan = true;
-
-        // Ensure equal length for fair comparison
-        int length = Math.Min(Plaintext.Length, Ciphertext.Length);
-
-        HammingPercentage = CalculateHammingDistance(Plaintext, Ciphertext, length);
-        PlainEntropy = CalculateEntropy(Plaintext);
-        CipherEntropy = CalculateEntropy(Ciphertext);
-    }
-
-    private double CalculateHammingDistance(byte[] a, byte[] b, int length)
-    {
-        int diffBits = 0;
-
-        for (int i = 0; i < length; i++)
-        {
-            byte xor = (byte)(a[i] ^ b[i]);
-            diffBits += CountBits(xor);
-        }
-
-        return Math.Round(100.0 * diffBits / (length * 8), 2); // percentage
-    }
-
-    private int CountBits(byte b)
-    {
-        int count = 0;
-        while (b != 0)
-        {
-            count += b & 1;
-            b >>= 1;
-        }
-        return count;
-    }
-
-    private double CalculateEntropy(byte[] data)
-    {
         int[] freq = new int[256];
-        foreach (var b in data)
-        {
+        foreach (byte b in data)
             freq[b]++;
-        }
 
         double entropy = 0.0;
         int len = data.Length;
 
-        foreach (var f in freq)
+        foreach (int count in freq)
         {
-            if (f > 0)
-            {
-                double p = (double)f / len;
-                entropy -= p * Math.Log2(p);
-            }
+            if (count == 0) continue;
+            double p = (double)count / len;
+            entropy -= p * Math.Log2(p);
         }
 
-        return Math.Round(entropy, 4);
+        return entropy;
     }
+
+
+    private List<EncryptedChart> encryptedCharts = new();
+    private ApexChart<ByteFrequency>? originalFileChart;
+    private ApexChart<ByteFrequency>? encryptedFileChart;
+    private List<ByteFrequency>? originalChartData;
+    private List<ByteFrequency>? encryptedChartData;
+    private ApexChartOptions<ByteFrequency>? originalChartOptions;
+    private ApexChartOptions<ByteFrequency>? encryptedChartOptions;
+    private FileModel? selectedFile = null;
+    private List<EncryptionAlgorithm> selectedAlgorithms = new();
+    private bool IsLoading;
+    private string? error = null;
+
 }

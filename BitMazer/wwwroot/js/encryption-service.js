@@ -2,6 +2,17 @@
 import { BlobConstants } from './constants/blob-types.js';
 import { DwnldFilesNamesConstants } from './constants/download-files-names.js';
 
+const {
+    AES_NAME,
+    AES_KEY_SIZE,
+    AES_IV_SIZE,
+    CHACHA_IV_SIZE,
+    CHACHA_KEY_SIZE,
+    TWOFISH_IV_SIZE,
+    TWOFISH_KEY_SIZE
+} = CryptoConstants;
+
+
 window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isKeyReusingEnabled) {
     try {
         // get uploaded file and convert it to ArrayBuffer
@@ -16,21 +27,21 @@ window.startEncryption = async function (selectedEncAlg, isCustomKeyEnabled, isK
 
         switch (selectedEncAlg) {
             case "AES_GCM":
-                encKey = await aes.getKey("AES-GCM", CryptoConstants.AES_KEY_SIZE);
+                encKey = await aes.getKey(AES_NAME, AES_KEY_SIZE);
                 if (!encKey) throw new Error("Failed to generate AES key.");
 
-                iv = window.crypto.getRandomValues(new Uint8Array(CryptoConstants.AES_IV_SIZE));
+                iv = window.crypto.getRandomValues(new Uint8Array(AES_IV_SIZE));
                 ciphertext = await aes.encrypt(fileBuffer, iv, encKey);
                 encKey = await crypto.subtle.exportKey("raw", encKey);
                 break;
             case "ChaCha20":
-                iv = nacl.randomBytes(CryptoConstants.CHACHA_IV_SIZE);
+                iv = nacl.randomBytes(CHACHA_IV_SIZE);
                 encKey = chacha.generateKey();
                 ciphertext = chacha.encrypt(new Uint8Array(fileBuffer), iv, encKey);
                 break;
             case "Twofish":
-                iv = twofish.generateIV(CryptoConstants.TWOFISH_IV_SIZE);
-                encKey = twofish.generateKey(CryptoConstants.TWOFISH_KEY_SIZE);
+                iv = twofish.generateIV(TWOFISH_IV_SIZE);
+                encKey = twofish.generateKey(TWOFISH_KEY_SIZE);
 
                 ciphertext = twofish.encrypt(new Uint8Array(fileBuffer), iv, encKey);
                 break;

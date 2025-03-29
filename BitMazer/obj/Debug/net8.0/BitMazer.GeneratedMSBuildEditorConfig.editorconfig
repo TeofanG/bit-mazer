@@ -28,6 +28,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Licenta/BitMazer/Pages/Component.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Licenta/BitMazer/Pages/Decryption.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVjcnlwdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

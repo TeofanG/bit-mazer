@@ -3,6 +3,8 @@
 */
 import { CryptoConstants } from '../constants/crypto-constants.js';
 
+const { CHACHA_KEY_SIZE, CHACHA_IV_SIZE } = CryptoConstants;
+
 window.chacha = {
     checkIfNaClLoaded: function () {
         if (typeof nacl === "undefined") {
@@ -17,7 +19,7 @@ window.chacha = {
             console.error("One or more from the provided IV, key or data are not in byte array format (Uint8Array).");
             return false;
         }
-        if (key.length != CryptoConstants.CHACHA_KEY_SIZE || iv.length != CryptoConstants.CHACHA_IV_SIZE) {
+        if (key.length != CHACHA_KEY_SIZE || iv.length != CHACHA_IV_SIZE) {
             console.error("Check the iv and key size.");
             return false;
         }
@@ -27,7 +29,7 @@ window.chacha = {
     generateKey: function () {
         if (chacha.checkIfNaClLoaded() == false) return null;
 
-        return nacl.randomBytes(CryptoConstants.CHACHA_KEY_SIZE);
+        return nacl.randomBytes(CHACHA_KEY_SIZE);
     },
 
     encrypt: function (fileBuffer, iv, key) {
@@ -56,5 +58,14 @@ window.chacha = {
             console.error("Error decrypting file: ", err);
             return null;
         }
+    },
+
+    encryptBase64: function (base64) {
+        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+        const key = this.generateKey();
+        const iv = nacl.randomBytes(CHACHA_IV_SIZE);
+        const encryptedData = this.encrypt(byteArray, iv, key);
+
+        return arrayBufferToBase64(encryptedData);
     }
 };

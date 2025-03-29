@@ -1,4 +1,5 @@
 ﻿const CryptoConstants = {
+    AES_NAME: "AES-GCM",
     AES_KEY_SIZE: 256,
     AES_IV_SIZE: 24,
     CHACHA_KEY_SIZE: 32,

@@ -3,7 +3,7 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "BitMazer.56si9vrlyj.styles.css",
+      "Route": "BitMazer.31nwfg2ulu.styles.css",
       "AssetFile": "BitMazer.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -25,21 +25,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4yvCEsVWE/Xd4TKt6mJNdh+6a1CqLT1xtc3aqCIehRk=\""
+          "Value": "\"aXS31NtFTKGfDvVfwcChw5gaRU8qEUb2c4tdDiw1xUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 15 Mar 2025 13:44:33 GMT"
+          "Value": "Sat, 29 Mar 2025 16:32:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "56si9vrlyj"
+          "Value": "31nwfg2ulu"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-4yvCEsVWE/Xd4TKt6mJNdh+6a1CqLT1xtc3aqCIehRk="
+          "Value": "sha256-aXS31NtFTKGfDvVfwcChw5gaRU8qEUb2c4tdDiw1xUg="
         },
         {
           "Name": "label",
@@ -70,17 +70,3871 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4yvCEsVWE/Xd4TKt6mJNdh+6a1CqLT1xtc3aqCIehRk=\""
+          "Value": "\"aXS31NtFTKGfDvVfwcChw5gaRU8qEUb2c4tdDiw1xUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 15 Mar 2025 13:44:33 GMT"
+          "Value": "Sat, 29 Mar 2025 16:32:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4yvCEsVWE/Xd4TKt6mJNdh+6a1CqLT1xtc3aqCIehRk="
+          "Value": "sha256-aXS31NtFTKGfDvVfwcChw5gaRU8qEUb2c4tdDiw1xUg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/css/apexcharts.css",
+      "AssetFile": "_content/Blazor-ApexCharts/css/apexcharts.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13568"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/css/apexcharts.fipu15mg5j.css",
+      "AssetFile": "_content/Blazor-ApexCharts/css/apexcharts.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13568"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fipu15mg5j"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/css/apexcharts.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/js/apexcharts.esm.js",
+      "AssetFile": "_content/Blazor-ApexCharts/js/apexcharts.esm.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "662760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"f983vdeEfHJ6zSgqLeuY5qU3oN/lqmS6p7DNke4cj9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-f983vdeEfHJ6zSgqLeuY5qU3oN/lqmS6p7DNke4cj9Y="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/js/apexcharts.esm.nunf1ilxhw.js",
+      "AssetFile": "_content/Blazor-ApexCharts/js/apexcharts.esm.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "662760"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"f983vdeEfHJ6zSgqLeuY5qU3oN/lqmS6p7DNke4cj9Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nunf1ilxhw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-f983vdeEfHJ6zSgqLeuY5qU3oN/lqmS6p7DNke4cj9Y="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/js/apexcharts.esm.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/js/blazor-apexcharts.i0cfsct3fa.js",
+      "AssetFile": "_content/Blazor-ApexCharts/js/blazor-apexcharts.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17475"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bjnhpJ9jjXTWeuGjFprJ6CMEgHt7Eb7hLHAbPBxA7R4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i0cfsct3fa"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bjnhpJ9jjXTWeuGjFprJ6CMEgHt7Eb7hLHAbPBxA7R4="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/js/blazor-apexcharts.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/js/blazor-apexcharts.js",
+      "AssetFile": "_content/Blazor-ApexCharts/js/blazor-apexcharts.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17475"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bjnhpJ9jjXTWeuGjFprJ6CMEgHt7Eb7hLHAbPBxA7R4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bjnhpJ9jjXTWeuGjFprJ6CMEgHt7Eb7hLHAbPBxA7R4="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ar.aw8a660z99.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ar.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2056"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dlafcjAJqs3GUdcc3mJSK86lwcZblr5It4eEvw4uLxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aw8a660z99"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dlafcjAJqs3GUdcc3mJSK86lwcZblr5It4eEvw4uLxs="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ar.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ar.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ar.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2056"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dlafcjAJqs3GUdcc3mJSK86lwcZblr5It4eEvw4uLxs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dlafcjAJqs3GUdcc3mJSK86lwcZblr5It4eEvw4uLxs="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/be-cyrl.h6g4ry2vv0.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/be-cyrl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FzJo0NTrozXZ2X0k5cBHq23/cNsJsjzz8ro8AmmgIsM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h6g4ry2vv0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FzJo0NTrozXZ2X0k5cBHq23/cNsJsjzz8ro8AmmgIsM="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/be-cyrl.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/be-cyrl.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/be-cyrl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2185"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FzJo0NTrozXZ2X0k5cBHq23/cNsJsjzz8ro8AmmgIsM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FzJo0NTrozXZ2X0k5cBHq23/cNsJsjzz8ro8AmmgIsM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/be-latn.4quf63e522.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/be-latn.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "866"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TBvJZemrAZAKyekGjuTHrZTH1It0sqSk5Sqz8yH9K0w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4quf63e522"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TBvJZemrAZAKyekGjuTHrZTH1It0sqSk5Sqz8yH9K0w="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/be-latn.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/be-latn.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/be-latn.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "866"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TBvJZemrAZAKyekGjuTHrZTH1It0sqSk5Sqz8yH9K0w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TBvJZemrAZAKyekGjuTHrZTH1It0sqSk5Sqz8yH9K0w="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ca.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ca.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "663"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hy0vKUYq8y24J65z6P6BRt+pAJEStUUkq6h/wO8qGmI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hy0vKUYq8y24J65z6P6BRt+pAJEStUUkq6h/wO8qGmI="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ca.xw4cn6al9g.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ca.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "663"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Hy0vKUYq8y24J65z6P6BRt+pAJEStUUkq6h/wO8qGmI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xw4cn6al9g"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Hy0vKUYq8y24J65z6P6BRt+pAJEStUUkq6h/wO8qGmI="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ca.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/cs.gopfi149m4.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/cs.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "797"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wKX1p4OPUkgraQA/lGUPFeTkjNfSDjk2BVoNpp3/rtw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gopfi149m4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wKX1p4OPUkgraQA/lGUPFeTkjNfSDjk2BVoNpp3/rtw="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/cs.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/cs.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/cs.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "797"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wKX1p4OPUkgraQA/lGUPFeTkjNfSDjk2BVoNpp3/rtw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wKX1p4OPUkgraQA/lGUPFeTkjNfSDjk2BVoNpp3/rtw="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/da.bvv7setipz.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/da.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "630"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F4FSX9RRquRBpeWXM8Cy22+MiyvJ99Qln9osdCg9JrI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bvv7setipz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-F4FSX9RRquRBpeWXM8Cy22+MiyvJ99Qln9osdCg9JrI="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/da.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/da.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/da.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "630"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F4FSX9RRquRBpeWXM8Cy22+MiyvJ99Qln9osdCg9JrI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-F4FSX9RRquRBpeWXM8Cy22+MiyvJ99Qln9osdCg9JrI="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/de.83l1289rs1.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/de.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "672"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Cw+PNZKKo3HojTIexT8ydZxxRVcJB/FibSNrmFMOBs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "83l1289rs1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Cw+PNZKKo3HojTIexT8ydZxxRVcJB/FibSNrmFMOBs="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/de.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/de.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/de.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "672"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Cw+PNZKKo3HojTIexT8ydZxxRVcJB/FibSNrmFMOBs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Cw+PNZKKo3HojTIexT8ydZxxRVcJB/FibSNrmFMOBs="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/el.c8sob4ckuq.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/el.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2154"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FCAyMj67tLnnn5Uu2HnYV2IPFm7NK6p2r8+7T5QnNoc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c8sob4ckuq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FCAyMj67tLnnn5Uu2HnYV2IPFm7NK6p2r8+7T5QnNoc="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/el.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/el.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/el.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2154"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FCAyMj67tLnnn5Uu2HnYV2IPFm7NK6p2r8+7T5QnNoc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FCAyMj67tLnnn5Uu2HnYV2IPFm7NK6p2r8+7T5QnNoc="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/en.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/en.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "617"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4r/u+pmflgFnRb/LLQj1UTO2uiLdwOZJXUEKZCMVq7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4r/u+pmflgFnRb/LLQj1UTO2uiLdwOZJXUEKZCMVq7U="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/en.y47va8epwf.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/en.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "617"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4r/u+pmflgFnRb/LLQj1UTO2uiLdwOZJXUEKZCMVq7U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y47va8epwf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4r/u+pmflgFnRb/LLQj1UTO2uiLdwOZJXUEKZCMVq7U="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/en.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/es.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/es.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "647"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5Arhr8jFsoVzlMD2BYO0QdEydcct2kjrXllGn2+ql2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Arhr8jFsoVzlMD2BYO0QdEydcct2kjrXllGn2+ql2k="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/es.oz2ngf7abt.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/es.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "647"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5Arhr8jFsoVzlMD2BYO0QdEydcct2kjrXllGn2+ql2k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oz2ngf7abt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Arhr8jFsoVzlMD2BYO0QdEydcct2kjrXllGn2+ql2k="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/es.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/et.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/et.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "693"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Wx99ItyPuJ/JHH4kZsfa31sf0/cPZ3RB2X3GYgVXzpo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Wx99ItyPuJ/JHH4kZsfa31sf0/cPZ3RB2X3GYgVXzpo="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/et.pntq0mboak.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/et.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "693"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Wx99ItyPuJ/JHH4kZsfa31sf0/cPZ3RB2X3GYgVXzpo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pntq0mboak"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Wx99ItyPuJ/JHH4kZsfa31sf0/cPZ3RB2X3GYgVXzpo="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/et.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fa.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fa.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1700"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5VsTIOaI9i/Kl2AE59RFVgnvO57ey5z4n7zEmDc7JLA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5VsTIOaI9i/Kl2AE59RFVgnvO57ey5z4n7zEmDc7JLA="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fa.nx25eecaer.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fa.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1700"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5VsTIOaI9i/Kl2AE59RFVgnvO57ey5z4n7zEmDc7JLA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nx25eecaer"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5VsTIOaI9i/Kl2AE59RFVgnvO57ey5z4n7zEmDc7JLA="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/fa.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fi.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "688"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5oebmtfJvQfIA0wtj/w1i/CdMxggN4N5KpIsBGPAzt0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5oebmtfJvQfIA0wtj/w1i/CdMxggN4N5KpIsBGPAzt0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fi.unkmihfl19.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "688"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5oebmtfJvQfIA0wtj/w1i/CdMxggN4N5KpIsBGPAzt0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "unkmihfl19"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5oebmtfJvQfIA0wtj/w1i/CdMxggN4N5KpIsBGPAzt0="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/fi.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fr.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "769"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aRM0YbD29kxiOoWjBKwe//2ptq+Z58fpOKjmYlSXmRo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aRM0YbD29kxiOoWjBKwe//2ptq+Z58fpOKjmYlSXmRo="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/fr.tbg7h139v1.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/fr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "769"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aRM0YbD29kxiOoWjBKwe//2ptq+Z58fpOKjmYlSXmRo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tbg7h139v1"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aRM0YbD29kxiOoWjBKwe//2ptq+Z58fpOKjmYlSXmRo="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/fr.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/he.4kedqyc6f0.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/he.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DBPpL9k31pu/OonYe4MoNQXth8VYoGCaBohW/PVjxRQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4kedqyc6f0"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DBPpL9k31pu/OonYe4MoNQXth8VYoGCaBohW/PVjxRQ="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/he.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/he.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/he.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DBPpL9k31pu/OonYe4MoNQXth8VYoGCaBohW/PVjxRQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DBPpL9k31pu/OonYe4MoNQXth8VYoGCaBohW/PVjxRQ="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hi.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1925"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kka3njmet1llQ1oQUSWWGrfEV0Z+hVfdIykpRKFGeVU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kka3njmet1llQ1oQUSWWGrfEV0Z+hVfdIykpRKFGeVU="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hi.qeoc4bvrzj.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1925"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kka3njmet1llQ1oQUSWWGrfEV0Z+hVfdIykpRKFGeVU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qeoc4bvrzj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kka3njmet1llQ1oQUSWWGrfEV0Z+hVfdIykpRKFGeVU="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/hi.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hr.g30t14wjoh.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "701"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vJal2x2QNigFc1HPfraHPajLDa/+KYm6EX7/9OuIGuE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g30t14wjoh"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vJal2x2QNigFc1HPfraHPajLDa/+KYm6EX7/9OuIGuE="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/hr.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hr.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "701"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vJal2x2QNigFc1HPfraHPajLDa/+KYm6EX7/9OuIGuE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vJal2x2QNigFc1HPfraHPajLDa/+KYm6EX7/9OuIGuE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hu.d53wev0zew.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hu.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "893"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D77nW8E9LACWcDLYiQi4tmABTzWdtQHiRIZh4dl/+u4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d53wev0zew"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-D77nW8E9LACWcDLYiQi4tmABTzWdtQHiRIZh4dl/+u4="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/hu.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hu.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hu.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "893"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D77nW8E9LACWcDLYiQi4tmABTzWdtQHiRIZh4dl/+u4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D77nW8E9LACWcDLYiQi4tmABTzWdtQHiRIZh4dl/+u4="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hy.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hy.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2157"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kMokcniW/vMpTaZUExL0GjIglPOJROzCuz82Cdra9QM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kMokcniW/vMpTaZUExL0GjIglPOJROzCuz82Cdra9QM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/hy.wg3wdxqw6r.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/hy.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2157"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kMokcniW/vMpTaZUExL0GjIglPOJROzCuz82Cdra9QM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wg3wdxqw6r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kMokcniW/vMpTaZUExL0GjIglPOJROzCuz82Cdra9QM="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/hy.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/id.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/id.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "599"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gh6YummZEUvK77HpqdCNf37hc0F+lhhqIRqhOEIU5do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gh6YummZEUvK77HpqdCNf37hc0F+lhhqIRqhOEIU5do="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/id.ma08ynh8oj.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/id.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "599"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gh6YummZEUvK77HpqdCNf37hc0F+lhhqIRqhOEIU5do=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ma08ynh8oj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gh6YummZEUvK77HpqdCNf37hc0F+lhhqIRqhOEIU5do="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/id.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/it.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/it.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HI8ky56OnvbeyCQXEcmb3DmtGeER9kGDff9kbvrjAXI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HI8ky56OnvbeyCQXEcmb3DmtGeER9kGDff9kbvrjAXI="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/it.oz6y9kyukq.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/it.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HI8ky56OnvbeyCQXEcmb3DmtGeER9kGDff9kbvrjAXI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oz6y9kyukq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HI8ky56OnvbeyCQXEcmb3DmtGeER9kGDff9kbvrjAXI="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/it.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ja.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ja.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "944"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uKgcjn6aZkz865gYeSKNABrJ/0uOZji+DAyZ0FG6qLg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uKgcjn6aZkz865gYeSKNABrJ/0uOZji+DAyZ0FG6qLg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ja.wim1rlw75t.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ja.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "944"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uKgcjn6aZkz865gYeSKNABrJ/0uOZji+DAyZ0FG6qLg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wim1rlw75t"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uKgcjn6aZkz865gYeSKNABrJ/0uOZji+DAyZ0FG6qLg="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ja.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ka.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ka.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2149"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nM5CmrAeofY0I2bHyyyZ9BQMmT8V7ZZ3Q98Gc5HsD/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nM5CmrAeofY0I2bHyyyZ9BQMmT8V7ZZ3Q98Gc5HsD/0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ka.wrvbhiedzy.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ka.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2149"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nM5CmrAeofY0I2bHyyyZ9BQMmT8V7ZZ3Q98Gc5HsD/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wrvbhiedzy"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nM5CmrAeofY0I2bHyyyZ9BQMmT8V7ZZ3Q98Gc5HsD/0="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ka.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ko.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ko.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "888"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oiRKl5wBbddidyXK+EdWR5/wQ5A+iIR2qgrN+iyghFw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oiRKl5wBbddidyXK+EdWR5/wQ5A+iIR2qgrN+iyghFw="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ko.udjm12v94x.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ko.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "888"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oiRKl5wBbddidyXK+EdWR5/wQ5A+iIR2qgrN+iyghFw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "udjm12v94x"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oiRKl5wBbddidyXK+EdWR5/wQ5A+iIR2qgrN+iyghFw="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ko.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/lt.1iui1sf6mx.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/lt.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "750"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F5SN8qqGkcG7fv57T+BooYAzbWWddDQLZ0BZs0wuv14=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1iui1sf6mx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-F5SN8qqGkcG7fv57T+BooYAzbWWddDQLZ0BZs0wuv14="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/lt.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/lt.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/lt.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "750"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F5SN8qqGkcG7fv57T+BooYAzbWWddDQLZ0BZs0wuv14=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-F5SN8qqGkcG7fv57T+BooYAzbWWddDQLZ0BZs0wuv14="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/lv.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/lv.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "803"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V3v5fb3Zoax8x3QuoG+gpIrCN8MFDX1V7jZo4TLOl2Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V3v5fb3Zoax8x3QuoG+gpIrCN8MFDX1V7jZo4TLOl2Q="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/lv.vynogv8ahn.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/lv.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "803"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V3v5fb3Zoax8x3QuoG+gpIrCN8MFDX1V7jZo4TLOl2Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vynogv8ahn"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V3v5fb3Zoax8x3QuoG+gpIrCN8MFDX1V7jZo4TLOl2Q="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/lv.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ms.0hoc5biyew.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ms.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "619"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HCgQ1y0mMwXEulNPTZEWVN7VGkpgWMRn+nAvPRxVmdE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0hoc5biyew"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HCgQ1y0mMwXEulNPTZEWVN7VGkpgWMRn+nAvPRxVmdE="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ms.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ms.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ms.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "619"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HCgQ1y0mMwXEulNPTZEWVN7VGkpgWMRn+nAvPRxVmdE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HCgQ1y0mMwXEulNPTZEWVN7VGkpgWMRn+nAvPRxVmdE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/nb.0o62raorg4.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/nb.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wM4lkbC04I2/uPlIySZDlWSUS62IA0U81mD2U3l2m/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0o62raorg4"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wM4lkbC04I2/uPlIySZDlWSUS62IA0U81mD2U3l2m/s="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/nb.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/nb.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/nb.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wM4lkbC04I2/uPlIySZDlWSUS62IA0U81mD2U3l2m/s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wM4lkbC04I2/uPlIySZDlWSUS62IA0U81mD2U3l2m/s="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/nl.fsylza4jab.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/nl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xw7MULGUFCVWATdL+U+YF+DGr2+IJmrZml+tMj7uUc0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsylza4jab"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xw7MULGUFCVWATdL+U+YF+DGr2+IJmrZml+tMj7uUc0="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/nl.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/nl.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/nl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xw7MULGUFCVWATdL+U+YF+DGr2+IJmrZml+tMj7uUc0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xw7MULGUFCVWATdL+U+YF+DGr2+IJmrZml+tMj7uUc0="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pl.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "694"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3Z4PsPf0abnHt54FB3hX97yeN9m8SM8aBltHUELYqk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z3Z4PsPf0abnHt54FB3hX97yeN9m8SM8aBltHUELYqk="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pl.xw1ahgfaqy.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "694"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3Z4PsPf0abnHt54FB3hX97yeN9m8SM8aBltHUELYqk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xw1ahgfaqy"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z3Z4PsPf0abnHt54FB3hX97yeN9m8SM8aBltHUELYqk="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/pl.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pt-br.1ss52jen86.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pt-br.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "643"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D9Hj2hy1KOq9dGLrGGe8ays1RSWMHlINH7h+4NLPs7g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1ss52jen86"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-D9Hj2hy1KOq9dGLrGGe8ays1RSWMHlINH7h+4NLPs7g="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/pt-br.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pt-br.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pt-br.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "643"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D9Hj2hy1KOq9dGLrGGe8ays1RSWMHlINH7h+4NLPs7g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D9Hj2hy1KOq9dGLrGGe8ays1RSWMHlINH7h+4NLPs7g="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pt.7b8xi8hfxj.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pt.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "675"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rRUDFC/Tqe7MUK5n/STmcacv2q72vRl1CwznzIge3pM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7b8xi8hfxj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rRUDFC/Tqe7MUK5n/STmcacv2q72vRl1CwznzIge3pM="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/pt.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/pt.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/pt.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "675"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rRUDFC/Tqe7MUK5n/STmcacv2q72vRl1CwznzIge3pM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rRUDFC/Tqe7MUK5n/STmcacv2q72vRl1CwznzIge3pM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ru.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ru.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1994"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UOFpsRzXznwnmB8j37FSNH9BrWmEZ7IZ7I2rX77eQ6g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UOFpsRzXznwnmB8j37FSNH9BrWmEZ7IZ7I2rX77eQ6g="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/ru.kr702m2xcz.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/ru.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1994"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UOFpsRzXznwnmB8j37FSNH9BrWmEZ7IZ7I2rX77eQ6g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kr702m2xcz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UOFpsRzXznwnmB8j37FSNH9BrWmEZ7IZ7I2rX77eQ6g="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/ru.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sk.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sk.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SAbJxRWu7j7hjsBir0RLboTcFVZkW1QS80tMQosrRSE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SAbJxRWu7j7hjsBir0RLboTcFVZkW1QS80tMQosrRSE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sk.wi5btb81wr.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sk.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SAbJxRWu7j7hjsBir0RLboTcFVZkW1QS80tMQosrRSE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wi5btb81wr"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SAbJxRWu7j7hjsBir0RLboTcFVZkW1QS80tMQosrRSE="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/sk.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sl.c82d7b3oqw.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dBDBm89BPi3Yixs8Hg3Ic6WTgmXPrF6lLAN4LnjfpCs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c82d7b3oqw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dBDBm89BPi3Yixs8Hg3Ic6WTgmXPrF6lLAN4LnjfpCs="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/sl.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sl.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sl.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dBDBm89BPi3Yixs8Hg3Ic6WTgmXPrF6lLAN4LnjfpCs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dBDBm89BPi3Yixs8Hg3Ic6WTgmXPrF6lLAN4LnjfpCs="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sq.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sq.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "681"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zThOdwY6+2clLH8KQWon026rtzcxeK5ExNtfFpFAzGc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zThOdwY6+2clLH8KQWon026rtzcxeK5ExNtfFpFAzGc="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sq.pp7fw90inq.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sq.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "681"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zThOdwY6+2clLH8KQWon026rtzcxeK5ExNtfFpFAzGc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "pp7fw90inq"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zThOdwY6+2clLH8KQWon026rtzcxeK5ExNtfFpFAzGc="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/sq.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sr.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "648"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7Ifns1BAaPzJaEyNSEaKFztIPE51+Oap9ld+tvhsrmg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7Ifns1BAaPzJaEyNSEaKFztIPE51+Oap9ld+tvhsrmg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sr.smq1vn04nu.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "648"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7Ifns1BAaPzJaEyNSEaKFztIPE51+Oap9ld+tvhsrmg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "smq1vn04nu"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7Ifns1BAaPzJaEyNSEaKFztIPE51+Oap9ld+tvhsrmg="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/sr.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sv.iy547i9vvz.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sv.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "652"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KjZiCGep+a8C8NTV1V+03cxMLbAEstpJjyB/wQ8/a/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iy547i9vvz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KjZiCGep+a8C8NTV1V+03cxMLbAEstpJjyB/wQ8/a/k="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/sv.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/sv.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/sv.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "652"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KjZiCGep+a8C8NTV1V+03cxMLbAEstpJjyB/wQ8/a/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KjZiCGep+a8C8NTV1V+03cxMLbAEstpJjyB/wQ8/a/k="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/th.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/th.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1859"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bSK3XfeSUbX+8I38665w0rt/uoeAmVwxVAR0Q5rhCe8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bSK3XfeSUbX+8I38665w0rt/uoeAmVwxVAR0Q5rhCe8="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/th.zwnyw8ne19.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/th.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1859"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bSK3XfeSUbX+8I38665w0rt/uoeAmVwxVAR0Q5rhCe8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zwnyw8ne19"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bSK3XfeSUbX+8I38665w0rt/uoeAmVwxVAR0Q5rhCe8="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/th.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/tr.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/tr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "781"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AkvVJzV+wuv+30FI8s5j0p9bJP2JSvRFVEuZSYCvqdE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AkvVJzV+wuv+30FI8s5j0p9bJP2JSvRFVEuZSYCvqdE="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/tr.m65ramgkna.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/tr.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "781"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AkvVJzV+wuv+30FI8s5j0p9bJP2JSvRFVEuZSYCvqdE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m65ramgkna"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AkvVJzV+wuv+30FI8s5j0p9bJP2JSvRFVEuZSYCvqdE="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/tr.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/uk.74w0y3no2v.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/uk.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2024"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aZ+JRp6SO22n09PyMVLrChX15KW9YCLZPZ0z8t0ZJlo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "74w0y3no2v"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aZ+JRp6SO22n09PyMVLrChX15KW9YCLZPZ0z8t0ZJlo="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/uk.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/uk.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/uk.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2024"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aZ+JRp6SO22n09PyMVLrChX15KW9YCLZPZ0z8t0ZJlo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aZ+JRp6SO22n09PyMVLrChX15KW9YCLZPZ0z8t0ZJlo="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/vi.j4a4u2uj29.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/vi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "882"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vS1emPRJh7O8aN6ONvGi9WNlwfDGchjNHPFL2/lqdfM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j4a4u2uj29"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vS1emPRJh7O8aN6ONvGi9WNlwfDGchjNHPFL2/lqdfM="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/vi.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/vi.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/vi.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "882"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vS1emPRJh7O8aN6ONvGi9WNlwfDGchjNHPFL2/lqdfM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vS1emPRJh7O8aN6ONvGi9WNlwfDGchjNHPFL2/lqdfM="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/zh-cn.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/zh-cn.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1022"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mhzhU9izYDiEk2Iq60zSikDxEp+rWnQKOAZ2G1BoKMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mhzhU9izYDiEk2Iq60zSikDxEp+rWnQKOAZ2G1BoKMg="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/zh-cn.qz6clc5837.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/zh-cn.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1022"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mhzhU9izYDiEk2Iq60zSikDxEp+rWnQKOAZ2G1BoKMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qz6clc5837"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mhzhU9izYDiEk2Iq60zSikDxEp+rWnQKOAZ2G1BoKMg="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/zh-cn.json"
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/zh-tw.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/zh-tw.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1022"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9NsKdU5ha32NGIS0Hj6dBR0Cpr8hgAr2IZpXCzHZnsY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9NsKdU5ha32NGIS0Hj6dBR0Cpr8hgAr2IZpXCzHZnsY="
+        }
+      ]
+    },
+    {
+      "Route": "_content/Blazor-ApexCharts/locales/zh-tw.ody88ncx6z.json",
+      "AssetFile": "_content/Blazor-ApexCharts/locales/zh-tw.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1022"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9NsKdU5ha32NGIS0Hj6dBR0Cpr8hgAr2IZpXCzHZnsY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Feb 2025 15:50:06 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ody88ncx6z"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9NsKdU5ha32NGIS0Hj6dBR0Cpr8hgAr2IZpXCzHZnsY="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/Blazor-ApexCharts/locales/zh-tw.json"
         }
       ]
     },
@@ -99,7 +3953,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "39712"
+          "Value": "46104"
         },
         {
           "Name": "Content-Type",
@@ -107,17 +3961,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ahANLJ2KVj2lI6CWQG6HshuJR82fwxfMCJcQTsbaanE=\""
+          "Value": "\"sHMfwj66MhlISME0R79WULtNmjaubhPNmmV8d1Ci6F8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:32:16 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ahANLJ2KVj2lI6CWQG6HshuJR82fwxfMCJcQTsbaanE="
+          "Value": "sha256-sHMfwj66MhlISME0R79WULtNmjaubhPNmmV8d1Ci6F8="
         }
       ]
     },
@@ -128,7 +3982,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000034901578"
+          "Quality": "0.000029741546"
         }
       ],
       "ResponseHeaders": [
@@ -146,7 +4000,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "28651"
+          "Value": "33622"
         },
         {
           "Name": "Content-Type",
@@ -154,15 +4008,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"U9c4FV5CWbHaYuFXmDz6ua5AJbQX+RqCZnJrbF4uGJU=\""
+          "Value": "\"IcewkHu3OdKaOjLYn2PdWc8CWssyk54lLRCx3wnArcc=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ahANLJ2KVj2lI6CWQG6HshuJR82fwxfMCJcQTsbaanE=\""
+          "Value": "W/\"sHMfwj66MhlISME0R79WULtNmjaubhPNmmV8d1Ci6F8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -172,7 +4026,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ahANLJ2KVj2lI6CWQG6HshuJR82fwxfMCJcQTsbaanE="
+          "Value": "sha256-sHMfwj66MhlISME0R79WULtNmjaubhPNmmV8d1Ci6F8="
         }
       ]
     },
@@ -195,7 +4049,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "28651"
+          "Value": "33622"
         },
         {
           "Name": "Content-Type",
@@ -203,11 +4057,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"U9c4FV5CWbHaYuFXmDz6ua5AJbQX+RqCZnJrbF4uGJU=\""
+          "Value": "\"IcewkHu3OdKaOjLYn2PdWc8CWssyk54lLRCx3wnArcc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -217,7 +4071,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-U9c4FV5CWbHaYuFXmDz6ua5AJbQX+RqCZnJrbF4uGJU="
+          "Value": "sha256-IcewkHu3OdKaOjLYn2PdWc8CWssyk54lLRCx3wnArcc="
         }
       ]
     },
@@ -236,7 +4090,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "45845"
+          "Value": "56085"
         },
         {
           "Name": "Content-Type",
@@ -244,17 +4098,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tn/+J6FFO8CsTvS7GRKTiEPF7L3glLa+TX0VRZxOMXs=\""
+          "Value": "\"d39BU3Qpa8xrpn6eWU7yfXHZ2b9PFq2UpT0Zrh4OmVs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:32:16 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-tn/+J6FFO8CsTvS7GRKTiEPF7L3glLa+TX0VRZxOMXs="
+          "Value": "sha256-d39BU3Qpa8xrpn6eWU7yfXHZ2b9PFq2UpT0Zrh4OmVs="
         }
       ]
     },
@@ -265,7 +4119,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000055023660"
+          "Quality": "0.000043878894"
         }
       ],
       "ResponseHeaders": [
@@ -283,7 +4137,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "18173"
+          "Value": "22789"
         },
         {
           "Name": "Content-Type",
@@ -291,15 +4145,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HrCpPsoQpkx+OghGygisu4mt+PTVaPKr+t8TQtUDIlo=\""
+          "Value": "\"GrMDpR8sJDjTcgVqKLa+3ZjNWTyfBRhwJ2DlA6gePE0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"tn/+J6FFO8CsTvS7GRKTiEPF7L3glLa+TX0VRZxOMXs=\""
+          "Value": "W/\"d39BU3Qpa8xrpn6eWU7yfXHZ2b9PFq2UpT0Zrh4OmVs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -309,7 +4163,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-tn/+J6FFO8CsTvS7GRKTiEPF7L3glLa+TX0VRZxOMXs="
+          "Value": "sha256-d39BU3Qpa8xrpn6eWU7yfXHZ2b9PFq2UpT0Zrh4OmVs="
         }
       ]
     },
@@ -332,7 +4186,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "18173"
+          "Value": "22789"
         },
         {
           "Name": "Content-Type",
@@ -340,11 +4194,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HrCpPsoQpkx+OghGygisu4mt+PTVaPKr+t8TQtUDIlo=\""
+          "Value": "\"GrMDpR8sJDjTcgVqKLa+3ZjNWTyfBRhwJ2DlA6gePE0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -354,7 +4208,144 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HrCpPsoQpkx+OghGygisu4mt+PTVaPKr+t8TQtUDIlo="
+          "Value": "sha256-GrMDpR8sJDjTcgVqKLa+3ZjNWTyfBRhwJ2DlA6gePE0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Blazor-ApexCharts.wasm",
+      "AssetFile": "_framework/Blazor-ApexCharts.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "249109"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lgFci0Pqj5v/QK9QPBVLFEXiPg0Usqbdfd7uSyfQivo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lgFci0Pqj5v/QK9QPBVLFEXiPg0Usqbdfd7uSyfQivo="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Blazor-ApexCharts.wasm",
+      "AssetFile": "_framework/Blazor-ApexCharts.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000010748874"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93032"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U/FTOzIyaRcLGBPt3AxGObp6fbBfiIifh2UwY+yVnsE=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"lgFci0Pqj5v/QK9QPBVLFEXiPg0Usqbdfd7uSyfQivo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lgFci0Pqj5v/QK9QPBVLFEXiPg0Usqbdfd7uSyfQivo="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Blazor-ApexCharts.wasm.gz",
+      "AssetFile": "_framework/Blazor-ApexCharts.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93032"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U/FTOzIyaRcLGBPt3AxGObp6fbBfiIifh2UwY+yVnsE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-U/FTOzIyaRcLGBPt3AxGObp6fbBfiIifh2UwY+yVnsE="
         }
       ]
     },
@@ -2414,6 +6405,280 @@
       ]
     },
     {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19733"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dpN/LMJr0L1oxGxMzPw+PC8Nkzf+2WG8a3ccmvA35DE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dpN/LMJr0L1oxGxMzPw+PC8Nkzf+2WG8a3ccmvA35DE="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000120192308"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8319"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aODakyxpfCOcQWE1vNV96LRJc3qX+Dzpm7LC6FHs3bU=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"dpN/LMJr0L1oxGxMzPw+PC8Nkzf+2WG8a3ccmvA35DE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dpN/LMJr0L1oxGxMzPw+PC8Nkzf+2WG8a3ccmvA35DE="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm.gz",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.Abstractions.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8319"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aODakyxpfCOcQWE1vNV96LRJc3qX+Dzpm7LC6FHs3bU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aODakyxpfCOcQWE1vNV96LRJc3qX+Dzpm7LC6FHs3bU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24853"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MFVFI2HwI1mQqiiXvaLy8bt3VV9aPzyHpmctfcIyNc8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MFVFI2HwI1mQqiiXvaLy8bt3VV9aPzyHpmctfcIyNc8="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000084047739"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DxUtjeRaq2S/j/GcP9L46me9fUsMqveQjSmRZDDuGQY=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"MFVFI2HwI1mQqiiXvaLy8bt3VV9aPzyHpmctfcIyNc8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MFVFI2HwI1mQqiiXvaLy8bt3VV9aPzyHpmctfcIyNc8="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Diagnostics.wasm.gz",
+      "AssetFile": "_framework/Microsoft.Extensions.Diagnostics.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11897"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DxUtjeRaq2S/j/GcP9L46me9fUsMqveQjSmRZDDuGQY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DxUtjeRaq2S/j/GcP9L46me9fUsMqveQjSmRZDDuGQY="
+        }
+      ]
+    },
+    {
       "Route": "_framework/Microsoft.Extensions.FileProviders.Abstractions.wasm",
       "AssetFile": "_framework/Microsoft.Extensions.FileProviders.Abstractions.wasm",
       "Selectors": [],
@@ -2825,6 +7090,143 @@
       ]
     },
     {
+      "Route": "_framework/Microsoft.Extensions.Http.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Http.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "78101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"N+Tzkk/w6KHM7RAL+KgJZSEePxW2/p5DHYG8y6zUPx0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-N+Tzkk/w6KHM7RAL+KgJZSEePxW2/p5DHYG8y6zUPx0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Http.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Http.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000031298905"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31949"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3GOCP2gL0eJdyAU0s0NTmKn2rH02brvBivBWE172A4A=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"N+Tzkk/w6KHM7RAL+KgJZSEePxW2/p5DHYG8y6zUPx0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-N+Tzkk/w6KHM7RAL+KgJZSEePxW2/p5DHYG8y6zUPx0="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Http.wasm.gz",
+      "AssetFile": "_framework/Microsoft.Extensions.Http.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31949"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3GOCP2gL0eJdyAU0s0NTmKn2rH02brvBivBWE172A4A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3GOCP2gL0eJdyAU0s0NTmKn2rH02brvBivBWE172A4A="
+        }
+      ]
+    },
+    {
       "Route": "_framework/Microsoft.Extensions.Logging.Abstractions.wasm",
       "AssetFile": "_framework/Microsoft.Extensions.Logging.Abstractions.wasm",
       "Selectors": [],
@@ -3095,6 +7497,143 @@
         {
           "Name": "integrity",
           "Value": "sha256-z48FFALZ2sAP4Fd5H7/RhhuPDZBP1f3ES8esZSke/qU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12053"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"C8ZA1VhhrMRPf8Qqv+OrW9za3ggJkCM9i1d8R/F1ETc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-C8ZA1VhhrMRPf8Qqv+OrW9za3ggJkCM9i1d8R/F1ETc="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm",
+      "AssetFile": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000188714852"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K8PSY6FkagChoChY3ZwpeHTTSuxs1mNtk3c/GoVOxio=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"C8ZA1VhhrMRPf8Qqv+OrW9za3ggJkCM9i1d8R/F1ETc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-C8ZA1VhhrMRPf8Qqv+OrW9za3ggJkCM9i1d8R/F1ETc="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm.gz",
+      "AssetFile": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.wasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K8PSY6FkagChoChY3ZwpeHTTSuxs1mNtk3c/GoVOxio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 26 Mar 2025 21:29:19 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K8PSY6FkagChoChY3ZwpeHTTSuxs1mNtk3c/GoVOxio="
         }
       ]
     },
@@ -26403,7 +30942,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "19725"
+          "Value": "20251"
         },
         {
           "Name": "Content-Type",
@@ -26411,17 +30950,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ZxEeHZbvnGi/ySZ5TnFt/BfM+2oU5yN5wISX1wRTQi8=\""
+          "Value": "\"SXppdyM9tTdqyTd7kky5ZOG5Jhtf+9+ny/FOPkX+4Mc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:32:16 GMT"
+          "Value": "Sat, 29 Mar 2025 18:29:16 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZxEeHZbvnGi/ySZ5TnFt/BfM+2oU5yN5wISX1wRTQi8="
+          "Value": "sha256-SXppdyM9tTdqyTd7kky5ZOG5Jhtf+9+ny/FOPkX+4Mc="
         }
       ]
     },
@@ -26432,7 +30971,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000112410072"
+          "Quality": "0.000109757436"
         }
       ],
       "ResponseHeaders": [
@@ -26450,7 +30989,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8895"
+          "Value": "9110"
         },
         {
           "Name": "Content-Type",
@@ -26458,15 +30997,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iVLm7KGySPNVSu7x0NgPpqW5gauXHrTlEnCwx86hhyc=\""
+          "Value": "\"PGvLLV2Sjzi65X47BYaOQk1t9f7x6ACLvXlq+yQ9trM=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ZxEeHZbvnGi/ySZ5TnFt/BfM+2oU5yN5wISX1wRTQi8=\""
+          "Value": "W/\"SXppdyM9tTdqyTd7kky5ZOG5Jhtf+9+ny/FOPkX+4Mc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26476,7 +31015,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ZxEeHZbvnGi/ySZ5TnFt/BfM+2oU5yN5wISX1wRTQi8="
+          "Value": "sha256-SXppdyM9tTdqyTd7kky5ZOG5Jhtf+9+ny/FOPkX+4Mc="
         }
       ]
     },
@@ -26499,7 +31038,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8895"
+          "Value": "9110"
         },
         {
           "Name": "Content-Type",
@@ -26507,11 +31046,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"iVLm7KGySPNVSu7x0NgPpqW5gauXHrTlEnCwx86hhyc=\""
+          "Value": "\"PGvLLV2Sjzi65X47BYaOQk1t9f7x6ACLvXlq+yQ9trM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:27:07 GMT"
+          "Value": "Sat, 29 Mar 2025 16:23:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26521,7 +31060,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iVLm7KGySPNVSu7x0NgPpqW5gauXHrTlEnCwx86hhyc="
+          "Value": "sha256-PGvLLV2Sjzi65X47BYaOQk1t9f7x6ACLvXlq+yQ9trM="
         }
       ]
     },
@@ -26685,17 +31224,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5g43DpXoq/EPjBshtY1gY6UFB4miwSSM1QvlGgCfcIc=\""
+          "Value": "\"t6MIg/H8TR8b0Ph4sa9zNbaP//7O4QW5dU60rtK/80k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5g43DpXoq/EPjBshtY1gY6UFB4miwSSM1QvlGgCfcIc="
+          "Value": "sha256-t6MIg/H8TR8b0Ph4sa9zNbaP//7O4QW5dU60rtK/80k="
         }
       ]
     },
@@ -26706,7 +31245,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000087389671"
+          "Quality": "0.000087366766"
         }
       ],
       "ResponseHeaders": [
@@ -26724,7 +31263,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11442"
+          "Value": "11445"
         },
         {
           "Name": "Content-Type",
@@ -26732,15 +31271,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+zSHDc/tULx9VraIqJSlVO/j1NSsbOKRBBprjCNAM4s=\""
+          "Value": "\"v7k0skQqlnC0Otp+mnFZyJF0sZ2RU5B+EKOQxNvrcV8=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5g43DpXoq/EPjBshtY1gY6UFB4miwSSM1QvlGgCfcIc=\""
+          "Value": "W/\"t6MIg/H8TR8b0Ph4sa9zNbaP//7O4QW5dU60rtK/80k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26750,7 +31289,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5g43DpXoq/EPjBshtY1gY6UFB4miwSSM1QvlGgCfcIc="
+          "Value": "sha256-t6MIg/H8TR8b0Ph4sa9zNbaP//7O4QW5dU60rtK/80k="
         }
       ]
     },
@@ -26773,7 +31312,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11442"
+          "Value": "11445"
         },
         {
           "Name": "Content-Type",
@@ -26781,11 +31320,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"+zSHDc/tULx9VraIqJSlVO/j1NSsbOKRBBprjCNAM4s=\""
+          "Value": "\"v7k0skQqlnC0Otp+mnFZyJF0sZ2RU5B+EKOQxNvrcV8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26795,7 +31334,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-+zSHDc/tULx9VraIqJSlVO/j1NSsbOKRBBprjCNAM4s="
+          "Value": "sha256-v7k0skQqlnC0Otp+mnFZyJF0sZ2RU5B+EKOQxNvrcV8="
         }
       ]
     },
@@ -26822,17 +31361,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R5ShsomE/7mvlWgU4EsJZxNTTUpEIMcgRRXDpG1QwiM=\""
+          "Value": "\"F7Y5eAa+U4kkNMW0u6Qo4sp9JuwcL0fZXIMzgi/54x4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R5ShsomE/7mvlWgU4EsJZxNTTUpEIMcgRRXDpG1QwiM="
+          "Value": "sha256-F7Y5eAa+U4kkNMW0u6Qo4sp9JuwcL0fZXIMzgi/54x4="
         }
       ]
     },
@@ -26869,15 +31408,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wAZs6OepbZ63yIFY2dWMG6NCUJZIafd99FZkK5Md9no=\""
+          "Value": "\"toUjyyLxfghHcpxelhDqACuSjGgJF3zijGwF8+hySds=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"R5ShsomE/7mvlWgU4EsJZxNTTUpEIMcgRRXDpG1QwiM=\""
+          "Value": "W/\"F7Y5eAa+U4kkNMW0u6Qo4sp9JuwcL0fZXIMzgi/54x4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26887,7 +31426,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R5ShsomE/7mvlWgU4EsJZxNTTUpEIMcgRRXDpG1QwiM="
+          "Value": "sha256-F7Y5eAa+U4kkNMW0u6Qo4sp9JuwcL0fZXIMzgi/54x4="
         }
       ]
     },
@@ -26918,11 +31457,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wAZs6OepbZ63yIFY2dWMG6NCUJZIafd99FZkK5Md9no=\""
+          "Value": "\"toUjyyLxfghHcpxelhDqACuSjGgJF3zijGwF8+hySds=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:16 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:10 GMT"
         },
         {
           "Name": "Vary",
@@ -26932,7 +31471,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wAZs6OepbZ63yIFY2dWMG6NCUJZIafd99FZkK5Md9no="
+          "Value": "sha256-toUjyyLxfghHcpxelhDqACuSjGgJF3zijGwF8+hySds="
         }
       ]
     },
@@ -26959,17 +31498,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w=\""
+          "Value": "\"DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
+          "Value": "sha256-DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k="
         }
       ]
     },
@@ -26980,7 +31519,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000027656397"
+          "Quality": "0.000027654867"
         }
       ],
       "ResponseHeaders": [
@@ -26998,7 +31537,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36157"
+          "Value": "36159"
         },
         {
           "Name": "Content-Type",
@@ -27006,15 +31545,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XrdkmnEnLzQvCohlgYjpMbqym4NGdVcYPVReFEMq6ME=\""
+          "Value": "\"a+wSZu8HlN5ENd2Mdrm/2yLQSQFWRKxgKdvTU1zIgQ0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w=\""
+          "Value": "W/\"DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         },
         {
           "Name": "Vary",
@@ -27024,7 +31563,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xNQsYHtL1vcbrVTHDZAwJM4WovpoyjsrM2C6FQ8cW1w="
+          "Value": "sha256-DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k="
         }
       ]
     },
@@ -27047,7 +31586,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36157"
+          "Value": "36159"
         },
         {
           "Name": "Content-Type",
@@ -27055,11 +31594,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XrdkmnEnLzQvCohlgYjpMbqym4NGdVcYPVReFEMq6ME=\""
+          "Value": "\"a+wSZu8HlN5ENd2Mdrm/2yLQSQFWRKxgKdvTU1zIgQ0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         },
         {
           "Name": "Vary",
@@ -27069,7 +31608,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-XrdkmnEnLzQvCohlgYjpMbqym4NGdVcYPVReFEMq6ME="
+          "Value": "sha256-a+wSZu8HlN5ENd2Mdrm/2yLQSQFWRKxgKdvTU1zIgQ0="
         }
       ]
     },
@@ -27088,7 +31627,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2917926"
+          "Value": "2918207"
         },
         {
           "Name": "Content-Type",
@@ -27096,17 +31635,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XhsharnkthjahGEiBkFjCLc/87/Tecti9860TIEq0H0=\""
+          "Value": "\"mICh/Z0HwmHNDnkBnBbRTyDkRYBu3OBkhmuy2F7aUSU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-XhsharnkthjahGEiBkFjCLc/87/Tecti9860TIEq0H0="
+          "Value": "sha256-mICh/Z0HwmHNDnkBnBbRTyDkRYBu3OBkhmuy2F7aUSU="
         }
       ]
     },
@@ -27117,7 +31656,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000000867030"
+          "Quality": "0.000000866979"
         }
       ],
       "ResponseHeaders": [
@@ -27135,7 +31674,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1153361"
+          "Value": "1153430"
         },
         {
           "Name": "Content-Type",
@@ -27143,15 +31682,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"I/v9nDdJVQYWAh3uQl0yeimoa9QYrL9Ek11Q0reoXd8=\""
+          "Value": "\"qw+stNSD8rXd+UE+0ExyCFMI0GoaNeoY2wusqYcBIPw=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"XhsharnkthjahGEiBkFjCLc/87/Tecti9860TIEq0H0=\""
+          "Value": "W/\"mICh/Z0HwmHNDnkBnBbRTyDkRYBu3OBkhmuy2F7aUSU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         },
         {
           "Name": "Vary",
@@ -27161,7 +31700,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-XhsharnkthjahGEiBkFjCLc/87/Tecti9860TIEq0H0="
+          "Value": "sha256-mICh/Z0HwmHNDnkBnBbRTyDkRYBu3OBkhmuy2F7aUSU="
         }
       ]
     },
@@ -27184,7 +31723,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1153361"
+          "Value": "1153430"
         },
         {
           "Name": "Content-Type",
@@ -27192,11 +31731,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"I/v9nDdJVQYWAh3uQl0yeimoa9QYrL9Ek11Q0reoXd8=\""
+          "Value": "\"qw+stNSD8rXd+UE+0ExyCFMI0GoaNeoY2wusqYcBIPw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:48 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:42 GMT"
         },
         {
           "Name": "Vary",
@@ -27206,7 +31745,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-I/v9nDdJVQYWAh3uQl0yeimoa9QYrL9Ek11Q0reoXd8="
+          "Value": "sha256-qw+stNSD8rXd+UE+0ExyCFMI0GoaNeoY2wusqYcBIPw="
         }
       ]
     },
@@ -27233,17 +31772,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"13vqU3hueOALvSTEM8xnJkJj2exVJYtNc1KZelMCDf0=\""
+          "Value": "\"44Vu7OSX4JP89eoc3oTYbYfC5C7USoIWuCw1W9IG6N4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-13vqU3hueOALvSTEM8xnJkJj2exVJYtNc1KZelMCDf0="
+          "Value": "sha256-44Vu7OSX4JP89eoc3oTYbYfC5C7USoIWuCw1W9IG6N4="
         }
       ]
     },
@@ -27254,7 +31793,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000015397644"
+          "Quality": "0.000015396459"
         }
       ],
       "ResponseHeaders": [
@@ -27272,7 +31811,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "64944"
+          "Value": "64949"
         },
         {
           "Name": "Content-Type",
@@ -27280,15 +31819,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"DeD4pDZGgUmAQjwbJ7qSZ7o7lEMt0AHy7Y3TfA11UcU=\""
+          "Value": "\"30hq+q6k0SzlyO3ZzvgrQawSEPz/RfDirAX1GHwCy5g=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"13vqU3hueOALvSTEM8xnJkJj2exVJYtNc1KZelMCDf0=\""
+          "Value": "W/\"44Vu7OSX4JP89eoc3oTYbYfC5C7USoIWuCw1W9IG6N4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         },
         {
           "Name": "Vary",
@@ -27298,7 +31837,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-13vqU3hueOALvSTEM8xnJkJj2exVJYtNc1KZelMCDf0="
+          "Value": "sha256-44Vu7OSX4JP89eoc3oTYbYfC5C7USoIWuCw1W9IG6N4="
         }
       ]
     },
@@ -27321,7 +31860,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "64944"
+          "Value": "64949"
         },
         {
           "Name": "Content-Type",
@@ -27329,11 +31868,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"DeD4pDZGgUmAQjwbJ7qSZ7o7lEMt0AHy7Y3TfA11UcU=\""
+          "Value": "\"30hq+q6k0SzlyO3ZzvgrQawSEPz/RfDirAX1GHwCy5g=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         },
         {
           "Name": "Vary",
@@ -27343,7 +31882,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-DeD4pDZGgUmAQjwbJ7qSZ7o7lEMt0AHy7Y3TfA11UcU="
+          "Value": "sha256-30hq+q6k0SzlyO3ZzvgrQawSEPz/RfDirAX1GHwCy5g="
         }
       ]
     },
@@ -27370,17 +31909,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nKR67pWc+P6b5hmPwVmQQ0dVCQ6s4aonUoLxlCOcZVw=\""
+          "Value": "\"cSt6BoD3oAqHUXj86Jz1/IqRHdwCEisDpiIRp99iAAo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nKR67pWc+P6b5hmPwVmQQ0dVCQ6s4aonUoLxlCOcZVw="
+          "Value": "sha256-cSt6BoD3oAqHUXj86Jz1/IqRHdwCEisDpiIRp99iAAo="
         }
       ]
     },
@@ -27391,7 +31930,7 @@
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000009973073"
+          "Quality": "0.000009973172"
         }
       ],
       "ResponseHeaders": [
@@ -27409,7 +31948,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100269"
+          "Value": "100268"
         },
         {
           "Name": "Content-Type",
@@ -27417,15 +31956,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tHODiv5qvYFMd5omsp8XqTWj3Tz7x1YkbnvVOWbq4h8=\""
+          "Value": "\"mDgiZ2hfsfhEqEEKS04gAwKHjxv1+3s0Q9KUuao9rX4=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"nKR67pWc+P6b5hmPwVmQQ0dVCQ6s4aonUoLxlCOcZVw=\""
+          "Value": "W/\"cSt6BoD3oAqHUXj86Jz1/IqRHdwCEisDpiIRp99iAAo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         },
         {
           "Name": "Vary",
@@ -27435,7 +31974,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nKR67pWc+P6b5hmPwVmQQ0dVCQ6s4aonUoLxlCOcZVw="
+          "Value": "sha256-cSt6BoD3oAqHUXj86Jz1/IqRHdwCEisDpiIRp99iAAo="
         }
       ]
     },
@@ -27458,7 +31997,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "100269"
+          "Value": "100268"
         },
         {
           "Name": "Content-Type",
@@ -27466,11 +32005,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"tHODiv5qvYFMd5omsp8XqTWj3Tz7x1YkbnvVOWbq4h8=\""
+          "Value": "\"mDgiZ2hfsfhEqEEKS04gAwKHjxv1+3s0Q9KUuao9rX4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:57:24 GMT"
+          "Value": "Wed, 12 Feb 2025 04:43:18 GMT"
         },
         {
           "Name": "Vary",
@@ -27480,7 +32019,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-tHODiv5qvYFMd5omsp8XqTWj3Tz7x1YkbnvVOWbq4h8="
+          "Value": "sha256-mDgiZ2hfsfhEqEEKS04gAwKHjxv1+3s0Q9KUuao9rX4="
         }
       ]
     },
@@ -27511,7 +32050,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:56:52 GMT"
+          "Value": "Wed, 12 Feb 2025 04:42:38 GMT"
         }
       ],
       "EndpointProperties": [
@@ -27562,7 +32101,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:56:52 GMT"
+          "Value": "Wed, 12 Feb 2025 04:42:38 GMT"
         },
         {
           "Name": "Vary",
@@ -27607,7 +32146,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 16 Jan 2025 18:56:52 GMT"
+          "Value": "Wed, 12 Feb 2025 04:42:38 GMT"
         },
         {
           "Name": "Vary",
@@ -28813,7 +33352,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2092"
+          "Value": "2106"
         },
         {
           "Name": "Content-Type",
@@ -28821,22 +33360,22 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/PxwxUCkSaADtCtEb7xgmpxjBO/ZOUDoh+Rb4defPVQ=\""
+          "Value": "\"OsewqvsEbOcB7TYMerj6uCK5b+tm5eDQlcTF52RFFnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:30:09 GMT"
+          "Value": "Sat, 29 Mar 2025 15:41:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-/PxwxUCkSaADtCtEb7xgmpxjBO/ZOUDoh+Rb4defPVQ="
+          "Value": "sha256-OsewqvsEbOcB7TYMerj6uCK5b+tm5eDQlcTF52RFFnM="
         }
       ]
     },
     {
-      "Route": "index.wzn6esgag7.html",
+      "Route": "index.yyx1l0riqd.html",
       "AssetFile": "index.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -28850,7 +33389,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2092"
+          "Value": "2106"
         },
         {
           "Name": "Content-Type",
@@ -28858,21 +33397,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"/PxwxUCkSaADtCtEb7xgmpxjBO/ZOUDoh+Rb4defPVQ=\""
+          "Value": "\"OsewqvsEbOcB7TYMerj6uCK5b+tm5eDQlcTF52RFFnM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:30:09 GMT"
+          "Value": "Sat, 29 Mar 2025 15:41:48 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "wzn6esgag7"
+          "Value": "yyx1l0riqd"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-/PxwxUCkSaADtCtEb7xgmpxjBO/ZOUDoh+Rb4defPVQ="
+          "Value": "sha256-OsewqvsEbOcB7TYMerj6uCK5b+tm5eDQlcTF52RFFnM="
         },
         {
           "Name": "label",
@@ -28881,7 +33420,7 @@
       ]
     },
     {
-      "Route": "js/algorithms/aes.ga9dwxmcxv.js",
+      "Route": "js/algorithms/aes.8u4l3wir8l.js",
       "AssetFile": "js/algorithms/aes.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -28895,7 +33434,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2586"
+          "Value": "3129"
         },
         {
           "Name": "Content-Type",
@@ -28903,21 +33442,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SBTgthiAAF8tposOAqUl99yyqCLaaelbVqRXS2c62Bo=\""
+          "Value": "\"QLET8jLLcKr5YlZz9pL31TJixUKwwUOvDQP3xH/xmfA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:07 GMT"
+          "Value": "Sat, 29 Mar 2025 15:51:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ga9dwxmcxv"
+          "Value": "8u4l3wir8l"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-SBTgthiAAF8tposOAqUl99yyqCLaaelbVqRXS2c62Bo="
+          "Value": "sha256-QLET8jLLcKr5YlZz9pL31TJixUKwwUOvDQP3xH/xmfA="
         },
         {
           "Name": "label",
@@ -28940,7 +33479,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2586"
+          "Value": "3129"
         },
         {
           "Name": "Content-Type",
@@ -28948,17 +33487,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SBTgthiAAF8tposOAqUl99yyqCLaaelbVqRXS2c62Bo=\""
+          "Value": "\"QLET8jLLcKr5YlZz9pL31TJixUKwwUOvDQP3xH/xmfA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 18:39:07 GMT"
+          "Value": "Sat, 29 Mar 2025 15:51:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-SBTgthiAAF8tposOAqUl99yyqCLaaelbVqRXS2c62Bo="
+          "Value": "sha256-QLET8jLLcKr5YlZz9pL31TJixUKwwUOvDQP3xH/xmfA="
+        }
+      ]
+    },
+    {
+      "Route": "js/algorithms/chacha.evngl42vlo.js",
+      "AssetFile": "js/algorithms/chacha.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2423"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2oHd3OKrp3IALgbqhv/l9jcqBBRKYuqbtVzbOTD1KL8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 15:51:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "evngl42vlo"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2oHd3OKrp3IALgbqhv/l9jcqBBRKYuqbtVzbOTD1KL8="
+        },
+        {
+          "Name": "label",
+          "Value": "js/algorithms/chacha.js"
         }
       ]
     },
@@ -28977,7 +33561,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2063"
+          "Value": "2423"
         },
         {
           "Name": "Content-Type",
@@ -28985,62 +33569,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"PS/Xz6k/EUnyLkMlACiWp9qkyMqrybKXjZt6YEHyBlo=\""
+          "Value": "\"2oHd3OKrp3IALgbqhv/l9jcqBBRKYuqbtVzbOTD1KL8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:20:37 GMT"
+          "Value": "Sat, 29 Mar 2025 15:51:34 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-PS/Xz6k/EUnyLkMlACiWp9qkyMqrybKXjZt6YEHyBlo="
-        }
-      ]
-    },
-    {
-      "Route": "js/algorithms/chacha.nr2r2mvlie.js",
-      "AssetFile": "js/algorithms/chacha.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2063"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PS/Xz6k/EUnyLkMlACiWp9qkyMqrybKXjZt6YEHyBlo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:20:37 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "nr2r2mvlie"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-PS/Xz6k/EUnyLkMlACiWp9qkyMqrybKXjZt6YEHyBlo="
-        },
-        {
-          "Name": "label",
-          "Value": "js/algorithms/chacha.js"
+          "Value": "sha256-2oHd3OKrp3IALgbqhv/l9jcqBBRKYuqbtVzbOTD1KL8="
         }
       ]
     },
@@ -29209,7 +33748,7 @@
       ]
     },
     {
-      "Route": "js/algorithms/twofish.afayotcwhb.js",
+      "Route": "js/algorithms/twofish.41bvjux3mb.js",
       "AssetFile": "js/algorithms/twofish.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -29223,7 +33762,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1698"
+          "Value": "2111"
         },
         {
           "Name": "Content-Type",
@@ -29231,21 +33770,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RtXdioLOkntuQwpBAuBw5UWCep/iackK6l1bN0UEKJI=\""
+          "Value": "\"aLtlSbroyzfFQgQHFy2QsZRaAjkxIF26vG8XNvhKIUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:20:55 GMT"
+          "Value": "Sat, 29 Mar 2025 15:53:54 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "afayotcwhb"
+          "Value": "41bvjux3mb"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-RtXdioLOkntuQwpBAuBw5UWCep/iackK6l1bN0UEKJI="
+          "Value": "sha256-aLtlSbroyzfFQgQHFy2QsZRaAjkxIF26vG8XNvhKIUg="
         },
         {
           "Name": "label",
@@ -29268,7 +33807,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1698"
+          "Value": "2111"
         },
         {
           "Name": "Content-Type",
@@ -29276,17 +33815,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RtXdioLOkntuQwpBAuBw5UWCep/iackK6l1bN0UEKJI=\""
+          "Value": "\"aLtlSbroyzfFQgQHFy2QsZRaAjkxIF26vG8XNvhKIUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 12:20:55 GMT"
+          "Value": "Sat, 29 Mar 2025 15:53:54 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-RtXdioLOkntuQwpBAuBw5UWCep/iackK6l1bN0UEKJI="
+          "Value": "sha256-aLtlSbroyzfFQgQHFy2QsZRaAjkxIF26vG8XNvhKIUg="
+        }
+      ]
+    },
+    {
+      "Route": "js/common.81w6isjo4y.js",
+      "AssetFile": "js/common.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "927"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rFnMKblU15FeIfN3eE+r5QacGtQw0AX4/8er6HQSXcI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 15:33:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "81w6isjo4y"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rFnMKblU15FeIfN3eE+r5QacGtQw0AX4/8er6HQSXcI="
+        },
+        {
+          "Name": "label",
+          "Value": "js/common.js"
         }
       ]
     },
@@ -29305,7 +33889,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1396"
+          "Value": "927"
         },
         {
           "Name": "Content-Type",
@@ -29313,62 +33897,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"flKlhqtxKcfZuSXO9/2h+2CfwRN+NotQBYgPyCF0JTc=\""
+          "Value": "\"rFnMKblU15FeIfN3eE+r5QacGtQw0AX4/8er6HQSXcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:50:27 GMT"
+          "Value": "Sat, 29 Mar 2025 15:33:21 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-flKlhqtxKcfZuSXO9/2h+2CfwRN+NotQBYgPyCF0JTc="
-        }
-      ]
-    },
-    {
-      "Route": "js/common.y80tfqjb60.js",
-      "AssetFile": "js/common.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1396"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"flKlhqtxKcfZuSXO9/2h+2CfwRN+NotQBYgPyCF0JTc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 22 Mar 2025 22:50:27 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "y80tfqjb60"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-flKlhqtxKcfZuSXO9/2h+2CfwRN+NotQBYgPyCF0JTc="
-        },
-        {
-          "Name": "label",
-          "Value": "js/common.js"
+          "Value": "sha256-rFnMKblU15FeIfN3eE+r5QacGtQw0AX4/8er6HQSXcI="
         }
       ]
     },
@@ -29455,51 +33994,6 @@
       ]
     },
     {
-      "Route": "js/constants/crypto-constants.0k6hoebtqp.js",
-      "AssetFile": "js/constants/crypto-constants.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "238"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kMQmej6zyLarM/sKg2L26BELTP/qhzocy1OMIenSUgQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 07:42:16 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "0k6hoebtqp"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kMQmej6zyLarM/sKg2L26BELTP/qhzocy1OMIenSUgQ="
-        },
-        {
-          "Name": "label",
-          "Value": "js/constants/crypto-constants.js"
-        }
-      ]
-    },
-    {
       "Route": "js/constants/crypto-constants.js",
       "AssetFile": "js/constants/crypto-constants.js",
       "Selectors": [],
@@ -29514,7 +34008,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "238"
+          "Value": "264"
         },
         {
           "Name": "Content-Type",
@@ -29522,17 +34016,62 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kMQmej6zyLarM/sKg2L26BELTP/qhzocy1OMIenSUgQ=\""
+          "Value": "\"ITixCbhZMYwry1pJUVJ2CdG6eBXo4Y2RGhZ91dam2mM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 07:42:16 GMT"
+          "Value": "Sat, 29 Mar 2025 15:33:21 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kMQmej6zyLarM/sKg2L26BELTP/qhzocy1OMIenSUgQ="
+          "Value": "sha256-ITixCbhZMYwry1pJUVJ2CdG6eBXo4Y2RGhZ91dam2mM="
+        }
+      ]
+    },
+    {
+      "Route": "js/constants/crypto-constants.lvfnsvh44r.js",
+      "AssetFile": "js/constants/crypto-constants.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "264"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ITixCbhZMYwry1pJUVJ2CdG6eBXo4Y2RGhZ91dam2mM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 29 Mar 2025 15:33:21 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lvfnsvh44r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ITixCbhZMYwry1pJUVJ2CdG6eBXo4Y2RGhZ91dam2mM="
+        },
+        {
+          "Name": "label",
+          "Value": "js/constants/crypto-constants.js"
         }
       ]
     },
@@ -29701,7 +34240,7 @@
       ]
     },
     {
-      "Route": "js/encryption-service.in4sykrfbx.js",
+      "Route": "js/encryption-service.d4yb35k0or.js",
       "AssetFile": "js/encryption-service.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -29715,7 +34254,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5285"
+          "Value": "5378"
         },
         {
           "Name": "Content-Type",
@@ -29723,21 +34262,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"jqgryT8OVbJvDnKjwJoZWnZCB6NcC2Ohnq18Kk+0IgA=\""
+          "Value": "\"fdgLL4NoWys0XbZDWPm/WVH4Ztwj6R/4/MpwQcSbx7A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 07:36:41 GMT"
+          "Value": "Sat, 29 Mar 2025 15:11:00 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "in4sykrfbx"
+          "Value": "d4yb35k0or"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-jqgryT8OVbJvDnKjwJoZWnZCB6NcC2Ohnq18Kk+0IgA="
+          "Value": "sha256-fdgLL4NoWys0XbZDWPm/WVH4Ztwj6R/4/MpwQcSbx7A="
         },
         {
           "Name": "label",
@@ -29760,7 +34299,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5285"
+          "Value": "5378"
         },
         {
           "Name": "Content-Type",
@@ -29768,17 +34307,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"jqgryT8OVbJvDnKjwJoZWnZCB6NcC2Ohnq18Kk+0IgA=\""
+          "Value": "\"fdgLL4NoWys0XbZDWPm/WVH4Ztwj6R/4/MpwQcSbx7A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 23 Mar 2025 07:36:41 GMT"
+          "Value": "Sat, 29 Mar 2025 15:11:00 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-jqgryT8OVbJvDnKjwJoZWnZCB6NcC2Ohnq18Kk+0IgA="
+          "Value": "sha256-fdgLL4NoWys0XbZDWPm/WVH4Ztwj6R/4/MpwQcSbx7A="
         }
       ]
     },

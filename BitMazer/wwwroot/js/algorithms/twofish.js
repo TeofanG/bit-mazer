@@ -1,5 +1,6 @@
 ﻿import { twofish } from './twofish-lib.js';
 import { CryptoConstants } from '../constants/crypto-constants.js';
+const { TWOFISH_KEY_SIZE, TWOFISH_IV_SIZE } = CryptoConstants;
 
 window.twofish = {
     generateIV: function (length) {
@@ -16,7 +17,7 @@ window.twofish = {
 
     encrypt: function (fileBuffer, iv, key) {
         try {
-            if (checkOperationParams(fileBuffer, iv, key) == false) {
+            if (this.checkOperationParams(fileBuffer, iv, key) == false) {
                 return null;
             }
 
@@ -51,10 +52,19 @@ window.twofish = {
         if (!(data instanceof Uint8Array) ||
             !(iv instanceof Uint8Array) ||
             !(key instanceof Uint8Array) ||
-            key.length !== CryptoConstants.TWOFISH_KEY_SIZE) {
+            key.length !== TWOFISH_KEY_SIZE) {
             return false;
         }
 
         return true;
+    },
+
+    encryptBase64: function (base64) {
+        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+        const key = this.generateKey(TWOFISH_KEY_SIZE);
+        const iv = this.generateIV(TWOFISH_IV_SIZE);
+        const encryptedData = this.encrypt(byteArray, iv, key);
+
+        return arrayBufferToBase64(encryptedData);
     }
 };

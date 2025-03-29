@@ -20,24 +20,6 @@ function arrayBufferToBase64(buffer) {
     return window.btoa(binary);
 }
 
-/*function arrayBufferToBase64(buffer) {
-    return new Promise((resolve, reject) => {
-        const blob = new Blob([buffer]);
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            // Strip out "data:application/octet-stream;base64,"
-            const base64 = reader.result.split(',')[1];
-            resolve(base64);
-        };
-
-        reader.onerror = reject;
-
-        reader.readAsDataURL(blob);
-    });
-}*/
-
-
 function base64ToArrayBuffer(base64) {
     const binary = window.atob(base64);
     const bytes = new Uint8Array(binary.length);

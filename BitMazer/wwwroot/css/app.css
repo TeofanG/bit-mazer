@@ -1,6 +1,7 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
 button {
     all: unset;
 }
@@ -30,8 +31,6 @@ button {
     background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
     background-color: #e9e9e9;
 }
-
-
 
 .content {
     padding-top: 1.1rem;
@@ -89,8 +88,6 @@ button {
 label {
     user-select: none;
 }
-
-
 
 #logo {
     width: 160px;

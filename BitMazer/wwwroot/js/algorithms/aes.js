@@ -1,6 +1,10 @@
 ﻿/*
     Ensure that the input file, key and IV are in Uint8Array format
 */
+import { CryptoConstants } from '../constants/crypto-constants.js';
+
+const { AES_NAME, AES_KEY_SIZE, AES_IV_SIZE } = CryptoConstants;
+
 window.aes = {
     getKey: async function (mode, length) {
         try {
@@ -28,7 +32,7 @@ window.aes = {
             }
             const encryptedData = await window.crypto.subtle.encrypt(
                 {
-                    name: "AES-GCM",
+                    name: AES_NAME,
                     iv: iv,
                     tagLength: 128, // authentication tag length
                 },
@@ -47,7 +51,7 @@ window.aes = {
         try {
             const decryptedData = await crypto.subtle.decrypt(
                 {
-                    name: "AES-GCM",
+                    name: AES_NAME,
                     iv: iv,
                 },
                 decKey,
@@ -66,7 +70,7 @@ window.aes = {
                 "raw", //can be "jwk" or "raw"
                 aesRawKey,
                 {   //this is the algorithm options
-                    name: "AES-GCM",
+                    name: AES_NAME,
                 },
                 false, //whether the key is extractable (i.e. can be used in exportKey)
                 ["encrypt", "decrypt"] //can "encrypt", "decrypt", "wrapKey", or "unwrapKey"
@@ -76,5 +80,15 @@ window.aes = {
         } catch (err) {
             console.error(err);
         }
+    },
+
+    encryptBase64: async function (base64) {
+        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+
+        const key = await this.getKey(AES_NAME, AES_KEY_SIZE);
+        const iv = window.crypto.getRandomValues(new Uint8Array(AES_IV_SIZE));
+        const encryptedData = await this.encrypt(byteArray, iv, key);
+
+        return arrayBufferToBase64(encryptedData);
     }
 }
