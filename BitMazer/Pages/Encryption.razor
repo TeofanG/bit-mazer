@@ -2,7 +2,7 @@
 @inject IJSRuntime js
 
 <PageTitle>Encryption</PageTitle>
-<h1>Encrypt a file</h1>
+<h1>Encryption</h1>
 <div class="container my-4">
     <div class="card p-4">
         <!--Upload file button-->
@@ -11,7 +11,7 @@
             <div class="input-group">
                 <InputFile  id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
 
-                <label for="enc-file-upload" class="btn load-btn">
+                <label for="enc-file-upload" class="btn btn-outline-primary">
                     <i class="fa-solid fa-upload"></i> Choose a File
                 </label>
 
@@ -46,12 +46,14 @@
                 <i class="fas fa-shield-alt" style="color:#0d6efd"></i>
                 Choose algorithm:
             </label>
-            <InputSelect class="form-select" @bind-Value="selectedAlg">
-                @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
-                {
-                    <option value="@alg">@alg</option>
-                }
-            </InputSelect>
+            <div class="input-group">
+                <InputSelect class="form-select" @bind-Value="selectedAlg">
+                    @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+                    {
+                        <option value="@alg">@alg</option>
+                    }
+                </InputSelect>
+            </div>
         </div>
 
         <!--Upload key button-->
