@@ -1,3 +1,4 @@
+.vs/
 ## Visual Studio
 .vs/
 *.user
@@ -6,9 +7,13 @@
 *.sln.docstates
 
 # Build Results
-bin/
+/BitMazer/bin/
+/BitMazer/.vs/
+/BitMazer/vs/
+/BitMazer/obj/
 obj/
-[Ll]og/
+bin/
+log
 *.log
 
 .vscode/
