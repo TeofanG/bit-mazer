@@ -7,9 +7,13 @@
 *.sln.docstates
 
 # Build Results
-bin\
-obj\
-log\
+/BitMazer/bin/
+/BitMazer/.vs/
+/BitMazer/vs/
+/BitMazer/obj/
+obj/
+bin/
+log
 *.log
 
 .vscode/
