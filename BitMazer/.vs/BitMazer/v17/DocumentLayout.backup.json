@@ -1,0 +1,177 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Licenta\\BitMazer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\pages\\decryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:pages\\decryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\js\\decryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\decryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\js\\encryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\encryption-service.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\pages\\encryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:pages\\encryption.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\js\\algorithms\\chacha.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\algorithms\\chacha.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\models\\encryptionalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:models\\encryptionalgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\js\\algorithms\\rsa.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\algorithms\\rsa.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|e:\\licenta\\bitmazer\\wwwroot\\js\\algorithms\\twofish.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4CB7D7C3-B1E4-4C9F-978E-28427238B143}|BitMazer.csproj|solutionrelative:wwwroot\\js\\algorithms\\twofish.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\index.html",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\index.html",
+              "RelativeToolTip": "wwwroot\\index.html",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAB8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-04-04T20:44:58.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "chacha.js",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\chacha.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\algorithms\\chacha.js",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\chacha.js",
+              "RelativeToolTip": "wwwroot\\js\\algorithms\\chacha.js",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-04T20:33:50.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "rsa.js",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\rsa.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\algorithms\\rsa.js",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\rsa.js",
+              "RelativeToolTip": "wwwroot\\js\\algorithms\\rsa.js",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-04T20:27:17.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EncryptionAlgorithm.cs",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\Models\\EncryptionAlgorithm.cs",
+              "RelativeDocumentMoniker": "Models\\EncryptionAlgorithm.cs",
+              "ToolTip": "E:\\Licenta\\BitMazer\\Models\\EncryptionAlgorithm.cs",
+              "RelativeToolTip": "Models\\EncryptionAlgorithm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T20:09:00.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Decryption.razor",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\Pages\\Decryption.razor",
+              "RelativeDocumentMoniker": "Pages\\Decryption.razor",
+              "ToolTip": "E:\\Licenta\\BitMazer\\Pages\\Decryption.razor",
+              "RelativeToolTip": "Pages\\Decryption.razor",
+              "ViewState": "AgIAALUAAAAAAAAAAAAQwLYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T20:01:33.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Encryption.razor",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\Pages\\Encryption.razor",
+              "RelativeDocumentMoniker": "Pages\\Encryption.razor",
+              "ToolTip": "E:\\Licenta\\BitMazer\\Pages\\Encryption.razor",
+              "RelativeToolTip": "Pages\\Encryption.razor",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T19:50:38.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "decryption-service.js",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\js\\decryption-service.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\decryption-service.js",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\js\\decryption-service.js",
+              "RelativeToolTip": "wwwroot\\js\\decryption-service.js",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-04T19:16:22.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "encryption-service.js",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\js\\encryption-service.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\encryption-service.js",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\js\\encryption-service.js",
+              "RelativeToolTip": "wwwroot\\js\\encryption-service.js",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAQwFUAAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-04T19:14:23.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "twofish.js",
+              "DocumentMoniker": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\twofish.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\algorithms\\twofish.js",
+              "ToolTip": "E:\\Licenta\\BitMazer\\wwwroot\\js\\algorithms\\twofish.js",
+              "RelativeToolTip": "wwwroot\\js\\algorithms\\twofish.js",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswCcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-04T19:14:10.63Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
