@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/loading-animation.css" />
-    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="icon" type="image/png" href="images/logo.png" />
     <link href="BitMazer.styles.css" rel="stylesheet" />
 </head>
 
@@ -25,18 +25,18 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/tweetnacl@latest/nacl.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tweetnacl-util@latest/nacl-util.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/twofish@1.0.1/src/twofish.min.js"></script>
-
     <script src="_framework/blazor.webassembly.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/algorithms/rsa.js"></script>
+
+    <!--Encryption algortihms CDNs-->
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl@latest/nacl.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twofish@1.0.1/src/twofish.min.js"></script>
+    <script type="module" src="js/utility.js"></script>
+    
+    <script type="module" src="js/algorithms/rsa.js"></script>
     <script type="module" src="js/algorithms/aes.js"></script>
-    <script type="module" src="js/algorithms/twofish.js"></script>
     <script type="module" src="js/algorithms/chacha.js"></script>
+    <script type="module" src="js/algorithms/twofish.js"></script>
     <script type="module" src="js/algorithms/twofish-lib.js"></script>
-    <script src="js/metadata.js"></script>
 
     <!--constants-->
     <script type="module" src="js/constants/blob-types.js"></script>

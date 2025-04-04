@@ -1,26 +1,22 @@
 ﻿using Microsoft.Extensions.FileSystemGlobbing;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BitMazer.Models
 {
-    public class FileMetadataModel
+    public class FileMetadataModel(string fileName, string fileType, float fileSize, string encAlg)
     {
+        [JsonPropertyName("fileName")]
+        public string FileName { get; set; } = fileName;
 
-        public FileMetadataModel(string fileName, string fileType, float fileSize, string encAlg)
-        {
-            this.fileName = fileName;
-            this.fileType = fileType;
-            this.fileSize = (float)Math.Round((fileSize / 1024.0 / 1024.0), 2);
-            this.encAlg = encAlg;
-        }
+        [JsonPropertyName("fileType")]
+        public string FileType { get; set; } = fileType;
 
-        public string fileName { get; set; }
+        [JsonPropertyName("fileSize")]
+        public float FileSize { get; set; } = (float)Math.Round((fileSize / 1024.0 / 1024.0), 2);
 
-        public string fileType { get; set; }
-
-        public float fileSize { get; set; }
-
-        public string encAlg { get; set; }
+        [JsonPropertyName("encryptionAlgorithm")]
+        public string EncAlg { get; set; } = encAlg;
     }
 }

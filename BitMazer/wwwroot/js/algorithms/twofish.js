@@ -33,7 +33,7 @@ window.twofish = {
 
     decrypt: function (cipherdata, iv, key) {
         try {
-            if (checkOperationParams(cipherdata, iv, key) == false) {
+            if (this.checkOperationParams(cipherdata, iv, key) == false) {
                 return null;
             }
 
@@ -65,6 +65,6 @@ window.twofish = {
         const iv = this.generateIV(TWOFISH_IV_SIZE);
         const encryptedData = this.encrypt(byteArray, iv, key);
 
-        return arrayBufferToBase64(encryptedData);
+        return utility.arrayBufferToBase64(encryptedData);
     }
 };

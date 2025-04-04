@@ -10,7 +10,7 @@ namespace BitMazer.Models
         public FileModel(IBrowserFile file)
         {
             this.IBrowserFile = file;
-            this.ByteArrayFile = Array.Empty<byte>();
+            this.ByteArrayFile = [];
             this.Base64File = string.Empty;
             this.IBrowserFile = file;
             this.Name = file.Name;
