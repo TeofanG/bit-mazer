@@ -1,4 +1,7 @@
-﻿@page "/decryption"
+﻿@using static BitMazer.Constants.AppConstants
+
+
+@page "/decryption"
 @using BitMazer.Models
 @using System.Text.Json
 @using Microsoft.AspNetCore.Components.Forms
@@ -60,8 +63,8 @@
         <!--Start decrypt button-->
         <div class="mb-3">
             <button @onclick="InitDecryption" 
-                class="btn btn-primary" 
-                disabled="@(selectedFile == null && selectedKey==null && error != null)">
+            class="btn btn-outline-primary" 
+            disabled="@(selectedFile == null && selectedKey==null && error != null)">
                 <i class="bi bi-unlock"></i>
                 Decrypt
             </button>
@@ -76,7 +79,7 @@
         <!--Download/Error section-->
         @if (error == null)
         {
-            <div id="download-container">
+            <div id="download-container" style="display: @(IsDecrypting ? "none" : "block")">
             </div>
         } else {
             <div id="error-container">
@@ -102,21 +105,20 @@
         }
         else
         {
-            IsDecrypting = true; // Show loader
+            IsDecrypting = true;
             StateHasChanged();
 
-            int minDuration = 2000; // Minimum loader animation time
+            int minAnimationDuration = @MinLoadingAnimationTime;
             DateTime startTime = DateTime.Now;
 
             try
             {
                 string result = await js.InvokeAsync<string>("startDecryption");
 
-                // Ensure minimum loader duration
                 int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
-                if (elapsedTime < minDuration)
+                if (elapsedTime < minAnimationDuration)
                 {
-                    await Task.Delay(minDuration - elapsedTime);
+                    await Task.Delay(minAnimationDuration - elapsedTime);
                 }
 
                 if (result.StartsWith("Error:"))
@@ -166,21 +168,16 @@
             metadata = null;
             try
             {
+                error = null;
                 string metadataJson = await js.InvokeAsync<string>("utility.extractMetadataFromFile");
                 metadata = JsonSerializer.Deserialize<FileMetadataModel>(metadataJson);
-                Console.WriteLine("✅ Metadata extracted successfully.");
-                if (error !=null && error.Equals("Corrupt file or with invalid encryption format")) {
-                    error = null;
-                }
             }
             catch (JSException jsEx)
             {
-                Console.WriteLine(jsEx.Message);
                 error = "Corrupt file or with invalid encryption format.";
             }
             catch (JsonException ex)
             {
-                Console.WriteLine(ex.Message);
                 error = "Corrupt file or with invalid encryption format.";
             }
         }

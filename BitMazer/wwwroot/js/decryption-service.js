@@ -21,6 +21,7 @@ window.startDecryption = async function () {
 
         // get the uploaded key and import it
         const rsaPrivateKeyFile = document.getElementById(DEC_KEY_INPUT_FIELD).files[0];
+        console.log(DEC_KEY_INPUT_FIELD);
         const rsaPrivateKey = await rsa.importPrivateKey(rsaPrivateKeyFile);
 
         //decrypt the encryption key of the file with the previous obtained rsa key
@@ -46,7 +47,7 @@ window.startDecryption = async function () {
                 break;
             case "Twofish":
                 decryptedData = twofish.decrypt(
-                    new Uint8Array(encryptedData), decIV, new Uint8Array(decryptedKeyRaw)
+                    encryptedData, decIV, new Uint8Array(decryptedKeyRaw)
 
                 );
                 break;
@@ -56,7 +57,7 @@ window.startDecryption = async function () {
         }
 
         //add UI button for user-downloading
-        createDownloadButton(decryptedData, BlobConstants.APP_OCTET, metadata.fileName);
+        utility.createDownloadButton(decryptedData, BlobConstants.APP_OCTET, metadata.fileName);
 
         return "Success";
     } catch (err) {

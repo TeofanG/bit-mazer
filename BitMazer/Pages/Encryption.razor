@@ -1,4 +1,6 @@
-﻿@page "/encryption"
+﻿@using static BitMazer.Constants.AppConstants
+
+@page "/encryption"
 @inject IJSRuntime js
 
 <PageTitle>Encryption</PageTitle>
@@ -159,7 +161,7 @@
             IsEncrypting = true; // Show loader
             StateHasChanged();
 
-            int minDuration = 2000; // Minimum loader animation time
+            int minAnimationDuration = @MinLoadingAnimationTime; // Minimum loader animation time
             DateTime startTime = DateTime.Now;
 
             try
@@ -168,9 +170,9 @@
 
                 // Ensure minimum loader duration
                 int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
-                if (elapsedTime < minDuration)
+                if (elapsedTime < minAnimationDuration)
                 {
-                    await Task.Delay(minDuration - elapsedTime);
+                    await Task.Delay(minAnimationDuration - elapsedTime);
                 }
 
                 if (result.StartsWith("Error:"))
