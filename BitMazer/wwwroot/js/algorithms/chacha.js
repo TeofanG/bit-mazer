@@ -60,10 +60,11 @@ window.chacha = {
         }
     },
 
-    encryptBase64: function (base64) {
+    encryptBase64: function (base64, sampleIV) {
         const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
         const key = this.generateKey();
-        const iv = nacl.randomBytes(CHACHA_IV_SIZE);
+        const iv = new Uint8Array(sampleIV.slice(0, CHACHA_IV_SIZE));
+
         const encryptedData = this.encrypt(byteArray, iv, key);
 
         return utility.arrayBufferToBase64(encryptedData);

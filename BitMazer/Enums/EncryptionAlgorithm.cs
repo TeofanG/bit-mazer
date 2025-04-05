@@ -1,4 +1,4 @@
-﻿namespace BitMazer.Models
+﻿namespace BitMazer.Enums
 {
     public enum EncryptionAlgorithm
     {
