@@ -4,6 +4,7 @@ html, body {
     overflow: hidden;
     font-family: sans-serif, Tahoma
 }
+
 button {
     all: unset;
 }
@@ -11,12 +12,13 @@ button {
 .btn-dark {
     background-color: #0A192F;
 }
-.btn:focus, 
-.btn:active:focus, 
-.btn-link.nav-link:focus, 
-.form-control:focus, 
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
 .form-check-input:focus {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 .load-btn:hover {
@@ -49,7 +51,7 @@ button {
     z-index: 1000;
 }
 
-#blazor-error-ui .dismiss {
+    #blazor-error-ui .dismiss {
         cursor: pointer;
         position: absolute;
         right: 0.75rem;
@@ -62,7 +64,7 @@ button {
     color: white;
 }
 
-.blazor-error-boundary::after {
+    .blazor-error-boundary::after {
         content: "An error has occurred."
     }
 
@@ -89,10 +91,10 @@ label {
     box-shadow: 0 0 10px rgba(0, 174, 255, 0.4);
 }
 
-#logo:hover {
-    transform: scale(1.02);
-    transition: transform 0.8s ease-in-out;
- }
+    #logo:hover {
+        transform: scale(1.02);
+        transition: transform 0.8s ease-in-out;
+    }
 
 #navbar-brand {
     font-size: 35px;
@@ -144,10 +146,10 @@ select:focus {
 }
 
 .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
-h1{
+h1 {
     margin-left: 12px;
 }
 
