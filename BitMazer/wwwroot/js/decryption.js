@@ -1,5 +1,11 @@
 ﻿import { BlobConstants } from './constants/blob-types.js';
 import { DomElements } from './constants/domElements.js';
+import { utility } from './utility.js';
+import { rsa } from './algorithms/rsa.js';
+import { aes } from './algorithms/aes.js';
+import { serpent } from './algorithms/serpent.js';
+import { twofish } from './algorithms/twofish.js';
+import { chacha } from './algorithms/chacha.js';
 
 const {
     DEC_INPUT_FIELD,
@@ -45,16 +51,23 @@ window.startDecryption = async function () {
                     new Uint8Array(decryptedKeyRaw)
                 );
                 break;
+            case "Serpent":
+                decryptedData = serpent.decrypt(
+                    encryptedData, new Uint8Array(decryptedKeyRaw)
+                );
+                break;
             case "Twofish":
                 decryptedData = twofish.decrypt(
                     encryptedData, decIV, new Uint8Array(decryptedKeyRaw)
-
                 );
                 break;
             default:
                 throw new Error("Unknown algorithm provided for decryption (" + encryptionAlg + ").");
                 break;
         }
+
+        //clear download section
+        utility.clearDownloadSection();
 
         //add UI button for user-downloading
         utility.createDownloadButton(decryptedData, BlobConstants.APP_OCTET, metadata.fileName);

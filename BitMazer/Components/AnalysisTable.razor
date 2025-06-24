@@ -1,0 +1,59 @@
+﻿@using BitMazer.Enums
+
+<Grid TItem="AlgorithmAnalysis"
+    Data="@Data"
+    AllowSorting="true"
+    Responsive="true"
+    RowClass="@(item => GetRowClass(item))"
+    HeaderRowCssClass="bg-primary text-white border-bottom-0"
+      Class="table table-hover">
+
+    <GridColumns>
+        <GridColumn TItem="AlgorithmAnalysis" 
+                    HeaderText="Algorithm" 
+                    SortKeySelector="item => item.Algorithm">
+            @context.Algorithm
+        </GridColumn>
+
+        <GridColumn TItem="AlgorithmAnalysis" 
+                    HeaderText="Encryption Time (ms)" 
+                    SortKeySelector="item => item.EncryptionTimeMs">
+            @context.EncryptionTimeMs
+        </GridColumn>
+
+        <GridColumn TItem="AlgorithmAnalysis" 
+                    HeaderText="Memory Usage (MB)" 
+                    SortKeySelector="item => item.MemoryUsageLevel">
+            @context.MemoryUsageMB (@context.MemoryUsageLevel)
+        </GridColumn>
+
+        <GridColumn TItem="AlgorithmAnalysis" 
+                    HeaderText="Entropy" 
+                    SortKeySelector="item => item.Entropy">
+            @context.Entropy
+        </GridColumn>
+
+        <GridColumn TItem="AlgorithmAnalysis" 
+                    HeaderText="Standard Deviation" 
+                    SortKeySelector="item => item.StdDev">
+            @context.StdDev
+        </GridColumn>
+    </GridColumns>
+</Grid>
+
+@code {
+    [Parameter]
+    public List<AlgorithmAnalysis> Data { get; set; } = new();
+
+    [Parameter]
+    public string SelectedAlg { get; set; }
+
+    private string GetRowClass(AlgorithmAnalysis item)
+    {
+        if (item.Algorithm.ToString() == SelectedAlg)
+        {
+            return "table-info";
+        }
+        return "";
+    }
+}

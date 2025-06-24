@@ -2,13 +2,14 @@
     Ensure that the input file, key and IV are in Uint8Array format
 */
 import { CryptoConstants } from '../constants/crypto-constants.js';
+import { utility } from '../utility.js';
 
 const { AES_NAME, AES_KEY_SIZE, AES_IV_SIZE } = CryptoConstants;
 
-window.aes = {
+export const aes = {
     getKey: async function (mode, length) {
         try {
-            const key = await window.crypto.subtle.generateKey(
+            const key = await crypto.subtle.generateKey(
                 {
                     name: mode,
                     length: length,
@@ -30,7 +31,7 @@ window.aes = {
             if (!encKey) {
                 throw new Error("Key is not defined.");
             }
-            const encryptedData = await window.crypto.subtle.encrypt(
+            const encryptedData = await crypto.subtle.encrypt(
                 {
                     name: AES_NAME,
                     iv: iv,
@@ -66,7 +67,7 @@ window.aes = {
 
     importKey: async function (aesRawKey) {
         try {
-            const aesKey = await window.crypto.subtle.importKey(
+            const aesKey = await crypto.subtle.importKey(
                 "raw", //can be "jwk" or "raw"
                 aesRawKey,
                 {   //this is the algorithm options

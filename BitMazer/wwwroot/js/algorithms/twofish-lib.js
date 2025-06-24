@@ -203,7 +203,7 @@ RNG.prototype.choice = function choice(array) {
 };
 
 /* eslint-disable no-shadow */
-function twofish(IV) {
+function twofishAlg(IV) {
     /* eslint-enable no-shadow */
 
     /* eslint-disable no-bitwise*/
@@ -1083,4 +1083,4 @@ function twofish(IV) {
     };
 };
 
-export { twofish };
+export { twofishAlg };

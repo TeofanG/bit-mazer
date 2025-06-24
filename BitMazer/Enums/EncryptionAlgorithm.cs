@@ -4,6 +4,7 @@
     {
         AES_GCM,
         ChaCha20,
+        Serpent,
         Twofish,
     }
 }

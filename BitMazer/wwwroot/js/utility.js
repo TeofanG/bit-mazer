@@ -6,7 +6,7 @@ const {
     DOWNLOAD_CONTAINER
 } = DomElements;
 
-window.utility = {
+export const utility = {
     arrayBufferToBase64: function (buffer) {
         return btoa(
             Array.from(new Uint8Array(buffer))
@@ -49,28 +49,39 @@ window.utility = {
         const blob = new Blob([fileData], { type: blobType });
         const url = URL.createObjectURL(blob);
 
-        // Create a Bootstrap-styled button
-        const downloadContainer = document.getElementById(DOWNLOAD_CONTAINER);
 
-        const button = document.createElement("button");
-        button.id = buttonId;
-
+        // Attach a button link
         const buttonLink = document.createElement("a");
-        buttonLink.className = "btn btn-info w-auto";
-        buttonLink.innerHTML = `<i class="bi bi-download"></i> Download <i>${fileName}</i>`;
+        buttonLink.id = buttonId;
+        buttonLink.classList.add("btn", "btn-outline-primary", "me-2", "text-decoration-none");
+        buttonLink.innerHTML = `<span class="bi bi-download"></span> <span>${fileName}</span>`;
         buttonLink.href = url;
         buttonLink.download = fileName;
 
-        // Append the button to a Bootstrap container (if available)
-        let container = document.querySelector(".card");
-        if (!container) {
-            container = document.createElement("div");
-            container.className = "card p-4";
-            document.body.appendChild(container);
+        // Append the button to the download section
+        const resultLabel = document.getElementById('result-label')
+        if (resultLabel) {
+            resultLabel.className = "d-none";
         }
 
-        button.appendChild(buttonLink);
-        downloadContainer.appendChild(button);
-        container.appendChild(downloadContainer);
+        const downloadContainer = document.getElementById(DOWNLOAD_CONTAINER);
+        downloadContainer.appendChild(buttonLink);
+    },
+    clearDownloadSection: function () {
+        const downloadContainer = document.getElementById(DOWNLOAD_CONTAINER);
+
+        const buttonLinks = downloadContainer.querySelectorAll('a');
+        buttonLinks.forEach(buttonLinks => buttonLinks.remove());
+    },
+    showLoader: function () {
+        document.getElementById('loader').classList.remove('d-none');
+    },
+
+    hideLoader: function () {
+        setTimeout(() => {
+            document.getElementById('loader').classList.add('d-none');
+        }, 5000); // 5000 milliseconds = 5 seconds
+        console.log("HIDE LOADER called");
+
     }
 }

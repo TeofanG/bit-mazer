@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using BitMazer.Enums
+@using Microsoft.AspNetCore.Components.Web
+
+
+<div class="mb-3">
+    <label class="form-label">📁 Select file:</label>
+    <div class="input-group">
+
+        <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="OnFileSelected" /> 
+         <label for="enc-file-upload" class="btn btn-outline-primary"> 
+             <i class="fa-solid fa-upload"></i> Choose a File 
+         </label>
+
+        @if (SelectedFileName != null)
+        {
+            <div class="nofilemsg">
+                <span>@SelectedFileName</span>
+                <button class="clear-file-btn ms-2" @onclick="ClearFile" title="Remove file">
+                    <i class="fa-solid fa-xmark small-icon"></i>
+                </button>
+            </div>
+        }
+        else
+        {
+            <span class="nofilemsg">No file selected.</span>
+        }
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Select Algorithms
+        </label>
+
+        @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                id="@alg"
+                value="@alg"
+                @onchange="(e => ToggleAlgorithmSelection(alg, (bool?)((ChangeEventArgs)e).Value))" />
+                <label for="@alg" class="form-check-label">@alg</label>
+            </div>
+        }
+    </div>
+    <div class="mb-3">
+        <button id="encrypt-btn"
+                class="btn btn-primary"
+                disabled="@(!SelectedAlgorithms.Any() || string.IsNullOrEmpty(SelectedFileName))"
+                @onclick="OnSubmit">
+            Run Analysis
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? SelectedFileName { get; set; }
+
+    [Parameter]
+    public EventCallback OnClearFile { get; set; }
+
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+
+    [Parameter]
+    public EventCallback<InputFileChangeEventArgs> OnFileChange { get; set; }
+
+    [Parameter]
+    public List<EncryptionAlgorithm> SelectedAlgorithms { get; set; } = new();
+    
+    [Parameter]
+    public EventCallback<List<EncryptionAlgorithm>> SelectedAlgorithmsChanged { get; set; }
+
+    private async Task ToggleAlgorithmSelection(EncryptionAlgorithm alg, bool? isChecked)
+    {
+        if (isChecked == true)
+        {
+            if (!SelectedAlgorithms.Contains(alg))
+                SelectedAlgorithms.Add(alg);
+        }
+        else
+        {
+            SelectedAlgorithms.Remove(alg);
+        }
+        await SelectedAlgorithmsChanged.InvokeAsync(SelectedAlgorithms);
+        StateHasChanged();
+    }
+
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        if (OnFileChange.HasDelegate)
+        {
+            await OnFileChange.InvokeAsync(e);
+        }
+    }
+
+    private async Task ClearFile()
+    {
+        if (OnClearFile.HasDelegate)
+        {
+            await OnClearFile.InvokeAsync();
+        }
+    }
+}

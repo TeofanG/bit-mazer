@@ -4,10 +4,10 @@ const {
     ENC_KEY_INPUT_FIELD
 } = DomElements;
 
-window.rsa = {
+export const rsa = {
     generateKey: async function (mode, modulusLength, hashType) {
         try {
-            const keyPair = await window.crypto.subtle.generateKey(
+            const keyPair = await crypto.subtle.generateKey(
                 {
                     name: mode, //RSA-OAEP
                     modulusLength: modulusLength, // key size; can be 1024, --2048, or 4096
@@ -32,7 +32,7 @@ window.rsa = {
                 throw new Error("Key is not defined.");
             }
 
-            const encryptedKey = await window.crypto.subtle.encrypt(
+            const encryptedKey = await crypto.subtle.encrypt(
                 {
                     name: "RSA-OAEP",
                     //label: Uint8Array([...]) //optional
@@ -50,7 +50,7 @@ window.rsa = {
 
     decrypt: async function (encPrivateKey, encryptedData) {
         try {
-            const decryptedKey = await window.crypto.subtle.decrypt(
+            const decryptedKey = await crypto.subtle.decrypt(
                 {
                     name: "RSA-OAEP",
                 },
@@ -69,7 +69,7 @@ window.rsa = {
             const fileContent = await file.arrayBuffer();
             const publicKeyUint8Array = new Uint8Array(fileContent);
 
-            const RSApublicKey = await window.crypto.subtle.importKey(
+            const RSApublicKey = await crypto.subtle.importKey(
                 "pkcs8",
                 publicKeyUint8Array,
                 {
@@ -89,18 +89,11 @@ window.rsa = {
         }
     },
 
-    importPublicKey: async function () {
+    importPublicKey: async function (keyBuffer) {
         try {
-            const fileInput = document.getElementById(ENC_KEY_INPUT_FIELD);
-            if (!fileInput || fileInput.files.length === 0) {
-                throw new Error("No RSA public key file selected.");
-            }
+            const publicKeyUint8Array = new Uint8Array(keyBuffer);
 
-            const file = fileInput.files[0];
-            const fileContent = await file.arrayBuffer();
-            const publicKeyUint8Array = new Uint8Array(fileContent);
-
-            const RSApublicKey = await window.crypto.subtle.importKey(
+            const RSApublicKey = await crypto.subtle.importKey(
                 "spki",
                 publicKeyUint8Array,
                 {
@@ -122,10 +115,10 @@ window.rsa = {
 
     exportKeysToFiles: async function (RSAkeyPair) {
         try {
-            const publicKeyArrayBuffer = await window.crypto.subtle.exportKey("spki", RSAkeyPair.publicKey);
+            const publicKeyArrayBuffer = await crypto.subtle.exportKey("spki", RSAkeyPair.publicKey);
             const publicKeyUint8Array = new Uint8Array(publicKeyArrayBuffer);
 
-            const privateKeyArrayBuffer = await window.crypto.subtle.exportKey("pkcs8", RSAkeyPair.privateKey);
+            const privateKeyArrayBuffer = await crypto.subtle.exportKey("pkcs8", RSAkeyPair.privateKey);
             const privateKeyUint8Array = new Uint8Array(privateKeyArrayBuffer);
 
             console.log("RSA key pair exported to file successfully.");
@@ -136,11 +129,12 @@ window.rsa = {
         }
     },
 
-    getKey: async function (isCustomKeyEnabled) {
+    getKey: async function (isCustomKeyEnabled, keyBuffer) {
         try {
             if (isCustomKeyEnabled) {
                 console.log("🔹 Importing custom RSA public key...");
-                const rsaPublicKey = await this.importPublicKey();
+                //const rsaPublicKey = await this.importPublicKey();
+                const rsaPublicKey = await this.importPublicKey(keyBuffer);
                 if (!rsaPublicKey) throw new Error("Failed to import RSA public key.");
                 return rsaPublicKey;
             } else {
