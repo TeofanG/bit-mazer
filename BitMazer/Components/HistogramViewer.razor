@@ -1,0 +1,199 @@
+﻿@using ApexCharts
+@using BitMazer.Enums
+@using BlazorBootstrap
+@using BitMazer.Models
+
+<ul class="nav nav-tabs" id="histogramTabs" role="tablist">
+    <li class="@(currentActiveTab == "original" ? "border-top border-start border-end border-primary" : "")"
+        role="presentation">
+        <button @onclick="@(async () => await OnTabChanged("original"))"
+                class="nav-link" id="original-tab" type="button" role="tab">
+            Original
+        </button>
+    </li>
+
+    @if(AlgorithmStats != null && AlgorithmStats.Count > 0)
+    {
+        @foreach (var chart in AlgorithmStats)
+        {
+            <li class="@(currentActiveTab == chart.Algorithm.ToString() ? "border-top border-start border-end border-primary" : "")"
+                role="presentation">
+                <button @onclick="@(async () => await OnTabChanged(chart.Algorithm.ToString()))"
+                        class="nav-link" id="@($"{chart.Algorithm}-tab")" type="button" role="tab">
+                    @chart.Algorithm
+                </button>
+            </li>
+        }
+    }
+</ul>
+
+<div class="row mt-2">
+    <div class="col">
+        <div class="d-flex align-items-center gap-2">
+            <label>From</label>
+            <input type="range"
+                   min="0"
+                   max="255"
+                   step="1"
+                   value="@RangeStartIndexes[currentActiveTab]"
+                   @oninput="async e => await UpdateRangeStart(e.Value?.ToString())" />
+
+            <label>To</label>
+            <input type="range"
+                   min="0"
+                   max="255"
+                   step="1"
+                   value="@RangeEndIndexes[currentActiveTab]"
+                   @oninput="async e => await UpdateRangeEnd(e.Value?.ToString())" />
+        </div>
+
+        <p>Showing bytes: @RangeStartIndexes[currentActiveTab] to @RangeEndIndexes[currentActiveTab]</p>
+    </div>
+
+    <div class="col">
+        <p class="text-danger fw-bold">@chartDataRangeError</p>
+    </div>
+</div>
+
+<div style="margin: auto; max-width: 500px; min-height: 400px">
+    <ApexChart @ref="sharedChartRef"
+               TItem="HistogramDataModel"
+               Title="@chartTitle"
+               Options="@HistogramService.GetChartOptions()">
+
+          <ApexPointSeries TItem="HistogramDataModel"
+                           Items="@currentChartData"
+                           Name="Frequency"
+                           SeriesType="SeriesType.Bar"
+                           XValue="e => e.Byte"
+                           YValue="e => e.Occurences" />
+    </ApexChart>    
+</div>
+
+@code {
+    protected override async Task OnParametersSetAsync()
+    {
+        if (SelectedFile != null && originalChartData == null)
+        {
+            currentActiveTab = DefaultHistogram;
+
+            RangeStartIndexes = new Dictionary<string, int> ();
+            RangeEndIndexes = new Dictionary<string, int> ();
+            
+            foreach (AlgorithmAnalysis alg in AlgorithmStats)
+            {
+                RangeStartIndexes[alg.Algorithm.ToString()] = 0;
+                RangeEndIndexes[alg.Algorithm.ToString()] = 255;
+            }
+
+            RangeStartIndexes["original"] = 0;
+            RangeEndIndexes["original"] = 255;
+
+            originalChartData = HistogramService.GetChartData(SelectedFile.ByteArrayFile);
+            
+            await UpdateChartData();
+        }
+    }
+
+    private async Task OnTabChanged(string tab)
+    {
+        if (tab == currentActiveTab) return;
+        currentActiveTab = tab;
+        await currentActiveTabChanged.InvokeAsync(tab);
+        await UpdateChartData();
+    }
+
+    private async Task UpdateChartData()
+    {
+        int start = RangeStartIndexes[currentActiveTab];
+        int end = RangeEndIndexes[currentActiveTab];
+        chartDataRangeError = string.Empty;
+
+        int count = end < start ? 0 : end - start + 1;
+        if (end < start)
+        {
+            chartDataRangeError = "Invalid byte range!";
+        }
+
+        if (currentActiveTab == "original" && originalChartData != null)
+        {
+            currentChartData = originalChartData.Skip(start).Take(count).ToList();
+            chartTitle = "Original File - Histogram";
+        }
+        else
+        {
+            if (AlgChartData.TryGetValue(currentActiveTab, out var dataList) && dataList != null)
+            {
+                chartTitle = $"{currentActiveTab} Encrypted File - Histogram";
+                currentChartData = dataList.Skip(start).Take(count).ToList();
+            }
+        }
+
+        if (sharedChartRef != null && currentChartData != null && currentChartData.Count > 0)
+        {
+            await sharedChartRef.UpdateSeriesAsync(true);
+            await sharedChartRef.UpdateOptionsAsync(true, true, false);
+        }
+    }
+
+    private async Task UpdateRangeStart(string? value)
+    {
+        if (int.TryParse(value, out int newStart))
+        {
+            RangeStartIndexes[currentActiveTab] = newStart;
+            await UpdateChartData();
+        }
+    }
+
+    private async Task UpdateRangeEnd(string? value)
+    {
+        if (int.TryParse(value, out int newEnd))
+        {
+            RangeEndIndexes[currentActiveTab] = newEnd;
+            await UpdateChartData();
+        }
+    }
+
+    private async Task InitChart()
+    {
+        RangeStartIndexes["original"] = 0;
+        RangeEndIndexes["original"] = 255;
+
+        currentActiveTab = "original";
+        originalChartData = HistogramService.GetChartData(SelectedFile!.ByteArrayFile);
+        await UpdateChartData();
+    }
+
+    [Parameter]
+    public FileModel? SelectedFile { get; set; }
+
+    [Parameter]
+    public string DefaultHistogram { get; set; }
+
+    [Parameter]
+    public List<AlgorithmAnalysis> AlgorithmStats { get; set; }
+
+    [Parameter]
+    public EventCallback<string> currentActiveTabChanged { get; set; }
+
+    [Parameter]
+    public Dictionary<string, List<HistogramDataModel>> AlgChartData { get; set; }
+
+
+    public string currentActiveTab { get; set; }
+
+    private ApexChart<HistogramDataModel>? sharedChartRef = null;
+
+    private List<HistogramDataModel>? currentChartData = null;
+
+    private List<HistogramDataModel>? originalChartData;
+
+    public Dictionary<string, int> RangeStartIndexes;
+
+    public Dictionary<string, int> RangeEndIndexes;
+
+    private string chartTitle = string.Empty;
+
+    private string chartDataRangeError = string.Empty;
+
+}

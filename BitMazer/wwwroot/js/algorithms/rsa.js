@@ -1,30 +1,5 @@
-﻿import { DomElements } from '../constants/domElements.js';
-
-const {
-    ENC_KEY_INPUT_FIELD
-} = DomElements;
-
+﻿
 export const rsa = {
-    generateKey: async function (mode, modulusLength, hashType) {
-        try {
-            const keyPair = await crypto.subtle.generateKey(
-                {
-                    name: mode, //RSA-OAEP
-                    modulusLength: modulusLength, // key size; can be 1024, --2048, or 4096
-                    publicExponent: new Uint8Array([0x01, 0x00, 0x01]), // Standard public exponent
-                    hash: { name: hashType } // secure hash algorithm; can be "SHA-1", "SHA-256", "SHA-384", or "SHA-512"
-                },
-                true, // whether the key is exportable
-                ["encrypt", "decrypt"] // usages for the key pair
-            );
-            if (!keyPair) throw new Error("RSA key generation failed.");
-            console.log("✅ RSA key pair generated successfully.");
-            return keyPair;
-        } catch (error) {
-            console.error("❌ Failed to generate RSA key pair:", error.message);
-            return `Error: ${error.message}`;
-        }
-    },
 
     encrypt: async function (encPublicKey, plainData) {
         try {
@@ -35,7 +10,6 @@ export const rsa = {
             const encryptedKey = await crypto.subtle.encrypt(
                 {
                     name: "RSA-OAEP",
-                    //label: Uint8Array([...]) //optional
                 },
                 encPublicKey,
                 plainData
@@ -57,21 +31,51 @@ export const rsa = {
                 encPrivateKey,
                 encryptedData
             );
-            console.log("Data decrypted successfully.");
             return decryptedKey;
         } catch (err) {
-            console.error("Error during decryption:", err);
+            throw err;
         }
     },
 
-    importPrivateKey: async function (file) {
+    generateKey: async function (mode, keySize, hashAlg) {
         try {
-            const fileContent = await file.arrayBuffer();
-            const publicKeyUint8Array = new Uint8Array(fileContent);
+            const keyPair = await crypto.subtle.generateKey(
+                {
+                    name: mode, // RSA-OAEP
+                    modulusLength: keySize, // 1024, 2048, or 4096
+                    publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                    hash: { name: hashAlg } // "SHA-1", "SHA-256", "SHA-384", or "SHA-512"
+                },
+                true,
+                ["encrypt", "decrypt"]
+            );
+            return keyPair;
+        } catch (error) {
+            throw err;
+        }
+    },
 
-            const RSApublicKey = await crypto.subtle.importKey(
+    getKey: async function (rsaKeySize, isCustomKeyEnabled, keyBuffer) {
+        try {
+            if (isCustomKeyEnabled) {
+                const rsaPublicKey = await this.importPublicKey(keyBuffer);
+                if (!rsaPublicKey) throw new Error("Failure to import RSA public key.");
+                return rsaPublicKey;
+            } else {
+                const rsaKeyPair = await this.generateKey("RSA-OAEP", rsaKeySize, "SHA-256");
+                if (!rsaKeyPair) throw new Error("Failed to generate RSA key pair.");
+                return rsaKeyPair;
+            }
+        } catch (err) {
+            throw err;
+        }
+    },
+
+    importPrivateKey: async function (fileBuffer) {
+        try {
+            const key = await crypto.subtle.importKey(
                 "pkcs8",
-                publicKeyUint8Array,
+                fileBuffer,
                 {
                     name: "RSA-OAEP",
                     hash: { name: "SHA-256" }
@@ -79,23 +83,18 @@ export const rsa = {
                 true,
                 ["decrypt"]
             );
-
-            if (!RSApublicKey) throw new Error("Invalid RSA private key file.");
-            console.log("✅ RSA private key imported successfully.");
-            return RSApublicKey;
+            if (!key) throw new Error("Failure to import RSA private key.");
+            return key;
         } catch (err) {
-            console.error("❌ Failed to import RSA private key:", err.message);
-            return `Error: ${err.message}`;  // 🔥 Return error instead of throwing
+            throw err;
         }
     },
 
-    importPublicKey: async function (keyBuffer) {
+    importPublicKey: async function (fileBuffer) {
         try {
-            const publicKeyUint8Array = new Uint8Array(keyBuffer);
-
-            const RSApublicKey = await crypto.subtle.importKey(
+            const key = await crypto.subtle.importKey(
                 "spki",
-                publicKeyUint8Array,
+                fileBuffer,
                 {
                     name: "RSA-OAEP",
                     hash: { name: "SHA-256" }
@@ -103,17 +102,13 @@ export const rsa = {
                 true,
                 ["encrypt"]
             );
-
-            if (!RSApublicKey) throw new Error("Invalid RSA public key file.");
-            console.log("✅ RSA public key imported successfully.");
-            return RSApublicKey;
+            return key;
         } catch (err) {
-            console.error("❌ Failed to import RSA public key:", err.message);
-            return `Error: ${err.message}`;  // 🔥 Return error instead of throwing
+            throw err;  
         }
     },
 
-    exportKeysToFiles: async function (RSAkeyPair) {
+    exportKeyPairToByteArr: async function (RSAkeyPair) {
         try {
             const publicKeyArrayBuffer = await crypto.subtle.exportKey("spki", RSAkeyPair.publicKey);
             const publicKeyUint8Array = new Uint8Array(publicKeyArrayBuffer);
@@ -121,33 +116,12 @@ export const rsa = {
             const privateKeyArrayBuffer = await crypto.subtle.exportKey("pkcs8", RSAkeyPair.privateKey);
             const privateKeyUint8Array = new Uint8Array(privateKeyArrayBuffer);
 
-            console.log("RSA key pair exported to file successfully.");
-            //console.log("RSA Key:", keyPair);
             return { publicKeyUint8Array, privateKeyUint8Array };
         } catch (err) {
-            console.error("Failure in exporting RSA key to file:", err);
+            throw err;  
         }
     },
 
-    getKey: async function (isCustomKeyEnabled, keyBuffer) {
-        try {
-            if (isCustomKeyEnabled) {
-                console.log("🔹 Importing custom RSA public key...");
-                //const rsaPublicKey = await this.importPublicKey();
-                const rsaPublicKey = await this.importPublicKey(keyBuffer);
-                if (!rsaPublicKey) throw new Error("Failed to import RSA public key.");
-                return rsaPublicKey;
-            } else {
-                console.log("🔹 Generating new RSA key pair...");
-                const rsaKeyPair = await this.generateKey("RSA-OAEP", 2048, "SHA-256");
-                if (!rsaKeyPair) throw new Error("Failed to generate RSA key pair.");
-                return rsaKeyPair;
-            }
-        } catch (err) {
-            console.error("❌ Error in obtaining the RSA key:", err.message);
-            return `Error: ${err.message}`;
-        }
-    }
 }
 
 

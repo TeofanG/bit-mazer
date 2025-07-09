@@ -7,12 +7,15 @@ const {
 } = DomElements;
 
 export const utility = {
-    arrayBufferToBase64: function (buffer) {
-        return btoa(
-            Array.from(new Uint8Array(buffer))
-                .map(b => String.fromCharCode(b))
-                .join('')
-        );
+    arrayBufferToBase64: async function (buffer) {
+        const blob = new Blob([buffer]);
+        const base64 = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result.split(',')[1]);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        });
+        return base64;
     },
     extractMetadataFromFile: async function () {
         const file = document.getElementById(DEC_INPUT_FIELD).files[0];
@@ -30,11 +33,11 @@ export const utility = {
             throw new Error("Invalid JSON format. ", err);
         }
 
-        if (!json.metadata) {
+        if (!json.aad) {
             throw new Error("No metadata found in the JSON file.");
         }
 
-        return JSON.stringify(json.metadata);
+        return JSON.stringify(json.aad);
     },
     createDownloadButton: function (fileData, blobType, fileName) {
         let buttonId;
@@ -72,6 +75,10 @@ export const utility = {
 
         const buttonLinks = downloadContainer.querySelectorAll('a');
         buttonLinks.forEach(buttonLinks => buttonLinks.remove());
+        const resultLabel = document.getElementById('result-label')
+        if (resultLabel) {
+            resultLabel.classList.remove("d-none");
+        }
     },
     showLoader: function () {
         document.getElementById('loader').classList.remove('d-none');
@@ -83,5 +90,56 @@ export const utility = {
         }, 5000); // 5000 milliseconds = 5 seconds
         console.log("HIDE LOADER called");
 
+    },
+
+    estimateMemoryFromBuffers: function (...buffers) {
+        let totalBytes = 0;
+
+        for (const buf of buffers) {
+            if (!buf) continue;
+
+            if (typeof buf === 'string') {
+                totalBytes += new TextEncoder().encode(buf).byteLength;
+            } else if (buf instanceof Uint8Array || buf instanceof ArrayBuffer) {
+                totalBytes += buf.byteLength || 0;
+            }
+        }
+
+        return totalBytes;
+    },
+
+    wordArrayToArrayBuffer: function (wordArray) {
+        const words = wordArray.words;
+        const sigBytes = wordArray.sigBytes;
+
+        const buffer = new ArrayBuffer(sigBytes);
+        const view = new Uint8Array(buffer);
+
+        for (let i = 0; i < sigBytes; i++) {
+            view[i] = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xFF;
+        }
+
+        return buffer;
+    },
+
+    wordArrayToUint8Array: function (wordArray) {
+        const words = wordArray.words;
+        const sigBytes = wordArray.sigBytes;
+
+        const u8 = new Uint8Array(sigBytes);
+        for (let i = 0; i < sigBytes; i++) {
+            u8[i] = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+        }
+        return u8;
+    },
+
+    generateEncodedAAD: async function (metadata, iv) {
+        const aadObject = {
+            ...metadata,
+            iv: await this.arrayBufferToBase64(iv)
+        };
+
+        const encoder = new TextEncoder();
+        return encoder.encode(JSON.stringify(aadObject));
     }
 }

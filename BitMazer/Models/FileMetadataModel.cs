@@ -16,7 +16,7 @@ namespace BitMazer.Models
         [JsonPropertyName("fileSize")]
         public float FileSize { get; set; } = (float)Math.Round((fileSize / 1024.0 / 1024.0), 2);
 
-        [JsonPropertyName("encryptionAlgorithm")]
+        [JsonPropertyName("algorithm")]
         public string EncAlg { get; set; } = encAlg;
     }
 }

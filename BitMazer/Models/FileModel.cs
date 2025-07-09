@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.JSInterop;
-using System.Security.Cryptography;
 
 namespace BitMazer.Models
 {
@@ -11,7 +9,6 @@ namespace BitMazer.Models
         {
             this.IBrowserFile = file;
             this.ByteArrayFile = [];
-            this.Base64File = string.Empty;
             this.IBrowserFile = file;
             this.Name = file.Name;
             this.Type = file.ContentType;
@@ -24,11 +21,10 @@ namespace BitMazer.Models
 
         public IBrowserFile IBrowserFile { get; set; }
         public byte[] ByteArrayFile { get; private set; }
-        public string Base64File { get; private set; }
 
         /// <summary>
-        /// Load file content into byte array and base64 string
-        /// Call this before accessing ByteArrayFile or Base64File
+        /// Load file content into byte array
+        /// Call this before accessing ByteArrayFile
         /// </summary>
         public async Task LoadAsync()
         {
@@ -36,7 +32,6 @@ namespace BitMazer.Models
             using var ms = new MemoryStream();
             await stream.CopyToAsync(ms);
             this.ByteArrayFile = ms.ToArray();
-            this.Base64File = Convert.ToBase64String(ByteArrayFile);
         }
     }
 }

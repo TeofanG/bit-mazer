@@ -1,76 +1,77 @@
 ﻿@page "/"
 
-<PageTitle>BitMazer - Home</PageTitle>
+<PageTitle>BitMazer - Lock It Down. Your Way</PageTitle>
 
-<div class="container mt-5">
+<div class="container">
     <div class="row">
-        <h3 class="display-3 fw-bold mb-3">BitMazer - Lock It Down. Your Way</h3>
+        <h3 class="display-3 fw-bold mb-5">BitMazer - Lock It Down. Your Way</h3>
     </div>
+    
     <div class="row">
-        <!-- Left Column: Title, Buttons, Features -->
-        <div class="col-lg-6 pt-5">
-            <h4 class="card-title mb-3 fw-bold fs-3">🔐 Secure Your Data</h4>
-            <p class="fs-5 text-muted">Encrypt and decrypt your files securely using modern symmetric encryption.</p>
-
-            <div class="mb-5">
-                <a class="btn btn-primary btn-lg me-2" href="/encrypt">Encrypt a File</a>
-                <a class="btn btn-success btn-lg" href="/decrypt">Decrypt a File</a>
-            </div>
-
-            <!-- Analysis Intro -->
-            <div class="mb-5">
-                <h4 class="card-title mb-3 fw-bold fs-3">📊 Analyze Encrypted Files</h4>
-                <p class="fs-5 text-muted">Curious about how strong your encryption is? Run statistical analysis to visualize the randomness and distribution of your encrypted data.</p>
-                <a class="btn btn-warning btn-lg" href="/analysis">Go to Analysis</a>
-            </div>
-
-            <h4 class="fw-bold fs-3">✅ Features</h4>
-            <ul class="list-unstyled fs-5 mt-3">
-                <li>✔️ Easy file upload and secure download</li>
-                <li>✔️ Fully client-side encryption — your files never leave your device</li>
-                <li>✔️ Supports multiple encryption algorithms</li>
-                <li>✔️ Built-in performance and statistical analysis for each encrypted file</li>
-            </ul>
+        <h4 class="card-title mb-3 fw-bold fs-3">🔐 Secure Your Data</h4>
+        <p class="fs-5 text-muted">Encrypt and decrypt your files securely using modern symmetric encryption. Choose between various algorithms and key sizes.</p>
+        <div class="d-inline">
+            <a class="btn btn-primary btn-lg me-4" href="/encrypt">Encrypt</a>
+            <a class="btn btn-success btn-lg ms-2" href="/decrypt">Decrypt</a>
         </div>
+    </div> 
 
-        <!-- Right Column: FAQ -->
-        <div class="col-lg-6">
-            <div class="card shadow-sm mt-5">
-                <div class="card-body">
-                    <h4 class="card-title mb-5 fw-bold fs-3">❓ Frequently Asked Questions</h4>
+    <div class="row mt-4">
+        <h4 class="card-title mb-3 fw-bold fs-3">📊 Analyze Encrypted Files</h4>
+        <p class="fs-5 text-muted">Curious about how strong your encryption is? Run a statistical analysis to visualize byte distribution and review detailed metrics like entropy, chi-square, and more — all designed to assess the randomness of your encrypted data.</p>
+        <div class="d-inline"><a class="btn btn-warning btn-lg" href="/analysis">Go to Analysis</a></div>
+    </div>
 
-                    <div class="mb-4">
-                        <h5 class="fs-5">🔐 What encryption method is used?</h5>
-                        <p class="fs-6 text-muted">You can choose from different encryption algorithms to secure your data.</p>
-                    </div>
+    <div class="row mt-4">
+        <h4 class="fw-bold fs-3">✅ Features</h4>
+        <ul class="list-unstyled fs-5 mt-2">
+            <li>✔️ Easy file upload and secure download</li>
+            <li>✔️ Fully client-side encryption — your files never leave your device</li>
+            <li>✔️ Supports multiple encryption algorithms</li>
+            <li>✔️ Built-in performance and statistical analysis for each encrypted file</li>
+        </ul>
+    </div>
 
-                    <div class="mb-4">
-                        <h5 class="fs-5">📁 Is my file uploaded anywhere?</h5>
-                        <p class="fs-6 text-muted">No. All encryption and decryption is done locally in your browser. Your files never leave your device.</p>
-                    </div>
+    <!-- FAQ -->
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <h4 class="card-title mb-4 fw-bold fs-3">❓ Frequently Asked Questions</h4>
 
-                    <div class="mb-4">
-                        <h5 class="fs-5">🗝️ What is the key and how should I use it?</h5>
-                        <p class="fs-6 text-muted">You will be asked to enter or generate a secret key. Keep this safe, as it's required to decrypt your files later.</p>
-                    </div>
+            <div class="mb-4">
+                <h5 class="fs-5">🔐 What encryption method is used?</h5>
+                <p class="fs-6 text-muted">
+                    You can choose from several authenticated encryption algorithms to secure your data, 
+                    including AES-GCM, XChaCha20-Poly1305, Rabbit, and Twofish.
+                    These algorithms ensure both confidentiality and integrity, 
+                    protecting your data from unauthorized access and tampering.
+                    </p>
+            </div>
 
-                    <div class="mb-4">
-                        <h5 class="fs-5">📥 Can I decrypt a file on a different device?</h5>
-                        <p class="fs-6 text-muted">Yes, as long as you use the same secret key used during encryption.</p>
-                    </div>
+            <div class="mb-4">
+                <h5 class="fs-5">📁 Is my file uploaded anywhere?</h5>
+                <p class="fs-6 text-muted">No. All encryption and decryption is done locally in your browser. Your files never leave your device.</p>
+            </div>
 
-                    <div>
-                        <h5 class="fs-5">⚠️ What file types are supported?</h5>
-                        <p class="fs-6 text-muted">Common types like .txt, .pdf, .docx, .jpg, and .png are supported. Maximum size: 250 MB.</p>
-                    </div>
+            <div class="mb-4">
+                <h5 class="fs-5">🗝️ What is the key and how should I use it?</h5>
+                <p class="fs-6 text-muted">You will be asked to enter or generate a secret key. Keep this safe, as it's required to decrypt your files later.</p>
+            </div>
 
-                    <div>
-                        <h5 class="fs-5">
-                            🕒 How long does encryption or decryption take?
-                        </h5>
-                        <p class="fs-6 text-muted">For most supported files under 5 MB, the process takes only a few seconds, depending on your device's performance</p>
-                    </div>
-                </div>
+            <div class="mb-4">
+                <h5 class="fs-5">📥 Can I decrypt a file on a different device?</h5>
+                <p class="fs-6 text-muted">Yes, as long as you use the same secret key used during encryption.</p>
+            </div>
+
+            <div>
+                <h5 class="fs-5">⚠️ What file types are supported?</h5>
+                <p class="fs-6 text-muted">Common types like .txt, .pdf, .docx, .jpg, and .png are supported. Maximum size: 200 MB.</p>
+            </div>
+
+            <div>
+                <h5 class="fs-5">
+                    🕒 How long does encryption or decryption take?
+                </h5>
+                <p class="fs-6 text-muted">For most supported files under 5 MB, the process takes only a few seconds, depending on your device's performance</p>
             </div>
         </div>
     </div>

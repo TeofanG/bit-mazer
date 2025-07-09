@@ -3,8 +3,8 @@
     public enum EncryptionAlgorithm
     {
         AES_GCM,
-        ChaCha20,
-        Serpent,
+        XChaCha20_Poly1305,
+        Rabbit,
         Twofish,
     }
 }

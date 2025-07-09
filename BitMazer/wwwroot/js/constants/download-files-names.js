@@ -1,6 +1,6 @@
 ﻿const DwnldFilesNamesConstants = {
-    DEC_KEY_FILE: "decryption.key",
-    ENC_KEY_FILE: "encryption.key",
+    DEC_KEY_FILE: "decryptionRSA",
+    ENC_KEY_FILE: "encryptionRSA",
     ENCRYPTED_FILE: ".enc.json",
 };
 

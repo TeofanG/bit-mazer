@@ -1,173 +1,145 @@
-﻿@using BitMazer.Enums
-@using static BitMazer.Constants.AppConstants
-@page "/analysis"
-@using ApexCharts
-@using System.Text.Json
-@inject IJSRuntime JS
-@using BitMazer.Services
+﻿@page "/analysis"
+
+@using BitMazer.Constants
+@using BitMazer.Enums
 @using BitMazer.Models
-@using System.Security.Cryptography
 @using BitMazer.Components
+@using BitMazer.Services
+@using ApexCharts
 @using System.Diagnostics
+@using System.Security.Cryptography
+@using System.Text.Json
 
 <PageTitle>Analysis</PageTitle>
 <h1>Analysis</h1>
 <h5 class="text-muted ml-1">Visualize and compare the effects of different encryption algorithms on your data.</h5>
 
-<div class="card shadow-sm rounded-4 p-4 mt-4">
-    <div class="row">
-        <div class="col-auto">
-            <AnalysisSetupForm 
-            SelectedFileName="@selectedFile?.Name"
-            OnSubmit="RunAnalysis"
-            OnFileChange="LoadFile"
-            OnClearFile="ClearUploadFileField"
-            @bind-SelectedAlgorithms="selectedAlgorithms" />
+<div class="card shadow-sm rounded-4 p-4 mt-4 mb-4">
+    @if(showAnalysisResult)
+    {     
+        <div class="card-header d-flex justify-content-between align-items-center mb-4">
+            <span><strong>⚙️ File and Algorithm Selection</strong></span>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary" @onclick="() => showInputPanel = !showInputPanel">
+                    @(showInputPanel ? "Collapse ▲" : "Expand ▼")
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger">
+                    Reset All
+                </button>
+            </div>
+        </div>
+    }
 
-            @if (IsLoading == true)
+    @if(showInputPanel)
+    {
+        <div class="row @(showAnalysisResult ? "ms-2 mt-2" : "")">
+
+            <AnalysisInputPanel OnSubmit="RunAnalysis"
+                                @bind-SelectedFile="@selectedFile"
+                                @bind-SelectedAlgsKeySizes="@selectedAlgsKeySizes"
+                                @bind-FileError="@fileError"/>
+
+            @if (isLoading == true)
             {
                 <div class="mb-3">
                     <div class="loader"></div>
                 </div>
             }
 
-            @if (error != null)
+            @if (!string.IsNullOrEmpty(fileError))
             {
                 <div class="mb-3">
                     <div id="error-container">
-                        <p style="color: red;">@error</p>
+                        <p style="color: red;">@fileError</p>
                     </div>
                 </div>
             }
 
-        </div>
-        <div class="col-auto ms-auto">
-            @if (selectedFile != null  && algorithmStats.Count>1 && originalChartData != null)
-            {
-                <ul class="nav nav-tabs" id="histogramTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button @onclick="@(() => currentActiveTab="original")" class="nav-link" id="original-tab"  type="button" role="tab">
-                            Original
-                        </button>
-                    </li>
-
-                    @foreach (var chart in algorithmStats)
-                    {
-                        <li class="nav-item" role="presentation">
-                            <button @onclick="@(() => currentActiveTab = chart.Algorithm.ToString())" class="nav-link" id="@($"{chart.Algorithm}-tab")"  type="button" role="tab">
-                                @chart.Algorithm
-                            </button>
-                        </li>
-                    }
-                </ul>
-
-                <div class="tab-content mt-3" id="histogramTabsContent">
-                    <div class="tab-pane fade @(currentActiveTab == "original" ? "show active" : "")" id="original" role="tabpanel">
-
-                        <ApexChart TItem="HistogramDataModel"
-                        Title="Original File - Histogram"
-                        Options="originalChartOptions"
-                        Height="400"
-                        Width="550"
-                        @ref="originalFileChart">
-                            <ApexPointSeries TItem="HistogramDataModel"
-                            Items="originalChartData"
-                            Name="Original"
-                            SeriesType="SeriesType.Bar"
-                            XValue="e => e.Byte"
-                            YValue="e => e.Occurences" />
-                        </ApexChart>
-                    </div>
-                    @foreach (var chart in algorithmStats)
-                    {
-                        @if (chart.HistogramData != null && chart.HistogramOptions != null)
-                        {
-                        }
-                        <div class="tab-pane fade @(currentActiveTab == chart.Algorithm.ToString() ? "show active" : "")" id="@chart.Algorithm" role="tabpanel">
-                            <ApexChart TItem="HistogramDataModel"
-                            Title="@($"{chart.Algorithm} Encrypted File - Histogram")"
-                            Options="chart.HistogramOptions"
-                            Height="400"
-                            Width="550">
-                                <ApexPointSeries TItem="HistogramDataModel"
-                                Items="chart.HistogramData"
-                                Name="@chart.Algorithm.ToString()"
-                                SeriesType="SeriesType.Bar"
-                                XValue="e => e.Byte"
-                                YValue="e => e.Occurences" />
-                            </ApexChart>
-                        </div>
-                    }
-                </div>
+            @if(showAnalysisResult) {
+                <hr class="border-primary border-2 rounded" />
             }
 
         </div>
-    </div>
-    <div class="row">
-        @if(algorithmStats.Count > 0)
+    }
+
+    <div>
+        @if (showAnalysisResult && algorithmStats.Count > 0)
         {
-            <AnalysisTable Data="algorithmStats" SelectedAlg="@currentActiveTab" />
+            <div class="row">
+                <div class="col">
+                    <HistogramViewer SelectedFile="@selectedFile"
+                                     AlgorithmStats="@algorithmStats"
+                                     AlgChartData="@algChartData"
+                                     DefaultHistogram="original"/>
+                </div>
+                <div class="col">
+                    <HistogramViewer SelectedFile="@selectedFile"
+                                     AlgorithmStats="@algorithmStats"
+                                     AlgChartData="@algChartData"
+                                     DefaultHistogram="@algorithmStats[0].Algorithm.ToString()" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        @if(showAnalysisResult)
+        {
+            <AnalysisTable Data="algorithmStats" />
         }
     </div>
 </div>
 
 @code {
-    private IJSObjectReference? _aesModule;
-    private IJSObjectReference? _chachaModule;
-    private IJSObjectReference? _twofishModule;
+    private const int DEFAULT_IV_SIZE = 24;
+    private const int DEFAULT_KEY_SIZE = 32;
 
-    private double _lastWorkerMemoryUsed;
-    private int _lastEncryptionTimeMs;
+    protected override Task OnInitializedAsync()
+    {
+        showAnalysisResult = false;
+        fileError = string.Empty;
+        isLoading = false;
+        showInputPanel = true;
+        selectedAlgsKeySizes = new();
 
-    private string currentActiveTab = "original";
+        return Task.CompletedTask;
+    }
 
     private async Task RunAnalysis(){
-        error = null;
-        if (selectedFile == null)
-        {
-            error = "No file selected for analysis.";
-            return;
-        }
-        if (!selectedAlgorithms.Any())
-        {
-            error = "Select at least one algorithm.";
-            return;
-        }
-        IsLoading = true;
-        StateHasChanged();
-
-        int minDuration = MinLoadingAnimationTime;
-        DateTime startTime = DateTime.Now;
-
-        originalChartData = HistogramService.GetChartData(selectedFile.ByteArrayFile);
-        originalChartOptions = HistogramService.GetChartOptions();
-
+        isLoading = true;
+        fileError = string.Empty;
+        baseIV = GetRandomByteArray(DEFAULT_IV_SIZE);
+        baseKey = GetRandomByteArray(DEFAULT_KEY_SIZE);
         algorithmStats.Clear();
 
-        foreach (var alg in selectedAlgorithms)
-        {
-            byte[]? encryptedBytes = await EncryptFile(selectedFile.Base64File, alg);
+        int minDuration = @AppConstants.MinLoadingAnimationTime;
+        DateTime startTime = DateTime.Now;
 
+
+        foreach (var (alg,keySize) in selectedAlgsKeySizes)
+        {
+            byte[]? encryptedBytes = await EncryptFile(alg, selectedFile!.ByteArrayFile, baseIV!, baseKey!, keySize);
             if (encryptedBytes == null)
             {
-                error = $"Error failed for {alg}.";
+                fileError = $"Analysis failed for {alg}.";
                 continue;
             }
-            int[] freq = new int[256];
-            foreach (byte b in encryptedBytes)
-            {                
-                freq[b]++;
-            }
-                algorithmStats.Add(new AlgorithmAnalysis
+
+            algorithmStats.Add(new AlgorithmAnalysis
                     {
                         Algorithm = alg,
-                        MemoryUsageMB = _lastWorkerMemoryUsed,
+                        MemoryUsageBytes = _lastWorkerMemoryUsed,
                         EncryptionTimeMs = _lastEncryptionTimeMs,
+                        FullHistogramData = HistogramService.GetChartData(encryptedBytes),
                         HistogramData = HistogramService.GetChartData(encryptedBytes),
                         HistogramOptions = HistogramService.GetChartOptions(),
-                        Entropy = CalculateShannonEntropy(encryptedBytes),
-                        StdDev = CalculateStandardDeviation(freq)
+                        Entropy = AlgorithmAnalysis.CalculateShannonEntropy(encryptedBytes),
+                        StdDev = AlgorithmAnalysis.CalculateStandardDeviation(encryptedBytes),
+                        ChiSquareValue = AlgorithmAnalysis.CalculateChiSquared(encryptedBytes),
                     });
+
+            algChartData[alg.ToString()] = HistogramService.GetChartData(encryptedBytes);
+
         }
 
         // Ensure minimum loader duration
@@ -176,30 +148,19 @@
         {
             await Task.Delay(minDuration - elapsedTime);
         }
-        IsLoading = false;
-        StateHasChanged();
+        isLoading = false;
+
+        algorithmStats = algorithmStats.OrderBy(a => a.Algorithm.ToString()).ToList();
+        showInputPanel = false;
+        showAnalysisResult = true;
     }
 
-    protected override async Task OnInitializedAsync()
+    private async Task<byte[]?> EncryptFile(EncryptionAlgorithm alg, byte[] plaindata, byte[] baseIV, byte[] baseKey, int keySize)
     {
-        _aesModule = await JS.InvokeAsync<IJSObjectReference>("import", "/js/algorithms/aes.js");
-        _chachaModule = await JS.InvokeAsync<IJSObjectReference>("import", "/js/algorithms/chacha.js");
-        _twofishModule = await JS.InvokeAsync<IJSObjectReference>("import", "/js/algorithms/twofish.js");
-    }
-    private TaskCompletionSource<byte[]>? encryptionTcs;
-
-    private async Task<byte[]?> EncryptFile(string base64, EncryptionAlgorithm alg)
-    {
-        var iv = new byte[24];
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            rng.GetBytes(iv);
-        }
-
         encryptionTcs = new TaskCompletionSource<byte[]>();
         var dotNetRef = DotNetObjectReference.Create(this);
 
-        await JS.InvokeVoidAsync("startEncryptionWorker", base64, alg.ToString(), iv, dotNetRef);
+        await JS.InitAnalysisAsync(alg.ToString(), plaindata, baseIV, baseKey, keySize, dotNetRef);
 
         try
         {
@@ -207,18 +168,37 @@
         }
         catch (Exception ex)
         {
-            error = $"Encryption failed: {ex.Message}";
+            fileError = $"Encryption failed: {ex.Message}";
             return null;
         }
     }  
 
-    [JSInvokable]
-    public Task OnEncryptedFromWorker(string base64Encrypted, double memoryUsed, int elapsedTimeMs)
+    private byte[] GetRandomByteArray(int size) {
+        var byteArray = new byte[size];
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(byteArray);
+        }
+        return byteArray;
+    }
+
+    public class EncryptedResult
     {
-        var bytes = Convert.FromBase64String(base64Encrypted);
+        public required byte[] Encrypted { get; set; }
+        public long MemoryUsed { get; set; }
+        public float ElapsedTimeMs { get; set; }
+    }
+
+    [JSInvokable]
+    public Task OnEncryptedFromWorker(EncryptedResult result)
+    {
+        var encryptedBytes = result.Encrypted;
+        var memoryUsed = result.MemoryUsed;
+        var time = result.ElapsedTimeMs;
+
         _lastWorkerMemoryUsed = memoryUsed;
-        _lastEncryptionTimeMs = elapsedTimeMs;
-        encryptionTcs?.SetResult(bytes);
+        _lastEncryptionTimeMs = time;
+        encryptionTcs?.SetResult(encryptedBytes);
         return Task.CompletedTask;
     }
 
@@ -230,58 +210,30 @@
     }
 
 
-    private double CalculateShannonEntropy(byte[] data)
-    {
-        if (data == null || data.Length == 0) return 0.0;
+    private TaskCompletionSource<byte[]>? encryptionTcs;
 
-        int[] freq = new int[256];
-        foreach (byte b in data)
-            freq[b]++;
+    private double _lastWorkerMemoryUsed;
 
-        double entropy = 0.0;
-        int len = data.Length;
-
-        foreach (int count in freq)
-        {
-            if (count == 0) continue;
-            double p = (double)count / len;
-            entropy -= p * Math.Log2(p);
-        }
-
-        return entropy;
-    }
-    private double CalculateStandardDeviation(int[] frequencies)
-    {
-        double mean = frequencies.Average();
-        double sumSquares = frequencies.Select(f => Math.Pow(f - mean, 2)).Sum();
-        return Math.Sqrt(sumSquares / frequencies.Length);
-    }
+    private float _lastEncryptionTimeMs;
 
     private List<AlgorithmAnalysis> algorithmStats = new();
-    private ApexChart<HistogramDataModel>? originalFileChart;
-    private List<HistogramDataModel>? originalChartData;
-    private ApexChartOptions<HistogramDataModel>? originalChartOptions;
-    private FileModel? selectedFile = null;
-    private List<EncryptionAlgorithm> selectedAlgorithms = new();
-    private bool IsLoading;
-    private string? error = null;
-    private void ClearUploadFileField()
-    {
-        selectedFile = null;
-    }
 
-    private async Task LoadFile(InputFileChangeEventArgs e)
-    {
-        if (e == null) throw new ArgumentNullException(nameof(e));
-        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
-        if (file != null)
-        {
-            if (file.Size > 256 * 1024 * 1024)
-            {
-                error = "File too large. Max allowed size is 256.";
-            }
-            selectedFile = new FileModel(file);
-            await selectedFile.LoadAsync();
-        }
-    }
+    private FileModel? selectedFile = null;
+
+    private Dictionary<EncryptionAlgorithm, int> selectedAlgsKeySizes;
+
+    private bool isLoading;
+
+    private bool showInputPanel;
+
+    private string fileError = string.Empty;
+
+    private byte[]? baseIV = null;
+
+    private byte[]? baseKey = null;
+
+    private Dictionary<string, List<HistogramDataModel>> algChartData = new();
+
+    private bool showAnalysisResult;
+
 }

@@ -1,11 +1,8 @@
 ﻿@page "/decrypt"
-@using static BitMazer.Constants.AppConstants
+@using BitMazer.Constants
 @using BitMazer.Models
+@using BitMazer.Services
 @using System.Text.Json
-@using Microsoft.AspNetCore.Components.Forms
-
-@inject IJSRuntime js
-@inject JsUtilityService JsUtils
 
 <PageTitle>Decrypt</PageTitle>
 <h1>Decrypt</h1>
@@ -126,7 +123,7 @@
             selectedFile = null;
             fileError = string.Empty;
             decryptionError = string.Empty;
-            await JsUtils.ClearDownloadSectionAsync();
+            await JS.ClearDownloadSectionAsync();
         }
         else
         {
@@ -152,12 +149,12 @@
             IsDecrypting = true;
             StateHasChanged();
 
-            int minAnimationDuration = @MinLoadingAnimationTime;
+            int minAnimationDuration = @AppConstants.MinLoadingAnimationTime;
             DateTime startTime = DateTime.Now;
 
             try
             {
-                string result = await js.InvokeAsync<string>("startDecryption");
+                string result = await JS.InitDecryptionAsync();
 
                 int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
                 if (elapsedTime < minAnimationDuration)
@@ -178,7 +175,6 @@
             }
             catch (JSException jsEx)
             {
-                // 🔥 Handle JavaScript errors thrown from JS function
                 Console.WriteLine(jsEx.Message);
                 decryptionError = "Error during decryption. Check the input file and key.";
             }
@@ -202,7 +198,7 @@
         IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
         if (file != null)
         {
-            if (file.Size > 256 * 1024 * 1024)
+            if (file.Size > 300 * 1024 * 1024)
             {
                 Console.WriteLine("File too large. Max allowed size is 256MB.");
                 fileError = "File too large. Max allowed size is 256MB.";
@@ -213,7 +209,7 @@
             metadata = null;
             try
             {
-                string metadataJson = await JsUtils.ExtractMetadataFromFileAsync();
+                string metadataJson = await JS.ExtractMetadataFromFileAsync();
                 metadata = JsonSerializer.Deserialize<FileMetadataModel>(metadataJson);
             }
             catch (JSException jsEx)
@@ -235,7 +231,7 @@
         IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
         if (file != null)
         {
-            if (file.Size > 1300)
+            if (file.Size >= 3000)
             {
                 Console.WriteLine("Invalid RSA key file size.");
                 keyError = "Invalid key file size";

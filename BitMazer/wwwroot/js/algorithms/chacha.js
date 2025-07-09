@@ -1,47 +1,49 @@
 ﻿/*
     Ensure that the input file, key and IV are in Uint8Array format
 */
-import { CryptoConstants } from '../constants/crypto-constants.js';
-import { utility } from '../utility.js';
-import { streamXOR } from "https://esm.sh/@stablelib/chacha@2.0.1/es2022/chacha.mjs";
-import { randomBytes } from "https://esm.sh/@stablelib/random@2.0.1/es2022/random.mjs";
+import { CryptoConstants } from '/js/constants/crypto-constants.js';
+import { utility } from '/js/utility.js';
+import { xchacha20poly1305 } from '/js/algorithms/chacha-lib/chacha-lib.js';
 
-const { CHACHA_KEY_SIZE, CHACHA_IV_SIZE } = CryptoConstants;
+const { CHACHA_IV_SIZE } = CryptoConstants;
 
 export const chacha = {
-    randomBytes: function (size) {
-        return randomBytes(size);
-    },
-
-    encrypt: function (fileBuffer, iv, key) {
+    encrypt: async function (plaindata, nonce, key, aad) {
         try {
-            const encryptedData = new Uint8Array(fileBuffer.length);
-            streamXOR(key, iv, fileBuffer, encryptedData);
-            return encryptedData;
+            if (!key || !nonce) throw new Error("Key or nonce are not defined.");
+
+            const chacha = aad ? xchacha20poly1305(key, nonce, aad) : xchacha20poly1305(key, nonce);
+            const encrypted = chacha.encrypt(plaindata);
+
+            return encrypted;
+
         } catch (err) {
             console.error("Error encrypting file: ", err);
             return null;
         }
     },
 
-    decrypt: function (fileByteArray, iv, key) {
+    decrypt: function (fileByteArray, nonce, key, aad) {
         try {
-            const decryptedData = new Uint8Array(fileByteArray.length);
-            streamXOR(key, iv, fileByteArray, decryptedData);
-            return decryptedData;
+            if (!key || !nonce) throw new Error("Key or nonce are not defined.");
+
+            const chacha = xchacha20poly1305(key, nonce, aad);
+            const decrypted = chacha.decrypt(fileByteArray);
+
+            return decrypted;
         } catch (err) {
             console.error("Error decrypting file: ", err);
             return null;
         }
     },
 
-    encryptBase64: function (base64, sampleIV) {
-        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
-        const key = this.randomBytes(CHACHA_KEY_SIZE);
-        const iv = new Uint8Array(sampleIV.slice(0, CHACHA_IV_SIZE));
+    encryptForAnalysis: async function (plaindata, baseIV, baseKey, keySize) {
+        const iv = baseIV.slice(0, CHACHA_IV_SIZE);
+        const key = baseKey.slice(0, keySize / 8);
 
-        const encryptedData = this.encrypt(byteArray, iv, key);
+        const encryptedData = await this.encrypt(plaindata, iv, key, null);
+        const memoryUsage = utility.estimateMemoryFromBuffers(iv, key, plaindata, encryptedData)
 
-        return utility.arrayBufferToBase64(encryptedData);
+        return { encryptedData, memoryUsage };
     }
 };

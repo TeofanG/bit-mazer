@@ -1,10 +1,10 @@
 ﻿/*
     Ensure that the input file, key and IV are in Uint8Array format
 */
-import { CryptoConstants } from '../constants/crypto-constants.js';
-import { utility } from '../utility.js';
+import { CryptoConstants } from '/js/constants/crypto-constants.js';
+import { utility } from '/js/utility.js';
 
-const { AES_NAME, AES_KEY_SIZE, AES_IV_SIZE } = CryptoConstants;
+const { AES_NAME, AES_IV_SIZE } = CryptoConstants;
 
 export const aes = {
     getKey: async function (mode, length) {
@@ -26,70 +26,78 @@ export const aes = {
         }
     },
 
-    encrypt: async function (plainData, iv, encKey) {
-        try {
-            if (!encKey) {
-                throw new Error("Key is not defined.");
-            }
-            const encryptedData = await crypto.subtle.encrypt(
-                {
-                    name: AES_NAME,
-                    iv: iv,
-                    tagLength: 128, // authentication tag length
-                },
-                encKey,
-                plainData
-            );
-            console.log("Data encrypted successfully.");
-            return encryptedData;
-        } catch (err) {
-            console.error("Data encryption failed:", err);
-            throw err;
-        }
-    },
-
-    decrypt: async function (decKey, iv, encryptedData) {
-        try {
-            const decryptedData = await crypto.subtle.decrypt(
-                {
-                    name: AES_NAME,
-                    iv: iv,
-                },
-                decKey,
-                encryptedData
-            );
-            console.log("Data decrypted succesfully.");
-            return decryptedData;
-        } catch (err) {
-            console.error("Data decryption failed:", err);
-        }
-    },
-
     importKey: async function (aesRawKey) {
         try {
             const aesKey = await crypto.subtle.importKey(
                 "raw", //can be "jwk" or "raw"
                 aesRawKey,
-                {   //this is the algorithm options
+                {
                     name: AES_NAME,
                 },
                 false, //whether the key is extractable (i.e. can be used in exportKey)
                 ["encrypt", "decrypt"] //can "encrypt", "decrypt", "wrapKey", or "unwrapKey"
             );
-            console.log(aesKey);
+
             return aesKey;
         } catch (err) {
             console.error(err);
         }
     },
 
-    encryptBase64: async function (base64, sampleIV) {
-        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+    encrypt: async function (plainData, iv, key, aad) {
+        try {
+            if (!key || !iv) throw new Error("Key or IV are not defined.");
 
-        const key = await this.getKey(AES_NAME, AES_KEY_SIZE);
-        const iv = new Uint8Array(sampleIV.slice(0, AES_IV_SIZE));
-        const encryptedData = await this.encrypt(byteArray, iv, key);
+            const encrypted = await crypto.subtle.encrypt(
+                {
+                    name: AES_NAME,
+                    iv: iv,
+                    tagLength: 128,
+                    ...(aad && { additionalData: aad })
+                },
+                key,
+                plainData
+            );
 
-        return utility.arrayBufferToBase64(encryptedData);
+            return encrypted;
+
+        } catch (err) {
+            console.error("AES-GCM encryption failed:", err);
+            throw err;
+        }
+    },
+
+    decrypt: async function (encryptedData, iv, key, aad) {
+        try {
+            if (!key || !iv) throw new Error("Key or IV are not defined.");
+
+
+            const decrypted = await crypto.subtle.decrypt(
+                {
+                    name: AES_NAME,
+                    iv: iv,
+                    tagLength: 128,
+                    additionalData: aad
+                },
+                key,
+                encryptedData
+            );
+            return decrypted;
+
+        } catch (err) {
+            console.error("AES-GCM decryption failed:", err);
+            throw err;
+        }
+    },
+
+    encryptForAnalysis: async function (plaindata, baseIV, baseKey, keySize) {
+        const iv = baseIV.slice(0, AES_IV_SIZE);
+        const rawKey = baseKey.slice(0, keySize / 8);
+        const importedKey = await this.importKey(rawKey);
+
+        const encryptedData = await this.encrypt(plaindata, iv, importedKey, null);
+        const memoryUsage = utility.estimateMemoryFromBuffers(iv, rawKey, plaindata, encryptedData)
+
+        return { encryptedData, memoryUsage };
     }
 }

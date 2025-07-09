@@ -3,7 +3,7 @@
     public static class AppConstants
     {
         // String constants
-        public const string AppName = "My Cool App";
+        public const string AppName = "BitMazer";
         public const string Version = "1.0.0";
 
         // Error messages

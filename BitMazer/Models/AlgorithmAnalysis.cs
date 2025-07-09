@@ -5,41 +5,93 @@ namespace BitMazer.Models
 {
     public class AlgorithmAnalysis
     {
-        public const long VeryLowMemoryThreshold = 1;
-        public const long LowMemoryThreshold = 10;
-        public const long MediumMemoryThreshold = 50;
+        public static float CalculateShannonEntropy(byte[] data)
+        {
+            if (data == null || data.Length == 0) return 0.0F;
+
+            int[] frequencies = new int[256];
+            foreach (byte b in data)
+                frequencies[b]++;
+
+            int len = data.Length;
+            float entropy = 0.0F;
+
+            foreach (int freq in frequencies)
+            {
+                if (freq > 0)
+                {
+                    float p = freq / len;
+                    entropy -= p * MathF.Log(p, 2);
+                }
+            }
+
+            return entropy;
+        }
+        public static double CalculateStandardDeviation(byte[] data)
+        {
+            int[] freq = new int[256];
+            foreach (byte b in data)
+            {
+                freq[b]++;
+            }
+
+            double total = data.Length;
+            double mean = 0;
+
+            for (int i = 0; i < 256; i++)
+            {
+                mean += i * freq[i];
+            }
+            mean /= total;
+
+            double variance = 0;
+            for (int i = 0; i < 256; i++)
+            {
+                variance += freq[i] * Math.Pow(i - mean, 2);
+            }
+            variance /= total;
+
+            return Math.Sqrt(variance);
+        }
+        public static double CalculateChiSquared(byte[] data)
+        {
+            if (data == null || data.Length == 0) return (0.0);
+
+            int[] frequencies = new int[256];
+            foreach (byte b in data)
+                frequencies[b]++;
+
+            double expectedFrequency = data.Length / 256.0;
+            double chiSquared = 0.0;
+
+            foreach (int observed in frequencies)
+            {
+                double diff = observed - expectedFrequency;
+                chiSquared += (diff * diff) / expectedFrequency;
+            }
+
+            return chiSquared;
+        }
 
         public EncryptionAlgorithm Algorithm { get; set; }
-        public List<HistogramDataModel> HistogramData { get; set; } = new();
+        public List<HistogramDataModel> HistogramData { get; set; } = [];
+        public List<HistogramDataModel> FullHistogramData { get; set; } = [];
+
         public ApexChartOptions<HistogramDataModel> HistogramOptions { get; set; } = new();
 
-        private double _memoryUsageMB;
-
-        public double MemoryUsageMB
+        private double _memoryUsageBytes;
+        public double MemoryUsageBytes
         {
-            get { return Math.Round(_memoryUsageMB, 2); }
-            set { _memoryUsageMB = value; }
+            get { return _memoryUsageBytes; }
+            set { _memoryUsageBytes = value; }
         }
-        public string MemoryUsageLevel
-        {
-            get
-            {
-                if (MemoryUsageMB >= MediumMemoryThreshold)
-                    return wwwroot.MemoryUsageLevel.High.ToString();
-                else if (MemoryUsageMB >= LowMemoryThreshold)
-                    return wwwroot.MemoryUsageLevel.Medium.ToString();
-                else if (MemoryUsageMB >= VeryLowMemoryThreshold)
-                    return wwwroot.MemoryUsageLevel.Low.ToString();
-                else
-                    return wwwroot.MemoryUsageLevel.VeryLow.ToString();
-            }
-        }
-        public int EncryptionTimeMs { get; set; }
+        public float EncryptionTimeMs { get; set; }
+        public double ChiSquareValue { get; set; }
 
-        private double _entropy;
-        public double Entropy
+        private float _entropy;
+        public float Entropy
         {
-            get { return Math.Round(_entropy, 2); }
+            get { return MathF.Round(_entropy, 6); }
             set { _entropy = value; }
         }
 

@@ -1,12 +1,13 @@
 ﻿@using BitMazer.Enums
+@using BlazorBootstrap
+@using BitMazer.Models
 
 <Grid TItem="AlgorithmAnalysis"
     Data="@Data"
     AllowSorting="true"
     Responsive="true"
-    RowClass="@(item => GetRowClass(item))"
     HeaderRowCssClass="bg-primary text-white border-bottom-0"
-      Class="table table-hover">
+    Class="table table-hover">
 
     <GridColumns>
         <GridColumn TItem="AlgorithmAnalysis" 
@@ -18,25 +19,31 @@
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Encryption Time (ms)" 
                     SortKeySelector="item => item.EncryptionTimeMs">
-            @context.EncryptionTimeMs
+            @context.EncryptionTimeMs.ToString("F2")
+        </GridColumn>
+
+        <GridColumn TItem="AlgorithmAnalysis"
+                    HeaderText="Memory Usage (bytes)"
+                    SortKeySelector="item => item.MemoryUsageBytes">
+            @context.MemoryUsageBytes
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
-                    HeaderText="Memory Usage (MB)" 
-                    SortKeySelector="item => item.MemoryUsageLevel">
-            @context.MemoryUsageMB (@context.MemoryUsageLevel)
+                    HeaderText="Chi Square" 
+                    SortKeySelector="item => item.ChiSquareValue">
+            @context.ChiSquareValue.ToString("F2")
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Entropy" 
                     SortKeySelector="item => item.Entropy">
-            @context.Entropy
+            @context.Entropy.ToString("F6")
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Standard Deviation" 
                     SortKeySelector="item => item.StdDev">
-            @context.StdDev
+            @context.StdDev.ToString("F2")
         </GridColumn>
     </GridColumns>
 </Grid>
@@ -45,15 +52,4 @@
     [Parameter]
     public List<AlgorithmAnalysis> Data { get; set; } = new();
 
-    [Parameter]
-    public string SelectedAlg { get; set; }
-
-    private string GetRowClass(AlgorithmAnalysis item)
-    {
-        if (item.Algorithm.ToString() == SelectedAlg)
-        {
-            return "table-info";
-        }
-        return "";
-    }
 }

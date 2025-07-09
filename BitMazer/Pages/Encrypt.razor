@@ -1,15 +1,15 @@
-﻿@using BitMazer.Enums
-@using static BitMazer.Constants.AppConstants
+﻿@page "/encrypt"
 
-@page "/encrypt"
-@inject IJSRuntime js
-@inject JsUtilityService JsUtils
+@using BitMazer.Enums
+@using BitMazer.Constants
+@using BitMazer.Models
+@using BitMazer.Services
 
 <PageTitle>Encrypt</PageTitle>
 <h1>Encrypt</h1>
 <h5 class="text-muted ml-1">Upload a file and select your preferred encryption configuration below.</h5>
 
-<div class="card shadow-sm rounded-4 p-4 mt-4 mb-4">
+<div class="card shadow-sm rounded-4 p-4 mt-4">
     <!--Upload file button-->
     <div class="mb-3">
         <label class="form-label">📁 Select file to encrypt:</label>
@@ -51,126 +51,168 @@
         </div>
     }
 
-    <!--Select algorithm dropdown-->
-    <div class="mb-3">
-        <label class="form-label">
-            🔒 Choose algorithm and key size:
-        </label>
-        <div class="input-group">
-            <InputSelect 
-                Value="@selectedAlg"
-                ValueChanged="@( (EncryptionAlgorithm alg) => OnAlgorithmChanged(alg))"
-                ValueExpression="@( () => selectedAlg)"
-                class="form-select alg-dropdown me-3">
-                    @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
-                    {
-                        <option value="@alg">@alg</option>
-                    }
-            </InputSelect>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="recommendedToggle" @bind="@UseRecommended">
+        <span class="ms-2"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              title="Recommended for non-advanced users">
+            Use recommended encryption settings
+            <i class="fas fa-info-circle text-primary"></i>
+        </span>
+    </div>
 
-            @if (keySizeOptions.TryGetValue(selectedAlg, out var sizes))
-            {
-                <InputSelect class="form-select alg-dropdown" @bind-Value="selectedKeySize">
-                    @foreach (var size in sizes)
+    
+
+    <div class="@(useRecommended == true ? "disabled-div" : "") ">
+        <!--Select algorithm dropdown-->
+        <div class="mb-3 mt-2">
+            <label class="form-label">
+                🔒 Choose algorithm and key size:
+            </label>
+            <div class="input-group">
+                <InputSelect Value="@selectedAlg"
+                             ValueChanged="@((EncryptionAlgorithm alg) => OnAlgorithmChanged(alg))"
+                             ValueExpression="@(() => selectedAlg)"
+                             class="form-select alg-dropdown me-3  mb-2 mb-md-0">
+                    @foreach (var alg in AlgorithmsOptions.DisplayNames)
                     {
-                        <option value="@size">@size bits</option>
+                        <option value="@alg.Key">@alg.Value</option>
                     }
-                </InputSelect>         
+                </InputSelect>
+
+                @if (AlgorithmsOptions.KeySizes.TryGetValue(selectedAlg, out var sizes))
+                {
+                    <InputSelect class="form-select alg-dropdown" @bind-Value="selectedKeySize">
+                        @foreach (var size in sizes)
+                        {
+                            <option value="@size">@size bits</option>
+                        }
+                    </InputSelect>
+                }
+            </div>
+        </div>
+
+        <!--RSA key configuration-->
+        <div class="mb-3">
+            <label class="form-label">📁 Configure RSA encryption key:</label>
+
+            <ul class="nav nav-tabs mb-3 w-40">
+                <li class="nav-item @(isCustomPassEnabled == false ? "border-top border-start border-end border-primary" : "") ">
+                    <button class="nav-link @(isCustomPassEnabled == false ? "active" : "")"
+                            @onclick="() => isCustomPassEnabled = false">
+                        Generate Key
+                    </button>
+                </li>
+                <li class="nav-item @(isCustomPassEnabled == true ? "border-top border-start border-end border-primary" : "")">
+                    <button class="nav-link @(isCustomPassEnabled == true ? "active" : "")"
+                            @onclick="() => isCustomPassEnabled = true">
+                        Choose Your Own Key
+                    </button>
+                </li>
+            </ul>
+
+            @if (isCustomPassEnabled == true)
+            {
+                <div class="input-group mt-2">
+                    <InputFile id="key-file-upload" class="hidden-file-input" OnChange="LoadKey" />
+
+                    <label for="key-file-upload" class="btn btn-outline-primary">
+                        <i class="fa-solid fa-upload"></i> Choose a File
+                    </label>
+
+                    @if (selectedKey == null)
+                    {
+                        <span class="nofilemsg">No file selected.</span>
+                    }
+                    else
+                    {
+                        <div class="nofilemsg">
+                            <span>@selectedKey?.Name</span>
+                            <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("key"))" title="Remove file">
+                                <i class="fa-solid fa-xmark small-icon"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+                <div class="text-danger fw-bold">
+                    @keyError
+                </div>
+            }
+
+            @if (isCustomPassEnabled == false)
+            {
+                <div class="row d-flex">
+                    <div class="col-md-2">
+                        <div class="d-flex">
+                            <label class="mb-0 me-2">Key Size: </label>
+                            <InputSelect @bind-Value="@selectedRSAKeySize"
+                                         class="form-select form-select-sm w-auto">
+                                @foreach (var keySize in AlgorithmsOptions.RSAKeySizes)
+                                {
+                                    <option value="@keySize">@keySize bits</option>
+                                }
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check text-nowrap">
+                            <input class="form-check-input" type="checkbox" id="key-reusing" @bind="@isKeyReusingEnabled" />
+                            <label for="key-reusing">Reuse the encryption key</label>
+                            <span class="ms-2"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="right"
+                                  title="The auto generated encryption key will be available for downloading.">
+                                <i class="fas fa-info-circle text-primary"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             }
         </div>
-    </div>
-
-    <!--Checkboxes-->
-    <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="key-selecting" @bind="@isCustomPassEnabled" />
-            <label class="form-check-label" for="key-selecting">Choose your own key</label>
-            <span class="ms-2"
-            data-bs-toggle="tooltip"
-            data-bs-placement="right"
-            title="Reuse a previously generated key">
-                <i class="fas fa-info-circle text-primary"></i>
-            </span>
-        </div>
-
-        @if (isCustomPassEnabled == false) {
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="key-reusing" @bind="@isKeyReusingEnabled" />
-                <label class="form-check-label" for="key-reusing">Reuse the encryption key</label>
-                <span class="ms-2"
-                data-bs-toggle="tooltip"
-                data-bs-placement="right"
-                title="The auto generated encryption key will be available for downloading.">
-                    <i class="fas fa-info-circle text-primary"></i>
-                </span>
-            </div>
-        }
-
-        @if (isCustomPassEnabled)
-        {
-            <div class="input-group mt-2">
-                <InputFile id="key-file-upload" class="hidden-file-input" OnChange="LoadKey" />
-
-                <label for="key-file-upload" class="btn btn-outline-primary">
-                    <i class="fa-solid fa-upload"></i> Choose a File
-                </label>
-
-                @if (selectedKey == null)
-                {
-                    <span class="nofilemsg">No file selected.</span>
-                }
-                else
-                {
-                    <div class="nofilemsg">
-                        <span>@selectedKey?.Name</span>
-                        <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("key"))" title="Remove file">
-                            <i class="fa-solid fa-xmark small-icon"></i>
-                        </button>
-                    </div>
-                }
-            </div>
-            <div class="text-danger fw-bold">
-                @keyError
-            </div>
-        }
-    </div>
-
+    </div>   
+    
     <!--Start encrypt button-->
-    <div class="mb-5">
+    <div class="d-inline">
         <button id="encrypt-btn"
                 disabled="@IsEncryptButtonDisabled()"
                 class="btn btn-primary"
-        @onclick="InitEncryption">
+                @onclick="InitEncryption">
             <i class="bi bi-lock"></i>
             Encrypt
         </button>
     </div>
 
-    <!--Download and errors area-->
-    <div class="mb-3">
-        <!--Loader animation-->
-        
-        <div id="loader" class="d-none loader"></div>
-        @if (!string.IsNullOrEmpty(encryptionError))
-        {
-            <div class="text-danger fw-bold">
-                @encryptionError
+   <!--Download and errors area-->
+   <div class="mb-3 mt-4">
+            <!--Loader animation-->
+            <div id="loader" class="d-none loader"></div>
+            
+            <div id="download-container" style="display: @(IsEncrypting ? "none" : "block")">
+                <h5 class="mb-2">📤 Result</h5>
+                @if (string.IsNullOrEmpty(encryptionError))
+                {          
+                    <div id="result-label">
+                        <p class="text-muted">@UIConstants.ENC_RESULT_PLACEHOLDER</p>
+                    </div>
+                }
             </div>
-        }
-        <div id="download-container" style="display: @(IsEncrypting ? "none" : "block")">
-            <h5 class="mb-2">📤 Result</h5>
-            <div id="result-label">
-                <p class="text-muted">Your encrypted file will be ready to download here after processing.</p>
-            </div>
+            @if (!string.IsNullOrEmpty(encryptionError))
+            {
+                <div class="text-danger fw-bold">
+                    @encryptionError
+                </div>
+            }
         </div>
-    </div>
+
 </div>
 
 
 @code {
     protected override void OnInitialized()
     {
-        selectedKeySize = keySizeOptions[selectedAlg][0];
+        selectedKeySize = AlgorithmsOptions.KeySizes[selectedAlg][0];
+        selectedRSAKeySize = AlgorithmsOptions.RSAKeySizes[0];
     }
 
     private async Task ClearUploadFileField(string field)
@@ -179,7 +221,7 @@
             selectedFile = null;
             fileError = string.Empty;
             encryptionError = string.Empty;
-            await JsUtils.ClearDownloadSectionAsync();
+            await JS.ClearDownloadSectionAsync();
         } else {
             selectedKey = null;
             keyError = string.Empty;
@@ -200,11 +242,10 @@
         else
         {
             IsEncrypting = true;
-            StateHasChanged();
 
             try
             {
-                string result = await js.InvokeAsync<string>("startEncryption", selectedAlg.ToString(), selectedKeySize, isCustomPassEnabled, isKeyReusingEnabled);
+                string result = await JS.InitEncryptionAsync(selectedAlg.ToString(), selectedKeySize, selectedRSAKeySize, isCustomPassEnabled, isKeyReusingEnabled);
 
                 if (result.StartsWith("Error:"))
                 {
@@ -256,8 +297,7 @@
         IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
         if (file != null)
         {
-            if(file.Size != 294) {
-                Console.WriteLine("Invalid RSA key file size.");
+            if (file.Size > 700) {
                 keyError = "Invalid key file size";
             } else {
                 keyError = string.Empty;
@@ -274,17 +314,22 @@
             || !string.IsNullOrEmpty(keyError);
     }
 
+    private void ApplyRecommendedOptions()
+    {
+        selectedAlg = EncryptionAlgorithm.AES_GCM;
+        selectedKeySize = 256;
+        selectedRSAKeySize = 2048;
+        isCustomPassEnabled = false;
+        isKeyReusingEnabled = false;
+        selectedKey = null;
+        keyError = string.Empty;
+    }
+
     private EncryptionAlgorithm selectedAlg = EncryptionAlgorithm.AES_GCM;
 
     private int selectedKeySize;
 
-    private readonly Dictionary<EncryptionAlgorithm, int[]> keySizeOptions = new()
-    {
-        { EncryptionAlgorithm.AES_GCM, new[] { 128, 256 } },
-        { EncryptionAlgorithm.ChaCha20, new[] { 256 } },
-        { EncryptionAlgorithm.Serpent, new[] { 128, 192, 256 } },
-        { EncryptionAlgorithm.Twofish, new[] { 128, 192, 256 } },
-    };
+    private int selectedRSAKeySize;
 
     private FileModel? selectedFile = null;
 
@@ -293,6 +338,22 @@
     private bool isCustomPassEnabled = false;
 
     private bool isKeyReusingEnabled = false;
+
+    private bool useRecommended;
+
+    private bool UseRecommended
+    {
+        get => useRecommended;
+        set
+        {
+            if (value && !useRecommended)
+            {
+                ApplyRecommendedOptions();
+            }
+
+            useRecommended = value;
+        }
+    }
 
     private bool IsEncrypting;
 
@@ -305,7 +366,7 @@
     private void OnAlgorithmChanged(EncryptionAlgorithm value)
     {
         selectedAlg = value;
-        if (keySizeOptions.TryGetValue(selectedAlg, out var sizes) && sizes.Length > 0)
+        if (AlgorithmsOptions.KeySizes.TryGetValue(selectedAlg, out var sizes) && sizes.Length > 0)
         {
             selectedKeySize = sizes[0];
         }

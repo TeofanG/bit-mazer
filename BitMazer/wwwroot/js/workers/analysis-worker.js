@@ -1,45 +1,41 @@
-﻿import { aes } from '../algorithms/aes.js';
-import { chacha } from '../algorithms/chacha.js';
-import { twofish } from '../algorithms/twofish.js';
-function estimateBytes(...buffers) {
-    return buffers.reduce((sum, buf) => {
-        if (typeof buf === 'string') {
-            return sum + (new TextEncoder().encode(buf)).byteLength;
-        }
-        return sum + (buf?.byteLength || 0);
-    }, 0);
-}
+﻿import { aes } from '/js/algorithms/aes.js';
+import { chacha } from '/js/algorithms/chacha.js';
+import { twofish } from '/js/algorithms/twofish.js';
 
 self.onmessage = async function (e) {
-    const { base64, algorithm, iv } = e.data;
-
+    const { rabbitEncryptedData, rabbitMemoryUsage, rabbitEncTime, algorithm, plaindata, baseIV, baseKey, keySize } = e.data;
     const startTime = performance.now();
+    let encryptedData, memoryUsage;
     try {
-        let result;
 
         switch (algorithm) {
             case 'AES_GCM':
-                result = await aes.encryptBase64(base64, iv);
+                ({ encryptedData, memoryUsage } = await aes.encryptForAnalysis(plaindata, baseIV, baseKey, keySize));
                 break;
-            case 'ChaCha20':
-                result = await chacha.encryptBase64(base64, iv);
+            case 'XChaCha20_Poly1305':
+                ({ encryptedData, memoryUsage } = await chacha.encryptForAnalysis(plaindata, baseIV, baseKey, keySize));
+                break;
+            case 'Rabbit':
+                encryptedData = rabbitEncryptedData;
+                memoryUsage = rabbitMemoryUsage
                 break;
             case 'Twofish':
-                result = await twofish.encryptBase64(base64, iv);
+                ({ encryptedData, memoryUsage } = await twofish.encryptForAnalysis(plaindata, baseIV, baseKey, keySize));
                 break;
             default:
                 throw new Error("Unsupported algorithm: " + algorithm);
         }
         const endTime = performance.now();
 
-        const memoryUsed = estimateBytes(result);
-        const elapsedTimeMs = Math.round(endTime - startTime);
+        const elapsedTimeMs = algorithm === "Rabbit"
+            ? rabbitEncTime
+            : Math.round((endTime - startTime) * 100) / 100;
 
         self.postMessage({
             success: true,
-            encrypted: result,
-            memoryUsed: memoryUsed / (1024 * 1024),
-            elapsedTimeMs
+            encrypted: new Uint8Array(encryptedData),
+            memoryUsed: memoryUsage,
+            elapsedTimeMs: elapsedTimeMs
         });
     } catch (err) {
         self.postMessage({ success: false, error: err.message });

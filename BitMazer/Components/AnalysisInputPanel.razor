@@ -1,0 +1,148 @@
+﻿@using BitMazer.Enums
+@using BitMazer.Models
+@using BitMazer.Constants
+
+<div class="mb-3">
+    <label class="form-label">📁 Select file:</label>
+    <div class="input-group">
+
+        <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="OnFileSelected" /> 
+         <label for="enc-file-upload" class="btn btn-outline-primary"> 
+             <i class="fa-solid fa-upload"></i> Choose a File 
+         </label>
+
+        @if (SelectedFile != null)
+        {
+            <div class="nofilemsg">
+                <span>@SelectedFile.Name</span>
+                <button class="clear-file-btn ms-2" @onclick="OnFileCleared" title="Remove file">
+                    <i class="fa-solid fa-xmark small-icon"></i>
+                </button>
+            </div>
+        }
+        else
+        {
+            <span class="nofilemsg">No file selected.</span>
+        }
+    </div>
+    <!--Uploaded file information-->
+    @if (SelectedFile != null)
+    {
+        <div class="alert alert-info">
+            <p><strong>Name:</strong> @SelectedFile.Name</p>
+            <p><strong>Size:</strong> @SelectedFile.Size MB</p>
+            <p><strong>Type:</strong> @SelectedFile.Type</p>
+        </div>
+    }
+    <div class="mb-3">
+        <label class="form-label">🔒 Select Algorithms </label>
+
+        @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
+        {
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    <div class="form-check ms-4 mb-3">
+                        <input class="form-check-input" type="checkbox"
+                               id="@alg"
+                               value="@alg"
+                               checked="@SelectedAlgsKeySizes.ContainsKey(alg)"
+                               @onchange="(async e => await ToggleAlgorithmSelection(alg, (bool?)((ChangeEventArgs)e).Value))" />
+                        <label for="@alg" class="form-check-label">@alg</label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    @if (SelectedAlgsKeySizes.ContainsKey(alg))
+                    {
+                        <select id="@($"{alg}-keyselect")"
+                                class="form-select"
+                                style="width: 50px; display: inline"
+                                @onchange="(e => SelectedAlgsKeySizes[alg] = int.Parse(e.Value!.ToString()!))">
+                            @foreach (var size in AlgorithmsOptions.KeySizes[alg])
+                            {
+                                <option value="@size"
+                                        selected="@(SelectedAlgsKeySizes[alg] == size)">
+                                        
+                                            @size bits
+                                </option>
+                            }
+                        </select>
+                    }
+                </div> 
+            </div> 
+        }
+    </div>
+    <div class="mb-3">
+        <button id="encrypt-btn"
+                class="btn btn-primary"
+                disabled="@(!SelectedAlgsKeySizes.Any() || SelectedFile == null)"
+                @onclick="OnSubmit">
+            Run Analysis
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+
+    [Parameter]
+    public FileModel? SelectedFile { get; set; }
+    [Parameter]
+    public EventCallback<FileModel?> SelectedFileChanged { get; set; }
+
+    [Parameter]
+    public required Dictionary<EncryptionAlgorithm, int> SelectedAlgsKeySizes { get; set; }
+    [Parameter]
+    public EventCallback<Dictionary<EncryptionAlgorithm, int>> SelectedAlgsKeySizesChanged { get; set; }
+
+    [Parameter]
+    public string FileError { get; set; }
+    [Parameter]
+    public EventCallback<string> FileErrorChanged { get; set; }
+
+
+    private async Task ToggleAlgorithmSelection(EncryptionAlgorithm alg, bool? isChecked)
+    {
+        if (isChecked == true)
+        {
+            if (!SelectedAlgsKeySizes.ContainsKey(alg))
+            {
+                var defaultSize = AlgorithmsOptions.KeySizes[alg].First();
+                SelectedAlgsKeySizes[alg] = defaultSize;
+            }
+        }
+        else
+        {
+            if (SelectedAlgsKeySizes.ContainsKey(alg))
+            {
+                SelectedAlgsKeySizes.Remove(alg);
+            }
+        }
+        await SelectedAlgsKeySizesChanged.InvokeAsync(SelectedAlgsKeySizes);
+    }
+
+    private async Task OnFileSelected(InputFileChangeEventArgs e)
+    {
+        IBrowserFile? file = e.GetMultipleFiles(1).FirstOrDefault();
+        if (file != null)
+        {
+            if (file.Size > 300 * 1024 * 1024)
+            {
+                FileError = "File too large. Max allowed size is 256.";
+            }
+
+            SelectedFile = new FileModel(file);
+            await SelectedFile.LoadAsync();
+            await SelectedFileChanged.InvokeAsync(SelectedFile);
+        }
+    }
+
+    private async Task OnFileCleared()
+    {
+        SelectedFile = null;
+        FileError = string.Empty;
+        await SelectedFileChanged.InvokeAsync(null);
+        await FileErrorChanged.InvokeAsync(string.Empty);
+    }
+
+}

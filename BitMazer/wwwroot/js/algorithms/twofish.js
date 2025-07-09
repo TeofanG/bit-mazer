@@ -1,54 +1,67 @@
-﻿import { twofishAlg } from './twofish-lib.js';
-import { CryptoConstants } from '../constants/crypto-constants.js';
-import { utility } from '../utility.js';
+﻿import { twofishCipher } from '/js/algorithms/twofish-lib/twofish-lib.js';
+import { CryptoConstants } from '/js/constants/crypto-constants.js';
+import { utility } from '/js/utility.js';
+import { hmac } from '/js/hmacUtilities.js';
 
-const { TWOFISH_KEY_SIZE, TWOFISH_IV_SIZE } = CryptoConstants;
+const { TWOFISH_IV_SIZE } = CryptoConstants;
 
 export const twofish = {
-    generateIV: function (length) {
-        const iv = new Uint8Array(length);
-        crypto.getRandomValues(iv);
-        return iv;
-    },
-
-    generateKey: function (length) {
-        const key = new Uint8Array(length);
-        crypto.getRandomValues(key);
-        return key;
-    },
-
-    encrypt: function (fileBuffer, iv, key) {
+    encrypt: async function (plaindata, iv, key, hmacKey, aad) {
         try {
-            const tf = twofishAlg(iv);
-            const cipherdata = tf.encryptCBC(key, fileBuffer);
+            if (!key || !iv) throw new Error("Key or IV are not defined.");
 
-            return new Uint8Array(cipherdata);
+            const tf = twofishCipher(iv);
+            const cipherdataRaw = tf.encryptCBC(key, plaindata);
+            const cipherdata = new Uint8Array(cipherdataRaw);
+
+            if (aad) {
+                const combined = new Uint8Array(aad.length + cipherdata.length);
+                combined.set(aad, 0);
+                combined.set(cipherdata, aad.length);
+
+                const tag = new Uint8Array(await hmac.sign(hmacKey, combined));
+
+                return { cipherdata, tag };
+            } else {
+                return cipherdata;
+            }
         } catch (err) {
             console.error("Twofish encryption failed:", err);
             return null;
         }
     },
 
-    decrypt: function (cipherdata, iv, key) {
+    decrypt: async function (cipherdata, iv, key, hmacKey, tag, aad) {
         try {
-            const tf = twofishAlg(iv);
-            const plaintext = tf.decryptCBC(key, cipherdata);
 
-            return new Uint8Array(plaintext);
+            if (!key || !iv) throw new Error("Key or IV are not defined.");
+
+            const tf = twofishCipher(iv);
+
+            const combined = new Uint8Array(aad.length + cipherdata.length);
+            combined.set(aad, 0);
+            combined.set(cipherdata, aad.length);
+
+            const isValid = await hmac.verify(hmacKey, tag, combined);
+            if (!isValid) throw new Error("Invalid HMAC tag – authentication failed");
+
+            const plaindata = tf.decryptCBC(key, cipherdata);
+
+            return new Uint8Array(plaindata);;
+
         } catch (err) {
             console.error("Twofish decryption failed:", err);
-
-            return null;
+            throw err;
         }
     },
 
-    encryptBase64: function (base64, sampleIV) {
-        const byteArray = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
-        const key = this.generateKey(TWOFISH_KEY_SIZE);
-        const iv = new Uint8Array(sampleIV.slice(0, TWOFISH_IV_SIZE));
+    encryptForAnalysis: async function (plaindata, baseIV, baseKey, keySize) {
+        const iv = baseIV.slice(0, TWOFISH_IV_SIZE);
+        const key = baseKey.slice(0, keySize / 8);
 
-        const encryptedData = this.encrypt(byteArray, iv, key);
+        const encryptedData = await this.encrypt(plaindata, iv, key);
+        const memoryUsage = utility.estimateMemoryFromBuffers(iv, key, plaindata, encryptedData)
 
-        return utility.arrayBufferToBase64(encryptedData);
+        return { encryptedData, memoryUsage };
     }
 };
