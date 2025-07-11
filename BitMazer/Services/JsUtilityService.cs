@@ -72,7 +72,7 @@ namespace BitMazer.Services
         public async Task<string> InitAnalysisAsync(string alg, byte[] plaindata, byte[] baseIV, byte[] baseKey, int keySize, DotNetObjectReference<Analysis> dotNetRef)
         {
             var module = await LoadAnalysisModuleAsync();
-            return await module.InvokeAsync<string>("startEncryptionAnalysisWorker", alg, plaindata, baseIV, baseKey, keySize, dotNetRef);
+            return await module.InvokeAsync<string>("startAnalysisWorker", alg, plaindata, baseIV, baseKey, keySize, dotNetRef);
         }
 
         public async Task ClearDownloadSectionAsync()

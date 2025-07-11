@@ -7,11 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Remove="wwwroot\js\constants\domElements.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="wwwroot\js\constants\domElements.js" />
 		<None Include="wwwroot\js\constants\crypto-constants.js" />
 	</ItemGroup>
 

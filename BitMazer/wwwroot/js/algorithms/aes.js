@@ -4,7 +4,7 @@
 import { CryptoConstants } from '/js/constants/crypto-constants.js';
 import { utility } from '/js/utility.js';
 
-const { AES_NAME, AES_IV_SIZE } = CryptoConstants;
+const { AES_IV_SIZE } = CryptoConstants;
 
 export const aes = {
     getKey: async function (mode, length) {
@@ -32,7 +32,7 @@ export const aes = {
                 "raw", //can be "jwk" or "raw"
                 aesRawKey,
                 {
-                    name: AES_NAME,
+                    name: "AES-GCM",
                 },
                 false, //whether the key is extractable (i.e. can be used in exportKey)
                 ["encrypt", "decrypt"] //can "encrypt", "decrypt", "wrapKey", or "unwrapKey"
@@ -50,7 +50,7 @@ export const aes = {
 
             const encrypted = await crypto.subtle.encrypt(
                 {
-                    name: AES_NAME,
+                    name: "AES-GCM",
                     iv: iv,
                     tagLength: 128,
                     ...(aad && { additionalData: aad })
@@ -74,7 +74,7 @@ export const aes = {
 
             const decrypted = await crypto.subtle.decrypt(
                 {
-                    name: AES_NAME,
+                    name: "AES-GCM",
                     iv: iv,
                     tagLength: 128,
                     additionalData: aad

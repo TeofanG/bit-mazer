@@ -7,7 +7,8 @@ namespace BitMazer.Models
     {
         public static float CalculateShannonEntropy(byte[] data)
         {
-            if (data == null || data.Length == 0) return 0.0F;
+            if (data == null || data.Length == 0)
+                return 0.0F;
 
             int[] frequencies = new int[256];
             foreach (byte b in data)
@@ -20,7 +21,7 @@ namespace BitMazer.Models
             {
                 if (freq > 0)
                 {
-                    float p = freq / len;
+                    float p = (float)freq / len;
                     entropy -= p * MathF.Log(p, 2);
                 }
             }
@@ -79,8 +80,8 @@ namespace BitMazer.Models
 
         public ApexChartOptions<HistogramDataModel> HistogramOptions { get; set; } = new();
 
-        private double _memoryUsageBytes;
-        public double MemoryUsageBytes
+        private float _memoryUsageBytes;
+        public float MemoryUsageBytes
         {
             get { return _memoryUsageBytes; }
             set { _memoryUsageBytes = value; }

@@ -37,14 +37,14 @@ export const rsa = {
         }
     },
 
-    generateKey: async function (mode, keySize, hashAlg) {
+    generateKey: async function (keySize) {
         try {
             const keyPair = await crypto.subtle.generateKey(
                 {
-                    name: mode, // RSA-OAEP
-                    modulusLength: keySize, // 1024, 2048, or 4096
+                    name: "RSA-OAEP",
+                    modulusLength: keySize,
                     publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
-                    hash: { name: hashAlg } // "SHA-1", "SHA-256", "SHA-384", or "SHA-512"
+                    hash: { name: "SHA-256" }
                 },
                 true,
                 ["encrypt", "decrypt"]
@@ -104,7 +104,7 @@ export const rsa = {
             );
             return key;
         } catch (err) {
-            throw err;  
+            throw err;
         }
     },
 
@@ -118,7 +118,7 @@ export const rsa = {
 
             return { publicKeyUint8Array, privateKeyUint8Array };
         } catch (err) {
-            throw err;  
+            throw err;
         }
     },
 

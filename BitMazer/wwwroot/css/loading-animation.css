@@ -1,5 +1,5 @@
 /*loading animation shown during encryption/decryption*/
-.loader {
+#loader {
     width: 70px;
     aspect-ratio: 2;
     background: radial-gradient(farthest-side,#fff 90%,#0000) 0 0/8px 8px, linear-gradient(#0A192F 0 0) 100% 0/30px 10px, linear-gradient(#0A192F 0 0) 0 100%/30px 10px, repeating-linear-gradient(90deg,#0A192F 0 10px,#ffff 0 30px);

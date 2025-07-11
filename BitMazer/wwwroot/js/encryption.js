@@ -1,29 +1,32 @@
 ﻿import { CryptoConstants } from '/js/constants/crypto-constants.js';
-import { DomElements } from '/js/constants/domElements.js';
-import { BlobConstants } from '/js/constants/blob-types.js';
-import { DwnldFilesNamesConstants } from '/js/constants/download-files-names.js';
+import { DomSelectors, FileDownloadNames, FileTypes } from '/js/constants/app-constants.js';
 import { utility } from '/js/utility.js';
+import { hmac } from '/js/hmacUtilities.js';
 import { rabbit } from '/js/algorithms/rabbit.js';
 
 const {
     ENC_INPUT_FIELD,
     ENC_KEY_INPUT_FIELD
-} = DomElements;
+} = DomSelectors;
 
 const {
-    AES_NAME,
     AES_IV_SIZE,
     CHACHA_IV_SIZE,
     TWOFISH_IV_SIZE,
 } = CryptoConstants;
 
 async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCustomKeyEnabled, isKeyReusingEnabled) {
+
+    const startTime = performance.now();
+    const loaderAnimation = document.getElementById('loader');
+    loaderAnimation.classList.remove("d-none");
+
     try {
         utility.clearDownloadSection();
+        document.getElementById('loader').classList.remove('d-none');
+
 
         const file = document.getElementById(ENC_INPUT_FIELD).files[0];
-
-        utility.showLoader();
 
         const fileBuffer = await file.arrayBuffer();
 
@@ -35,9 +38,19 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
             keyBuffer = null;
         }
 
+        const metadata = {
+            fileName: file.name,
+            fileType: file.type,
+            fileSize: file.size,
+            algorithm: selectedEncAlg,
+        }
+
         let rabbitCipherdata = null;
         let rabbitKey = null;
         let rabbitIV = null;
+        let rabbitTag = null;
+        let rabbitHmacKey = null;
+
         if (selectedEncAlg === "Rabbit") {
             rabbitIV = new Uint8Array(16);
             crypto.getRandomValues(rabbitIV);
@@ -45,14 +58,12 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
             rabbitKey = new Uint8Array(16);
             crypto.getRandomValues(rabbitKey);
 
-            rabbitCipherdata = rabbit.encrypt(fileBuffer, rabbitIV, rabbitKey);
-        }
+            const aad = await utility.generateEncodedAAD(metadata, rabbitIV);
+            rabbitHmacKey = await hmac.generateKey();
 
-        const metadata = {
-            fileName: file.name,
-            fileType: file.type,
-            fileSize: file.size,
-            algorithm: selectedEncAlg,
+            const { cipherdata, tag } = (await rabbit.encrypt(fileBuffer, rabbitIV, rabbitKey, rabbitHmacKey, aad));
+            rabbitCipherdata = cipherdata;
+            rabbitTag = tag;
         }
 
         const worker = new Worker('/js/workers/encryption-worker.js', { type: 'module' });
@@ -63,6 +74,8 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
                     cipherdata: rabbitCipherdata,
                     iv: rabbitIV,
                     key: rabbitKey,
+                    tag: rabbitTag,
+                    hmacKey: rabbitHmacKey
                 },
                 fileBuffer,
                 keyBuffer,
@@ -72,7 +85,6 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
                 isCustomKeyEnabled,
                 isKeyReusingEnabled,
                 constants: {
-                    AES_NAME,
                     AES_IV_SIZE,
                     CHACHA_IV_SIZE,
                     TWOFISH_IV_SIZE,
@@ -84,14 +96,12 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
                 worker.terminate();
             };
 
-            const startTime = performance.now();
-
             worker.onmessage = async (e) => {
                 const { success, result, error } = e.data;
 
                 const elapsed = performance.now() - startTime;
 
-                const MIN_DURATION = 1500;
+                const MIN_DURATION = 2000;
                 const remainingTime = MIN_DURATION - elapsed;
 
                 if (remainingTime > 0) {
@@ -116,14 +126,14 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
                     cipherdata: result.cipherdata
                 };
 
-                utility.createDownloadButton(JSON.stringify(encryptionOutput, null, 2), BlobConstants.APP_JSON, file.name + DwnldFilesNamesConstants.ENCRYPTED_FILE);
+                utility.createDownloadButton(JSON.stringify(encryptionOutput, null, 2), FileTypes.APP_JSON, file.name + FileDownloadNames.ENCRYPTED_FILE);
 
                 if (!isCustomKeyEnabled && result.rsaKey?.privateKeyUint8Array) {
-                    utility.createDownloadButton(result.rsaKey.privateKeyUint8Array, BlobConstants.APP_OCTET, DwnldFilesNamesConstants.DEC_KEY_FILE+rsaKeySize+".key");
+                    utility.createDownloadButton(result.rsaKey.privateKeyUint8Array, FileTypes.APP_OCTET, FileDownloadNames.DEC_KEY_FILE + rsaKeySize + ".key");
                 }
 
                 if (isKeyReusingEnabled && result.rsaKey?.publicKeyUint8Array) {
-                    utility.createDownloadButton(result.rsaKey.publicKeyUint8Array, BlobConstants.APP_OCTET, DwnldFilesNamesConstants.ENC_KEY_FILE+rsaKeySize+".key");
+                    utility.createDownloadButton(result.rsaKey.publicKeyUint8Array, FileTypes.APP_OCTET, FileDownloadNames.ENC_KEY_FILE + rsaKeySize + ".key");
                 }
 
                 resolve("Success");
@@ -133,7 +143,7 @@ async function initEncryption(selectedEncAlg, selectedKeySize, rsaKeySize, isCus
 
     } catch (err) {
         document.getElementById('loader').classList.add('d-none');
-        return `Error: ${err}`;
+        return "Error: " + err.message;
     }
 };
 

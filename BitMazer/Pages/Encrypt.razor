@@ -4,176 +4,177 @@
 @using BitMazer.Constants
 @using BitMazer.Models
 @using BitMazer.Services
+@using BitMazer.Components
 
 <PageTitle>Encrypt</PageTitle>
 <h1>Encrypt</h1>
 <h5 class="text-muted ml-1">Upload a file and select your preferred encryption configuration below.</h5>
 
-<div class="card shadow-sm rounded-4 p-4 mt-4">
-    <!--Upload file button-->
-    <div class="mb-3">
-        <label class="form-label">📁 Select file to encrypt:</label>
-        <div class="input-group">
-            <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
-
-            <label for="enc-file-upload" class="btn btn-outline-primary">
-                <i class="fa-solid fa-upload"></i> Choose a File
-            </label>
-
-            @if (selectedFile == null)
-            {
-                <span class="nofilemsg">No file selected.</span>
-            }
-            else
-            {
-                <div class="nofilemsg">
-                    <span>@selectedFile.Name</span>
-                    <button class="clear-file-btn ms-2"
-                            title="Remove file"
-                            @onclick="@(() => ClearUploadFileField("file"))" >
-                        <i class="fa-solid fa-xmark small-icon"></i>
-                    </button>
-                </div>
-            }
-        </div>
-        <div class="text-danger fw-bold">
-            @fileError
-        </div>
-    </div>
-
-    <!--Uploaded file information-->
-    @if (selectedFile != null)
-    {
-        <div class="alert alert-info">
-            <p><strong>Name:</strong> @selectedFile?.Name</p>
-            <p><strong>Size:</strong> @selectedFile?.Size MB</p>
-            <p><strong>Type:</strong> @selectedFile?.Type</p>
-        </div>
-    }
-
-    <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="recommendedToggle" @bind="@UseRecommended">
-        <span class="ms-2"
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              title="Recommended for non-advanced users">
-            Use recommended encryption settings
-            <i class="fas fa-info-circle text-primary"></i>
-        </span>
-    </div>
-
-    
-
-    <div class="@(useRecommended == true ? "disabled-div" : "") ">
-        <!--Select algorithm dropdown-->
-        <div class="mb-3 mt-2">
-            <label class="form-label">
-                🔒 Choose algorithm and key size:
-            </label>
+<div class="card flex-column flex-md-row gap-5 p-4 mt-5">
+    <div class="d-flex flex-column flex-md-col">
+        <!--Upload file button-->
+        <div class="mb-3">
+            <label class="form-label">📁 Select file to encrypt:</label>
             <div class="input-group">
-                <InputSelect Value="@selectedAlg"
-                             ValueChanged="@((EncryptionAlgorithm alg) => OnAlgorithmChanged(alg))"
-                             ValueExpression="@(() => selectedAlg)"
-                             class="form-select alg-dropdown me-3  mb-2 mb-md-0">
-                    @foreach (var alg in AlgorithmsOptions.DisplayNames)
-                    {
-                        <option value="@alg.Key">@alg.Value</option>
-                    }
-                </InputSelect>
+                <InputFile id="enc-file-upload" class="hidden-file-input" OnChange="LoadFile" />
 
-                @if (AlgorithmsOptions.KeySizes.TryGetValue(selectedAlg, out var sizes))
+                <label for="enc-file-upload" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
+
+                @if (selectedFile == null)
                 {
-                    <InputSelect class="form-select alg-dropdown" @bind-Value="selectedKeySize">
-                        @foreach (var size in sizes)
-                        {
-                            <option value="@size">@size bits</option>
-                        }
-                    </InputSelect>
+                    <span class="nofilemsg">No file selected.</span>
                 }
+                else
+                {
+                    <div class="nofilemsg">
+                        <span>@selectedFile.Name</span>
+                        <button class="clear-file-btn ms-2"
+                                title="Remove file"
+                                @onclick="@(() => ClearUploadFileField("file"))">
+                            <i class="fa-solid fa-xmark small-icon"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+            <div class="text-danger fw-bold">
+                @fileError
             </div>
         </div>
 
-        <!--RSA key configuration-->
-        <div class="mb-3">
-            <label class="form-label">📁 Configure RSA encryption key:</label>
+        <!--Uploaded file information-->
+        @if (selectedFile != null)
+        {
+            <div class="alert alert-info">
+                <p><strong>Name:</strong> @selectedFile?.Name</p>
+                <p><strong>Size:</strong> @selectedFile?.Size MB</p>
+                <p><strong>Type:</strong> @selectedFile?.Type</p>
+            </div>
+        }
 
-            <ul class="nav nav-tabs mb-3 w-40">
-                <li class="nav-item @(isCustomPassEnabled == false ? "border-top border-start border-end border-primary" : "") ">
-                    <button class="nav-link @(isCustomPassEnabled == false ? "active" : "")"
-                            @onclick="() => isCustomPassEnabled = false">
-                        Generate Key
-                    </button>
-                </li>
-                <li class="nav-item @(isCustomPassEnabled == true ? "border-top border-start border-end border-primary" : "")">
-                    <button class="nav-link @(isCustomPassEnabled == true ? "active" : "")"
-                            @onclick="() => isCustomPassEnabled = true">
-                        Choose Your Own Key
-                    </button>
-                </li>
-            </ul>
-
-            @if (isCustomPassEnabled == true)
-            {
-                <div class="input-group mt-2">
-                    <InputFile id="key-file-upload" class="hidden-file-input" OnChange="LoadKey" />
-
-                    <label for="key-file-upload" class="btn btn-outline-primary">
-                        <i class="fa-solid fa-upload"></i> Choose a File
-                    </label>
-
-                    @if (selectedKey == null)
-                    {
-                        <span class="nofilemsg">No file selected.</span>
-                    }
-                    else
-                    {
-                        <div class="nofilemsg">
-                            <span>@selectedKey?.Name</span>
-                            <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("key"))" title="Remove file">
-                                <i class="fa-solid fa-xmark small-icon"></i>
-                            </button>
-                        </div>
-                    }
-                </div>
-                <div class="text-danger fw-bold">
-                    @keyError
-                </div>
-            }
-
-            @if (isCustomPassEnabled == false)
-            {
-                <div class="row d-flex">
-                    <div class="col-md-2">
-                        <div class="d-flex">
-                            <label class="mb-0 me-2">Key Size: </label>
-                            <InputSelect @bind-Value="@selectedRSAKeySize"
-                                         class="form-select form-select-sm w-auto">
-                                @foreach (var keySize in AlgorithmsOptions.RSAKeySizes)
-                                {
-                                    <option value="@keySize">@keySize bits</option>
-                                }
-                            </InputSelect>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check text-nowrap">
-                            <input class="form-check-input" type="checkbox" id="key-reusing" @bind="@isKeyReusingEnabled" />
-                            <label for="key-reusing">Reuse the encryption key</label>
-                            <span class="ms-2"
-                                  data-bs-toggle="tooltip"
-                                  data-bs-placement="right"
-                                  title="The auto generated encryption key will be available for downloading.">
-                                <i class="fas fa-info-circle text-primary"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            }
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="recommendedToggle" @bind="@UseRecommended">
+            <span class="ms-2"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="right"
+                  title="Recommended for non-advanced users">
+                Use recommended encryption settings
+                <i class="fas fa-info-circle text-primary"></i>
+            </span>
         </div>
-    </div>   
+
+        <div class="@(useRecommended == true ? "disabled-div" : "") ">
+            <!--Select algorithm dropdown-->
+            <div class="mb-3 mt-2">
+                <label class="form-label">
+                    🔒 Choose algorithm and key size:
+                </label>
+                <div class="input-group">
+                    <InputSelect Value="@selectedAlg"
+                                 ValueChanged="@((EncryptionAlgorithm alg) => OnAlgorithmChanged(alg))"
+                                 ValueExpression="@(() => selectedAlg)"
+                                 class="form-select alg-dropdown me-3  mb-2 mb-md-0">
+                        @foreach (var alg in AlgorithmsOptions.DisplayNames)
+                        {
+                            <option value="@alg.Key">@alg.Value</option>
+                        }
+                    </InputSelect>
+
+                    @if (AlgorithmsOptions.KeySizes.TryGetValue(selectedAlg, out var sizes))
+                    {
+                        <InputSelect class="form-select alg-dropdown" @bind-Value="selectedKeySize">
+                            @foreach (var size in sizes)
+                            {
+                                <option value="@size">@size bits</option>
+                            }
+                        </InputSelect>
+                    }
+                </div>
+            </div>
+
+            <!--RSA key configuration-->
+            <div class="mb-3">
+                <label class="form-label">📁 Configure RSA encryption key:</label>
+
+                <ul class="nav nav-tabs mb-3 w-40">
+                    <li class="nav-item @(isCustomPassEnabled == false ? "border-top border-start border-end border-primary" : "") ">
+                        <button class="nav-link @(isCustomPassEnabled == false ? "active" : "")"
+                                @onclick="() => isCustomPassEnabled = false">
+                            Generate Key
+                        </button>
+                    </li>
+                    <li class="nav-item @(isCustomPassEnabled == true ? "border-top border-start border-end border-primary" : "")">
+                        <button class="nav-link @(isCustomPassEnabled == true ? "active" : "")"
+                                @onclick="() => isCustomPassEnabled = true">
+                            Choose Your Own Key
+                        </button>
+                    </li>
+                </ul>
+
+                @if (isCustomPassEnabled == true)
+                {
+                    <div class="input-group mt-2">
+                        <InputFile id="key-file-upload" class="hidden-file-input" OnChange="LoadKey" />
+
+                        <label for="key-file-upload" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-upload"></i> Choose a File
+                        </label>
+
+                        @if (selectedKey == null)
+                        {
+                            <span class="nofilemsg">No file selected.</span>
+                        }
+                        else
+                        {
+                            <div class="nofilemsg">
+                                <span>@selectedKey?.Name</span>
+                                <button class="clear-file-btn ms-2" @onclick="@(() => ClearUploadFileField("key"))" title="Remove file">
+                                    <i class="fa-solid fa-xmark small-icon"></i>
+                                </button>
+                            </div>
+                        }
+                    </div>
+                    <div class="text-danger fw-bold">
+                        @keyError
+                    </div>
+                }
+
+                @if (isCustomPassEnabled == false)
+                {
+                    <div class="row d-flex">
+                        <div class="col-md-2">
+                            <div class="d-flex">
+                                <label class="mb-0 me-2">Key Size: </label>
+                                <InputSelect @bind-Value="@selectedRSAKeySize"
+                                             class="form-select form-select-sm w-auto">
+                                    @foreach (var keySize in AlgorithmsOptions.RSAKeySizes)
+                                    {
+                                        <option value="@keySize">@keySize bits</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check text-nowrap">
+                                <input class="form-check-input" type="checkbox" id="key-reusing" @bind="@isKeyReusingEnabled" />
+                                <label for="key-reusing">Reuse the encryption key</label>
+                                <span class="ms-2"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="right"
+                                      title="The auto generated encryption key will be available for downloading.">
+                                    <i class="fas fa-info-circle text-primary"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
     
     <!--Start encrypt button-->
-    <div class="d-inline">
+    <div class="d-flex align-items-center flex-md-col">
         <button id="encrypt-btn"
                 disabled="@IsEncryptButtonDisabled()"
                 class="btn btn-primary"
@@ -183,28 +184,10 @@
         </button>
     </div>
 
-   <!--Download and errors area-->
-   <div class="mb-3 mt-4">
-            <!--Loader animation-->
-            <div id="loader" class="d-none loader"></div>
-            
-            <div id="download-container" style="display: @(IsEncrypting ? "none" : "block")">
-                <h5 class="mb-2">📤 Result</h5>
-                @if (string.IsNullOrEmpty(encryptionError))
-                {          
-                    <div id="result-label">
-                        <p class="text-muted">@UIConstants.ENC_RESULT_PLACEHOLDER</p>
-                    </div>
-                }
-            </div>
-            @if (!string.IsNullOrEmpty(encryptionError))
-            {
-                <div class="text-danger fw-bold">
-                    @encryptionError
-                </div>
-            }
-        </div>
-
+   <FileDownloadContainer @bind-OperationError=@encryptionError
+                          @bind-IsProcessing=@IsEncrypting
+                          @bind-DoneProcessing=@doneEncrypting
+                          OperationPlaceholder="@AppConstants.EncResultPlaceHolder"/>
 </div>
 
 
@@ -221,6 +204,8 @@
             selectedFile = null;
             fileError = string.Empty;
             encryptionError = string.Empty;
+            IsEncrypting = false;
+            doneEncrypting = false;
             await JS.ClearDownloadSectionAsync();
         } else {
             selectedKey = null;
@@ -230,6 +215,7 @@
 
     private async Task InitEncryption()
     {
+        doneEncrypting = false;
         encryptionError = string.Empty;
         if (selectedFile == null)
         {
@@ -242,19 +228,25 @@
         else
         {
             IsEncrypting = true;
+            int minAnimationDuration = @AppConstants.MinLoadingAnimationTime;
+            DateTime startTime = DateTime.Now;
 
             try
             {
                 string result = await JS.InitEncryptionAsync(selectedAlg.ToString(), selectedKeySize, selectedRSAKeySize, isCustomPassEnabled, isKeyReusingEnabled);
 
+                int elapsedTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
+                if (elapsedTime < minAnimationDuration)
+                {
+                    await Task.Delay(minAnimationDuration - elapsedTime);
+                }
+
                 if (result.StartsWith("Error:"))
                 {
-                    Console.WriteLine($"Encryption failed: {result}");
                     encryptionError = "Error during encryption. Check the input file and key.";
                 }
                 else
                 {
-                    Console.WriteLine("✅ Encryption successful.");
                     encryptionError = string.Empty;
                 }
             }
@@ -272,7 +264,7 @@
             finally
             {
                 IsEncrypting = false;
-                StateHasChanged();
+                doneEncrypting = true;
             }
         }
     }
@@ -356,6 +348,8 @@
     }
 
     private bool IsEncrypting;
+
+    private bool doneEncrypting = false;
 
     private string fileError = string.Empty;
 

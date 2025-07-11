@@ -14,7 +14,7 @@
 <h1>Analysis</h1>
 <h5 class="text-muted ml-1">Visualize and compare the effects of different encryption algorithms on your data.</h5>
 
-<div class="card shadow-sm rounded-4 p-4 mt-4 mb-4">
+<div class="card p-4 mt-4 mb-4">
     @if(showAnalysisResult)
     {     
         <div class="card-header d-flex justify-content-between align-items-center mb-4">
@@ -23,7 +23,8 @@
                 <button class="btn btn-sm btn-outline-primary" @onclick="() => showInputPanel = !showInputPanel">
                     @(showInputPanel ? "Collapse ▲" : "Expand ▼")
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-danger">
+                <button @onclick="ResetSession"
+                        type="button" class="btn btn-sm btn-outline-danger">
                     Reset All
                 </button>
             </div>
@@ -39,12 +40,9 @@
                                 @bind-SelectedAlgsKeySizes="@selectedAlgsKeySizes"
                                 @bind-FileError="@fileError"/>
 
-            @if (isLoading == true)
-            {
-                <div class="mb-3">
-                    <div class="loader"></div>
-                </div>
-            }
+            <div class="mb-3">
+                <div id="loader" class="d-none" />
+            </div>
 
             @if (!string.IsNullOrEmpty(fileError))
             {
@@ -63,7 +61,7 @@
     }
 
     <div>
-        @if (showAnalysisResult && algorithmStats.Count > 0)
+        @if (showAnalysisResult && algorithmStats.Count > 0 && selectedFile!= null)
         {
             <div class="row">
                 <div class="col">
@@ -79,15 +77,14 @@
                                      DefaultHistogram="@algorithmStats[0].Algorithm.ToString()" />
                 </div>
             </div>
+
+            <div class="row">
+                <AnalysisTable Data="algorithmStats" />
+            </div>
         }
     </div>
 
-    <div class="row">
-        @if(showAnalysisResult)
-        {
-            <AnalysisTable Data="algorithmStats" />
-        }
-    </div>
+    
 </div>
 
 @code {
@@ -98,7 +95,6 @@
     {
         showAnalysisResult = false;
         fileError = string.Empty;
-        isLoading = false;
         showInputPanel = true;
         selectedAlgsKeySizes = new();
 
@@ -106,7 +102,6 @@
     }
 
     private async Task RunAnalysis(){
-        isLoading = true;
         fileError = string.Empty;
         baseIV = GetRandomByteArray(DEFAULT_IV_SIZE);
         baseKey = GetRandomByteArray(DEFAULT_KEY_SIZE);
@@ -128,7 +123,7 @@
             algorithmStats.Add(new AlgorithmAnalysis
                     {
                         Algorithm = alg,
-                        MemoryUsageBytes = _lastWorkerMemoryUsed,
+                        MemoryUsageBytes = (float)(_lastWorkerMemoryUsed/1024.0/1024.0),
                         EncryptionTimeMs = _lastEncryptionTimeMs,
                         FullHistogramData = HistogramService.GetChartData(encryptedBytes),
                         HistogramData = HistogramService.GetChartData(encryptedBytes),
@@ -148,7 +143,6 @@
         {
             await Task.Delay(minDuration - elapsedTime);
         }
-        isLoading = false;
 
         algorithmStats = algorithmStats.OrderBy(a => a.Algorithm.ToString()).ToList();
         showInputPanel = false;
@@ -182,6 +176,15 @@
         return byteArray;
     }
 
+    private void ResetSession()
+    {   
+        selectedFile = null; 
+        algorithmStats.Clear();
+        showInputPanel = true;
+        showAnalysisResult = false;
+        selectedAlgsKeySizes.Clear();
+    }
+
     public class EncryptedResult
     {
         public required byte[] Encrypted { get; set; }
@@ -192,13 +195,10 @@
     [JSInvokable]
     public Task OnEncryptedFromWorker(EncryptedResult result)
     {
-        var encryptedBytes = result.Encrypted;
-        var memoryUsed = result.MemoryUsed;
-        var time = result.ElapsedTimeMs;
+        _lastWorkerMemoryUsed = result.MemoryUsed;
+        _lastEncryptionTimeMs = result.ElapsedTimeMs;
+        encryptionTcs?.SetResult(result.Encrypted);
 
-        _lastWorkerMemoryUsed = memoryUsed;
-        _lastEncryptionTimeMs = time;
-        encryptionTcs?.SetResult(encryptedBytes);
         return Task.CompletedTask;
     }
 
@@ -208,7 +208,6 @@
         encryptionTcs?.SetException(new Exception(errorMsg));
         return Task.CompletedTask;
     }
-
 
     private TaskCompletionSource<byte[]>? encryptionTcs;
 
@@ -221,8 +220,6 @@
     private FileModel? selectedFile = null;
 
     private Dictionary<EncryptionAlgorithm, int> selectedAlgsKeySizes;
-
-    private bool isLoading;
 
     private bool showInputPanel;
 

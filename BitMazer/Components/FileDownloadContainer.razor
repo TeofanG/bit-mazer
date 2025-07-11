@@ -1,0 +1,50 @@
+﻿@using BitMazer.Constants
+
+<div class="d-flex flex-column flex-md-col mb-3 mt-4 border border-secondary-subtle rounded p-3" 
+     style="min-width: 500px; flex-grow: 0;">
+
+    <div class="d-flex flex-column align-items-start gap-2"
+         id="download-container" style="display: @(DoneProcessing && !IsProcessing ? "block" : "none");">
+        <h5 class="mb-4">📤 Result</h5>
+        @if (string.IsNullOrEmpty(OperationError) && IsProcessing == false && DoneProcessing == false)
+        {
+            <div id="result-label">
+                <p class="text-muted">@OperationPlaceholder</p>
+            </div>
+        }
+    </div>
+
+    @if (!string.IsNullOrEmpty(OperationError))
+    {
+        <div class="text-danger fw-bold">
+            @OperationError
+        </div>
+    }
+
+    <div id="loader" class="d-none"/>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public bool IsProcessing { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> IsProcessingChanged { get; set; }
+
+    [Parameter]
+    public bool DoneProcessing { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> DoneProcessingChanged { get; set; }
+
+    [Parameter]
+    public string OperationError { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OperationErrorChanged { get; set; }
+
+    [Parameter]
+    public string OperationPlaceholder { get; set; }
+}

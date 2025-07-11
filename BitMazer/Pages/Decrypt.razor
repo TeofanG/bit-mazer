@@ -3,87 +3,91 @@
 @using BitMazer.Models
 @using BitMazer.Services
 @using System.Text.Json
+@using BitMazer.Components
 
 <PageTitle>Decrypt</PageTitle>
 <h1>Decrypt</h1>
 <h5 class="text-muted ml-1">Upload a file and provide the key necessary for decryption.</h5>
 
-<div class="card shadow-sm rounded-4 p-4 mt-4 mb-4">
-    <!--Upload file button-->
-    <div class="mb-3">
-        <label class="form-label">📁 Select file to decrypt:</label>
-        <div class="input-group">
-            <InputFile id="dec-file-upload" class="hidden-file-input" OnChange="LoadFile" />
+<div class="card flex-column flex-md-row gap-5 p-4 mt-5">
+    <div class="d-flex flex-column flex-md-col">
+        <!--Upload file button-->
+        <div class="mb-3">
+            <label class="form-label">📁 Select file to decrypt:</label>
+            <div class="input-group">
+                <InputFile id="dec-file-upload" class="hidden-file-input" OnChange="LoadFile" />
 
-            <label for="dec-file-upload" class="btn btn-outline-primary">
-                <i class="fa-solid fa-upload"></i> Choose a File
-            </label>
+                <label for="dec-file-upload" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
 
-            @if (selectedFile != null)
-            {
-                <div class="nofilemsg">
-                    <span>@selectedFile.Name</span>
-                    <button class="clear-file-btn ms-2"
-                            title="Remove file"
-                            @onclick="@(() => ClearUploadFileField("file"))">
-                        <i class="fa-solid fa-xmark small-icon"></i>
-                    </button>
-                </div>
-            }
-            else
-            {
-                <span class="nofilemsg">No file selected.</span>
-            }
+                @if (selectedFile != null)
+                {
+                    <div class="nofilemsg">
+                        <span>@selectedFile.Name</span>
+                        <button class="clear-file-btn ms-2"
+                                title="Remove file"
+                                @onclick="@(() => ClearUploadFileField("file"))">
+                            <i class="fa-solid fa-xmark small-icon"></i>
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <span class="nofilemsg">No file selected.</span>
+                }
+            </div>
+            <div class="text-danger fw-bold">
+                @fileError
+            </div>
         </div>
-        <div class="text-danger fw-bold">
-            @fileError
+
+        <!--Uploaded file metadata-->
+        @if (selectedFile != null && metadata != null)
+        {
+            <div class="alert alert-info">
+                <p><strong>Name:</strong> @metadata.FileName</p>
+                <p><strong>Type:</strong> @metadata.FileType</p>
+                <p><strong>Size:</strong> @metadata.FileSize MB</p>
+                <p><strong>Encryption algorithm:</strong> @metadata.EncAlg</p>
+            </div>
+        }
+
+
+        <!--Upload key button-->
+        <div class="mb-3">
+            <label class="form-label">🔑 Select key:</label>
+            <div class="input-group">
+                <InputFile id="dec-key-upload" class="hidden-file-input" OnChange="LoadKey" />
+
+                <label for="dec-key-upload" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-upload"></i> Choose a File
+                </label>
+
+                @if (selectedKey != null)
+                {
+                    <div class="nofilemsg">
+                        <span>@selectedKey.Name</span>
+                        <button class="clear-file-btn ms-2"
+                                title="Remove file"
+                                @onclick="@(() => ClearUploadFileField("key"))">
+                            <i class="fa-solid fa-xmark small-icon"></i>
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <span class="nofilemsg">No file selected.</span>
+                }
+            </div>
+            <div class="text-danger fw-bold ms-3">
+                @keyError
+            </div>
         </div>
     </div>
-
-    <!--Uploaded file metadata-->
-    @if (selectedFile != null && metadata != null)
-    {
-        <div class="alert alert-info">
-            <p><strong>Name:</strong> @metadata.FileName</p>
-            <p><strong>Type:</strong> @metadata.FileType</p>
-            <p><strong>Size:</strong> @metadata.FileSize MB</p>
-            <p><strong>Encryption algorithm:</strong> @metadata.EncAlg</p>
-        </div>
-    }
-
-    <!--Upload key button-->
-    <div class="mb-3">
-        <label class="form-label">🔑 Select key:</label>
-        <div class="input-group">
-            <InputFile id="dec-key-upload" class="hidden-file-input" OnChange="LoadKey" />
-
-            <label for="dec-key-upload" class="btn btn-outline-primary">
-                <i class="fa-solid fa-upload"></i> Choose a File
-            </label>
-
-            @if (selectedKey != null)
-            {
-                <div class="nofilemsg">
-                    <span>@selectedKey.Name</span>
-                    <button class="clear-file-btn ms-2"
-                            title="Remove file"
-                            @onclick="@(() => ClearUploadFileField("key"))">
-                        <i class="fa-solid fa-xmark small-icon"></i>
-                    </button>
-                </div>
-            }
-            else
-            {
-                <span class="nofilemsg">No file selected.</span>
-            }
-        </div>
-        <div class="text-danger fw-bold">
-            @keyError
-        </div>
-    </div>
-
+    
     <!--Start decrypt button-->
-    <div class="mb-5 mt-1">
+    <div class="d-flex align-items-center flex-md-col">
         <button @onclick="InitDecryption"
                 class="btn btn-primary"
                 disabled="@IsDecryptButtonDisabled()">
@@ -92,26 +96,10 @@
         </button>
     </div>
 
-    <!--Download and errors area-->
-    <div class="mb-3">
-        <!--Loader animation-->
-        @if (IsDecrypting == true)
-        {
-            <div class="loader"></div>
-        }
-        else if (!string.IsNullOrEmpty(decryptionError))
-        {
-            <div class="text-danger fw-bold">
-                @decryptionError
-            </div>
-        }
-        <div id="download-container" style="display: @(IsDecrypting ? "none" : "block")">
-            <h5 class="mb-2">📤 Result</h5>
-            <div id="result-label">
-                <p class="text-muted">Your decrypted file will be ready to download here after processing.</p>
-            </div>
-        </div>
-    </div>
+    <FileDownloadContainer @bind-OperationError=@decryptionError
+                           @bind-IsProcessing=@IsDecrypting
+                           @bind-DoneProcessing=@doneDecrypting
+                           OperationPlaceholder="@AppConstants.DecResultPlaceholder"/>
 </div>
 
 
@@ -123,6 +111,10 @@
             selectedFile = null;
             fileError = string.Empty;
             decryptionError = string.Empty;
+            keyError = string.Empty;
+            doneDecrypting = false;
+            IsDecrypting = false;
+            await Task.Delay(100);
             await JS.ClearDownloadSectionAsync();
         }
         else
@@ -135,6 +127,8 @@
 
     public async Task InitDecryption()
     {
+        IsDecrypting = true;
+        doneDecrypting = false;
         decryptionError = string.Empty;
         if (selectedFile == null)
         {
@@ -146,8 +140,6 @@
         }
         else
         {
-            IsDecrypting = true;
-            StateHasChanged();
 
             int minAnimationDuration = @AppConstants.MinLoadingAnimationTime;
             DateTime startTime = DateTime.Now;
@@ -165,7 +157,14 @@
                 if (result.StartsWith("Error:"))
                 {
                     Console.WriteLine($"Decryption failed: {result}");
-                    decryptionError = "Error during decryption. Check the input file and key.";
+                    if (result.Contains("HMAC") ||
+                        result.Contains("invalid tag")) 
+                    {
+                        decryptionError = "Decryption failed: the data could not be authenticated. It may have been tampered with or corrupted.";
+                    } else
+                    {    
+                        decryptionError = "Error during decryption. Check the input file and key.";
+                    }
                 }
                 else
                 {
@@ -186,7 +185,7 @@
             finally
             {
                 IsDecrypting = false;
-                StateHasChanged();
+                doneDecrypting = true;
             }
         }
     }
@@ -266,4 +265,6 @@
     private string decryptionError = string.Empty;
 
     private bool IsDecrypting;
+
+    private bool doneDecrypting = false;
 }

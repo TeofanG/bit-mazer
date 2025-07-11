@@ -12,6 +12,7 @@ builder.Services.AddBlazorBootstrap();
 builder.Services.AddScoped<JsUtilityService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+
 var host = builder.Build();
 
 var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();

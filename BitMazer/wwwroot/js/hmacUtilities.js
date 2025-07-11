@@ -13,7 +13,7 @@ export const hmac = {
             return signature;
 
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     },
 
@@ -31,7 +31,7 @@ export const hmac = {
             return isValid;
 
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     },
 
@@ -48,7 +48,7 @@ export const hmac = {
 
             return hmacKey;
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     },
 
@@ -68,7 +68,7 @@ export const hmac = {
             return hmacKey;
 
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     },
 
@@ -82,7 +82,7 @@ export const hmac = {
             return hmacKey;
 
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     },
 

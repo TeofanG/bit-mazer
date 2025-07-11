@@ -34,7 +34,7 @@
             <p><strong>Type:</strong> @SelectedFile.Type</p>
         </div>
     }
-    <div class="mb-3">
+    <div class="mb-3 mt-5">
         <label class="form-label">🔒 Select Algorithms </label>
 
         @foreach (var alg in Enum.GetValues<EncryptionAlgorithm>())
@@ -71,6 +71,7 @@
             </div> 
         }
     </div>
+
     <div class="mb-3">
         <button id="encrypt-btn"
                 class="btn btn-primary"

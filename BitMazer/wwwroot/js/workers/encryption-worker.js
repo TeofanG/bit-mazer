@@ -19,7 +19,6 @@ self.onmessage = async (e) => {
     } = e.data;
 
     const {
-        AES_NAME,
         AES_IV_SIZE,
         CHACHA_IV_SIZE,
         TWOFISH_IV_SIZE,
@@ -27,52 +26,62 @@ self.onmessage = async (e) => {
 
     try {
         const keySizeBytes = selectedKeySize / 8;
-        let iv, encKey, cipherdata, aad;
+        let rsaKeyPair, encryptionKey, rsaPublicKey;
+        let cipherdata, iv, aad;
         let tag = null, hmacKey = null, exportedHmacKey = null;
+
+        if (isCustomKeyEnabled) {
+            rsaPublicKey = await rsa.importPublicKey(keyBuffer);
+            if (!rsaPublicKey) throw new Error("Failure to import RSA public key.");
+        } else {
+            rsaKeyPair = await rsa.generateKey(rsaKeySize);
+            if (!rsaKeyPair) throw new Error("Failed to generate RSA key pair.");
+            rsaPublicKey = rsaKeyPair.publicKey;
+        }
 
         switch (metadata.algorithm) {
             case "AES_GCM":
                 iv = crypto.getRandomValues(new Uint8Array(AES_IV_SIZE));
-                const aesKey = await aes.getKey(AES_NAME, selectedKeySize);
+                const aesKey = await aes.getKey("AES-GCM", selectedKeySize);
                 aad = await utility.generateEncodedAAD(metadata, iv);
                 cipherdata = await aes.encrypt(fileBuffer, iv, aesKey, aad);
-                encKey = await crypto.subtle.exportKey("raw", aesKey);
+                encryptionKey = await crypto.subtle.exportKey("raw", aesKey);
                 break;
 
             case "XChaCha20_Poly1305":
                 iv = crypto.getRandomValues(new Uint8Array(CHACHA_IV_SIZE));
-                encKey = crypto.getRandomValues(new Uint8Array(keySizeBytes));
+                encryptionKey = crypto.getRandomValues(new Uint8Array(keySizeBytes));
                 aad = await utility.generateEncodedAAD(metadata, iv);
 
-                cipherdata = await chacha.encrypt(new Uint8Array(fileBuffer), iv, encKey, aad);
+                cipherdata = await chacha.encrypt(new Uint8Array(fileBuffer), iv, encryptionKey, aad);
                 break;
 
             case "Rabbit":
                 iv = rabbitObj.iv;
-                encKey = rabbitObj.key;
+                encryptionKey = rabbitObj.key;
                 cipherdata = rabbitObj.cipherdata;
+                tag = rabbitObj.tag;
+                hmacKey = rabbitObj.hmacKey;
                 break;
 
             case "Twofish":
                 iv = new Uint8Array((TWOFISH_IV_SIZE));
                 crypto.getRandomValues(iv);
 
-                encKey = new Uint8Array((keySizeBytes));
-                crypto.getRandomValues(encKey);
+                encryptionKey = new Uint8Array((keySizeBytes));
+                crypto.getRandomValues(encryptionKey);
 
                 aad = await utility.generateEncodedAAD(metadata, iv);
-
                 hmacKey = await hmac.generateKey();
-                ({ cipherdata, tag } = await twofish.encrypt(new Uint8Array(fileBuffer), iv, encKey, hmacKey, aad));
+
+                ({ cipherdata, tag } = await twofish.encrypt(new Uint8Array(fileBuffer), iv, encryptionKey, hmacKey, aad));
                 break;
 
             default:
                 throw new Error(`Unknown encryption algorithm: ${metadata.algorithm}`);
         }
 
-        const rsaKey = await rsa.getKey(rsaKeySize, isCustomKeyEnabled, keyBuffer);
-        let publicRSAKey = isCustomKeyEnabled ? rsaKey : rsaKey.publicKey;
-        const encryptedKey = await rsa.encrypt(publicRSAKey, encKey);
+        const encryptedKey = await rsa.encrypt(rsaPublicKey, encryptionKey);
 
         if (hmacKey) {
             exportedHmacKey = await hmac.exportKey(hmacKey);
@@ -84,7 +93,7 @@ self.onmessage = async (e) => {
             iv: await utility.arrayBufferToBase64(iv),
             tag: tag ? await utility.arrayBufferToBase64(tag) : null,
             hmacKey: hmacKey ? await utility.arrayBufferToBase64(exportedHmacKey) : null,
-            rsaKey: isCustomKeyEnabled ? null : await rsa.exportKeyPairToByteArr(rsaKey),
+            rsaKey: isCustomKeyEnabled ? null : await rsa.exportKeyPairToByteArr(rsaKeyPair),
             isCustomKeyEnabled,
             isKeyReusingEnabled
         };

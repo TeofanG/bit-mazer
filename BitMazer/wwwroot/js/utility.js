@@ -1,10 +1,9 @@
-﻿import { DomElements } from './constants/domElements.js';
-import { DwnldFilesNamesConstants } from './constants/download-files-names.js';
+﻿import { FileDownloadNames, DomSelectors } from './constants/app-constants.js';
 
 const {
     DEC_INPUT_FIELD,
     DOWNLOAD_CONTAINER
-} = DomElements;
+} = DomSelectors;
 
 export const utility = {
     arrayBufferToBase64: async function (buffer) {
@@ -41,9 +40,9 @@ export const utility = {
     },
     createDownloadButton: function (fileData, blobType, fileName) {
         let buttonId;
-        if (fileName.includes(DwnldFilesNamesConstants.ENC_KEY_FILE)) {
+        if (fileName.includes(FileDownloadNames.ENC_KEY_FILE)) {
             buttonId = "download-btn-enc-key";
-        } else if (fileName.includes(DwnldFilesNamesConstants.DEC_KEY_FILE)) {
+        } else if (fileName.includes(FileDownloadNames.DEC_KEY_FILE)) {
             buttonId = "download-btn-dec-key";
         }
         else {
@@ -56,16 +55,10 @@ export const utility = {
         // Attach a button link
         const buttonLink = document.createElement("a");
         buttonLink.id = buttonId;
-        buttonLink.classList.add("btn", "btn-outline-primary", "me-2", "text-decoration-none");
+        buttonLink.classList.add("btn", "btn-outline-primary", "text-decoration-none");
         buttonLink.innerHTML = `<span class="bi bi-download"></span> <span>${fileName}</span>`;
         buttonLink.href = url;
         buttonLink.download = fileName;
-
-        // Append the button to the download section
-        const resultLabel = document.getElementById('result-label')
-        if (resultLabel) {
-            resultLabel.className = "d-none";
-        }
 
         const downloadContainer = document.getElementById(DOWNLOAD_CONTAINER);
         downloadContainer.appendChild(buttonLink);
@@ -75,22 +68,19 @@ export const utility = {
 
         const buttonLinks = downloadContainer.querySelectorAll('a');
         buttonLinks.forEach(buttonLinks => buttonLinks.remove());
-        const resultLabel = document.getElementById('result-label')
-        if (resultLabel) {
-            resultLabel.classList.remove("d-none");
-        }
-    },
-    showLoader: function () {
-        document.getElementById('loader').classList.remove('d-none');
-    },
-
-    hideLoader: function () {
-        setTimeout(() => {
-            document.getElementById('loader').classList.add('d-none');
-        }, 5000); // 5000 milliseconds = 5 seconds
-        console.log("HIDE LOADER called");
 
     },
+    //showLoader: function () {
+    //    document.getElementById('loader').classList.remove('d-none');
+    //},
+
+    //hideLoader: function () {
+    //    setTimeout(() => {
+    //        document.getElementById('loader').classList.add('d-none');
+    //    }, 5000); // 5000 milliseconds = 5 seconds
+    //    console.log("HIDE LOADER called");
+
+    //},
 
     estimateMemoryFromBuffers: function (...buffers) {
         let totalBytes = 0;

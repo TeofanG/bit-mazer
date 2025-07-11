@@ -1,5 +1,4 @@
 ﻿@using BitMazer.Enums
-@using BlazorBootstrap
 @using BitMazer.Models
 
 <Grid TItem="AlgorithmAnalysis"
@@ -18,31 +17,33 @@
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Encryption Time (ms)" 
-                    SortKeySelector="item => item.EncryptionTimeMs">
+                    SortKeySelector="item => item.EncryptionTimeMs"
+                    HeaderTextAlignment="Alignment.Center"
+                    TextAlignment="Alignment.Center">
             @context.EncryptionTimeMs.ToString("F2")
-        </GridColumn>
-
-        <GridColumn TItem="AlgorithmAnalysis"
-                    HeaderText="Memory Usage (bytes)"
-                    SortKeySelector="item => item.MemoryUsageBytes">
-            @context.MemoryUsageBytes
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Chi Square" 
-                    SortKeySelector="item => item.ChiSquareValue">
+                    SortKeySelector="item => item.ChiSquareValue"
+                    HeaderTextAlignment="Alignment.Center"
+                    TextAlignment="Alignment.Center">
             @context.ChiSquareValue.ToString("F2")
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Entropy" 
-                    SortKeySelector="item => item.Entropy">
+                    SortKeySelector="item => item.Entropy"
+                    HeaderTextAlignment="Alignment.Center"
+                    TextAlignment="Alignment.Center">
             @context.Entropy.ToString("F6")
         </GridColumn>
 
         <GridColumn TItem="AlgorithmAnalysis" 
                     HeaderText="Standard Deviation" 
-                    SortKeySelector="item => item.StdDev">
+                    SortKeySelector="item => item.StdDev"
+                    HeaderTextAlignment="Alignment.Center"
+                    TextAlignment="Alignment.Center">
             @context.StdDev.ToString("F2")
         </GridColumn>
     </GridColumns>

@@ -145,17 +145,15 @@ h1 {
 }
 
 @media (min-width: 1600px) {
-    .container {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        max-width: 100% !important; /* This is key */
+    .card {
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
     }
 }
 
-@media (max-width: 1300px) {
-    html {
-        font-size: 95%;
-    }
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .disabled-div {

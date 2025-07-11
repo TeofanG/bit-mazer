@@ -48,7 +48,8 @@ self.onmessage = async (e) => {
         }
 
         self.postMessage({ success: true, decryptedData });
+
     } catch (err) {
-        self.postMessage({ success: false, error: err.message });
+        self.postMessage({ success: false, error: err.message || "Unknown error during decryption." });
     }
 };

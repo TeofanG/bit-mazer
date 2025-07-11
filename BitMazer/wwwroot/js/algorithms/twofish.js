@@ -14,7 +14,7 @@ export const twofish = {
             const cipherdataRaw = tf.encryptCBC(key, plaindata);
             const cipherdata = new Uint8Array(cipherdataRaw);
 
-            if (aad) {
+            if (hmacKey && aad) {
                 const combined = new Uint8Array(aad.length + cipherdata.length);
                 combined.set(aad, 0);
                 combined.set(cipherdata, aad.length);
@@ -27,7 +27,7 @@ export const twofish = {
             }
         } catch (err) {
             console.error("Twofish encryption failed:", err);
-            return null;
+            throw err;
         }
     },
 
@@ -38,12 +38,14 @@ export const twofish = {
 
             const tf = twofishCipher(iv);
 
-            const combined = new Uint8Array(aad.length + cipherdata.length);
-            combined.set(aad, 0);
-            combined.set(cipherdata, aad.length);
+            if (tag && aad) {
+                const combined = new Uint8Array(aad.length + cipherdata.length);
+                combined.set(aad, 0);
+                combined.set(cipherdata, aad.length);
 
-            const isValid = await hmac.verify(hmacKey, tag, combined);
-            if (!isValid) throw new Error("Invalid HMAC tag – authentication failed");
+                const isValid = await hmac.verify(hmacKey, tag, combined);
+                if (!isValid) throw new Error("Invalid HMAC tag – authentication failed");
+            }  
 
             const plaindata = tf.decryptCBC(key, cipherdata);
 

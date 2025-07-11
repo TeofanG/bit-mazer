@@ -4,9 +4,10 @@ import { twofish } from '/js/algorithms/twofish.js';
 
 self.onmessage = async function (e) {
     const { rabbitEncryptedData, rabbitMemoryUsage, rabbitEncTime, algorithm, plaindata, baseIV, baseKey, keySize } = e.data;
-    const startTime = performance.now();
-    let encryptedData, memoryUsage;
+    
     try {
+        const startTime = performance.now();
+        let encryptedData, memoryUsage;
 
         switch (algorithm) {
             case 'AES_GCM':
@@ -35,9 +36,10 @@ self.onmessage = async function (e) {
             success: true,
             encrypted: new Uint8Array(encryptedData),
             memoryUsed: memoryUsage,
-            elapsedTimeMs: elapsedTimeMs
+            elapsedTimeMs,
         });
     } catch (err) {
-        self.postMessage({ success: false, error: err.message });
+        self.postMessage({
+            success: false, error: err instanceof Error ? err.message : String(err) });
     }
 };

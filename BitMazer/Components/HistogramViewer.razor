@@ -55,11 +55,13 @@
     </div>
 </div>
 
-<div style="margin: auto; max-width: 500px; min-height: 400px">
+<div style="margin: auto; width: 500px; height: 400px">
     <ApexChart @ref="sharedChartRef"
                TItem="HistogramDataModel"
                Title="@chartTitle"
-               Options="@HistogramService.GetChartOptions()">
+               Options="@HistogramService.GetChartOptions()"
+               Width="500"
+               Height="400">
 
           <ApexPointSeries TItem="HistogramDataModel"
                            Items="@currentChartData"

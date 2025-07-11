@@ -18,7 +18,7 @@ export const chacha = {
             return encrypted;
 
         } catch (err) {
-            console.error("Error encrypting file: ", err);
+            throw err;
             return null;
         }
     },
@@ -32,7 +32,7 @@ export const chacha = {
 
             return decrypted;
         } catch (err) {
-            console.error("Error decrypting file: ", err);
+            throw err;
             return null;
         }
     },
